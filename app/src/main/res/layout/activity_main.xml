@@ -1,18 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="lanou.maoyanmovie.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"/>
-</RelativeLayout>
+    <FrameLayout
+        android:id="@+id/main_frame"
+        android:layout_width="match_parent"
+        android:layout_weight="6"
+        android:layout_height="0dp">
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="0.7"
+        android:orientation="horizontal"
+        android:layout_height="0dp">
+
+        <RelativeLayout
+            android:background="#fff"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RadioGroup
+                android:id="@+id/main_rg"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioButton
+                    android:layout_marginTop="3dp"
+                    android:layout_weight="1"
+                    android:id="@+id/main_movie_rb"
+                    android:layout_gravity="center"
+                    android:button="@null"
+                    android:checked="true"
+                    android:textColor="@color/check_text_color"
+                    android:layout_width="0dp"
+                    android:drawableTop="@drawable/main_movie"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal"
+                    android:text="电影"/>
+
+                <RadioButton
+                    android:layout_marginTop="3dp"
+                    android:layout_gravity="center"
+                    android:id="@+id/main_cinema_rb"
+                    android:button="@null"
+                    android:textColor="@color/check_text_color"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:drawableTop="@drawable/main_cinema"
+                    android:text="影院"
+                    android:layout_height="match_parent"/>
+
+                <RadioButton
+                    android:layout_marginTop="3dp"
+                    android:id="@+id/main_find_rb"
+                    android:button="@null"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:drawableTop="@drawable/main_find"
+                    android:text="发现"
+                    android:textColor="@color/check_text_color"
+                    android:layout_height="match_parent"/>
+
+                <RadioButton
+                    android:id="@+id/main_my_rb"
+                    android:layout_marginTop="3dp"
+                    android:button="@null"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:drawableTop="@drawable/main_my"
+                    android:text="我的"
+                    android:textColor="@color/check_text_color"
+                    android:layout_height="match_parent"/>
+
+            </RadioGroup>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</LinearLayout>
