@@ -34,11 +34,11 @@ public abstract class BaseActivity extends AppCompatActivity {
 
 
 
-    protected abstract void initClick();
-
-    protected abstract void initData();
+    protected abstract int getLayout();
 
     protected abstract void initViews();
 
-    protected abstract int getLayout();
+    protected abstract void initData();
+
+    protected abstract void initClick();
 }
