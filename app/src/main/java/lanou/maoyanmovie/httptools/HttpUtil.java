@@ -30,7 +30,7 @@ public class HttpUtil {
      *
      * @param responseCallBack 接口, 用于数据的返回
      */
-    public void getFindTop(ResponseCallBack responseCallBack) {
+    public static void getFindTop(ResponseCallBack responseCallBack) {
         OkHttpManager.getInstance().get(MovieValues.FIND_TOP, FindTopBean.class, responseCallBack);
     }
 
@@ -41,7 +41,7 @@ public class HttpUtil {
      * @param limit            需要请求的数据条数
      * @param responseCallBack 接口, 用于数据的返回
      */
-    public void getFindToday(int offset, int limit, ResponseCallBack responseCallBack) {
+    public static void getFindToday(int offset, int limit, ResponseCallBack responseCallBack) {
         String url = MovieValues.FIND_TODAY + "offset=" + offset + "&limit=" + limit;
         OkHttpManager.getInstance().get(url, FindTodayBean.class, responseCallBack);
     }
@@ -51,7 +51,7 @@ public class HttpUtil {
      *
      * @param targetId 从要点击的Item中获取到targetId
      */
-    public void getFindTodayDeail(int targetId, ResponseCallBack responseCallBack) {
+    public static void getFindTodayDeail(int targetId, ResponseCallBack responseCallBack) {
         String url = MovieValues.TODAY_DETAIL + targetId + ".json";
         OkHttpManager.getInstance().get(url, FindTodayDetailBean.class, responseCallBack);
     }
@@ -59,14 +59,14 @@ public class HttpUtil {
     /**
      * 发现 -> 商城 -> 上面十个按钮
      */
-    public void getFindStoreTop(ResponseCallBack responseCallBack) {
+    public static void getFindStoreTop(ResponseCallBack responseCallBack) {
         OkHttpManager.getInstance().get(MovieValues.STORE_TOP, StoreTopBean.class, responseCallBack);
     }
 
     /**
      * 发现 -> 商城 -> 每月特价
      */
-    public void getFindStoreMonthDiscount(ResponseCallBack responseCallBack) {
+    public static void getFindStoreMonthDiscount(ResponseCallBack responseCallBack) {
         OkHttpManager.getInstance().get(MovieValues.STORE_MONTH_DISCOUNT, StoreMonthDiscountBean.class, responseCallBack);
     }
 
