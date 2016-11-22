@@ -20,7 +20,7 @@ public class HttpUtil {
      * @param limit            需要请求的数据条数
      * @param responseCallBack 接口, 用于数据的返回
      */
-    public static void getStoreLike(int offset, int limit, ResponseCallBack responseCallBack) {
+    public static void getStoreLike(int offset, int limit, ResponseCallBack<StoreLikeBean> responseCallBack) {
         String url = MovieValues.STORE_LIKE + "offset=" + offset + "&limit=" + limit;
         OkHttpManager.getInstance().get(url, StoreLikeBean.class, responseCallBack);
     }
@@ -30,7 +30,7 @@ public class HttpUtil {
      *
      * @param responseCallBack 接口, 用于数据的返回
      */
-    public void getFindTop(ResponseCallBack responseCallBack) {
+    public void getFindTop(ResponseCallBack<FindTopBean> responseCallBack) {
         OkHttpManager.getInstance().get(MovieValues.FIND_TOP, FindTopBean.class, responseCallBack);
     }
 
@@ -41,7 +41,7 @@ public class HttpUtil {
      * @param limit            需要请求的数据条数
      * @param responseCallBack 接口, 用于数据的返回
      */
-    public void getFindToday(int offset, int limit, ResponseCallBack responseCallBack) {
+    public void getFindToday(int offset, int limit, ResponseCallBack<FindTodayBean> responseCallBack) {
         String url = MovieValues.FIND_TODAY + "offset=" + offset + "&limit=" + limit;
         OkHttpManager.getInstance().get(url, FindTodayBean.class, responseCallBack);
     }
@@ -51,7 +51,7 @@ public class HttpUtil {
      *
      * @param targetId 从要点击的Item中获取到targetId
      */
-    public void getFindTodayDeail(int targetId, ResponseCallBack responseCallBack) {
+    public void getFindTodayDeail(int targetId, ResponseCallBack<FindTodayDetailBean> responseCallBack) {
         String url = MovieValues.TODAY_DETAIL + targetId + ".json";
         OkHttpManager.getInstance().get(url, FindTodayDetailBean.class, responseCallBack);
     }
@@ -66,7 +66,7 @@ public class HttpUtil {
     /**
      * 发现 -> 商城 -> 每月特价
      */
-    public void getFindStoreMonthDiscount(ResponseCallBack responseCallBack) {
+    public void getFindStoreMonthDiscount(ResponseCallBack<StoreMonthDiscountBean> responseCallBack) {
         OkHttpManager.getInstance().get(MovieValues.STORE_MONTH_DISCOUNT, StoreMonthDiscountBean.class, responseCallBack);
     }
 

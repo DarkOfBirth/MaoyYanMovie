@@ -1,13 +1,6 @@
 package lanou.maoyanmovie;
 
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-
-import lanou.maoyanmovie.httptools.HttpUtil;
-import lanou.maoyanmovie.httptools.ResponseCallBack;
-
-
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.FrameLayout;
@@ -66,6 +59,7 @@ public class MainActivity extends BaseActivity {
         transaction = manager.beginTransaction();
         transaction.replace(R.id.main_frame, movieFragment);
         transaction.commit();
+
     }
 
 
