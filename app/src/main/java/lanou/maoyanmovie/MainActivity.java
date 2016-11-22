@@ -1,6 +1,13 @@
 package lanou.maoyanmovie;
 
 
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+import lanou.maoyanmovie.httptools.HttpUtil;
+import lanou.maoyanmovie.httptools.ResponseCallBack;
+
+
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.FrameLayout;
@@ -61,6 +68,8 @@ public class MainActivity extends BaseActivity {
         transaction.commit();
     }
 
+
+
     @Override
     protected void initClick() {
         mainRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -93,14 +102,16 @@ public class MainActivity extends BaseActivity {
             }
         });
     }
+
     //当点击其他的时候, 字体颜色还原本色
     private void initLast(RadioButton radioButton) {
-        if(last != null){
+        if (last != null) {
             last.setSelected(false);
             last = radioButton;
-        }else {
+        } else {
             last = radioButton;
         }
+
     }
 
 }
