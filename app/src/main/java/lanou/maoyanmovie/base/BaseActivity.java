@@ -32,8 +32,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         return (T) view.findViewById(id);
     }
 
-
-
     protected abstract int getLayout();
 
     protected abstract void initViews();
