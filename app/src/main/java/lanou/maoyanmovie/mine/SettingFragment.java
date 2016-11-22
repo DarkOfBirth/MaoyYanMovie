@@ -2,16 +2,20 @@ package lanou.maoyanmovie.mine;
 
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
+import lanou.maoyanmovie.MainActivity;
 import lanou.maoyanmovie.R;
 import lanou.maoyanmovie.base.BaseFragment;
+import lanou.maoyanmovie.wuziqi.WuziqiFragment;
 
 /**
  * Created by 麦建东 on 16/11/22.
  */
-public class SettingFragment extends BaseFragment implements View.OnClickListener {
+public class SettingFragment extends BaseFragment implements View.OnClickListener, View.OnLongClickListener {
 
     private ImageButton mSettingReturnIb;
+    private LinearLayout wuziqi;
 
     @Override
     protected int getLayout() {
@@ -21,6 +25,7 @@ public class SettingFragment extends BaseFragment implements View.OnClickListene
     @Override
     protected void initView() {
         mSettingReturnIb = bindView(R.id.fragment_mine_setting_return_ib);
+        wuziqi = bindView(R.id.fragment_mine_setting_wuziqi_ll);
     }
 
     @Override
@@ -31,6 +36,7 @@ public class SettingFragment extends BaseFragment implements View.OnClickListene
     @Override
     protected void initClick() {
         mSettingReturnIb.setOnClickListener(this);
+        wuziqi.setOnLongClickListener(this);
     }
 
     /**
@@ -45,5 +51,23 @@ public class SettingFragment extends BaseFragment implements View.OnClickListene
                 getFragmentManager().popBackStack();
                 break;
         }
+    }
+
+    /**
+     * Called when a view has been clicked and held.
+     *
+     * @param v The view that was clicked and held.
+     * @return true if the callback consumed the long click, false otherwise.
+     */
+    @Override
+    public boolean onLongClick(View v) {
+        switch (v.getId()){
+            case R.id.fragment_mine_setting_wuziqi_ll:
+                WuziqiFragment wuziqiFragment = new WuziqiFragment();
+                MainActivity activity = (MainActivity) getActivity();
+                activity.jumpFragment(wuziqiFragment);
+                break;
+        }
+        return true;
     }
 }

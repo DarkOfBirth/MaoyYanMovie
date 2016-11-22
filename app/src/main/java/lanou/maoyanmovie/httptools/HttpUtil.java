@@ -10,6 +10,7 @@ import lanou.maoyanmovie.tools.MovieValues;
 
 /**
  * Created by dllo on 16/11/21.
+ *
  */
 
 public class HttpUtil {

@@ -1,6 +1,7 @@
 package lanou.maoyanmovie;
 
 
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.FrameLayout;
@@ -108,6 +109,19 @@ public class MainActivity extends BaseActivity {
             last = radioButton;
         }
 
+    }
+
+    /**
+     * 跳转fragment 的通用方法
+     *
+     * @param t
+     * @param <T>
+     */
+    public <T extends Fragment> void jumpFragment(T t) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.add(R.id.activity_frame, t);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
 }

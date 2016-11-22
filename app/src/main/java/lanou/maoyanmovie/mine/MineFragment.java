@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.RelativeLayout;
 
+import lanou.maoyanmovie.MainActivity;
 import lanou.maoyanmovie.R;
 import lanou.maoyanmovie.base.BaseFragment;
 
@@ -32,7 +33,7 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
     @Override
     protected void initData() {
         //初始化fragment
-        mSettingFragment = new SettingFragment();
+
         manager = getFragmentManager();
     }
 
@@ -50,10 +51,9 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.main_mine_setting_rl:
-                transaction = manager.beginTransaction();
-                transaction.add(R.id.activity_frame, mSettingFragment);
-                transaction.addToBackStack(null);
-                transaction.commit();
+                mSettingFragment = new SettingFragment();
+                MainActivity activity = (MainActivity) getActivity();
+                activity.jumpFragment(mSettingFragment);
                 break;
         }
     }

@@ -2,40 +2,43 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:orientation="vertical"
-              android:background="#f2f2f2">
+              android:background="#f2f2f2"
+              android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:background="#d02d2b"
         android:alpha="0.9"
-        android:gravity="center_vertical">
+        android:background="#d02d2b"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
         <ImageButton
             android:id="@+id/fragment_mine_setting_return_ib"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:src="@mipmap/main_mine_item_return"
-            android:background="@null"/>
+            android:background="@null"
+            android:src="@mipmap/main_mine_item_return"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:text="设置"
-            android:textSize="18sp"
-            android:textColor="#ffffff"/>
+            android:textColor="#ffffff"
+            android:textSize="18sp"/>
     </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:background="#ffffff">
+            android:background="#ffffff"
+            android:orientation="vertical">
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -51,19 +54,21 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:padding="10dp"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:padding="10dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="清空缓存"
-                    android:textSize="15sp"
-                    android:textColor="#535353"/>
+                    android:textColor="#535353"
+                    android:textSize="15sp"/>
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/main_mine_enter_grey"
-                    android:layout_alignParentRight="true"/>
+                    android:layout_alignParentRight="true"
+                    android:src="@mipmap/main_mine_enter_grey"/>
             </RelativeLayout>
 
             <ImageView
@@ -79,19 +84,21 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:padding="10dp"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:padding="10dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="猫眼用户满意度调查"
-                    android:textSize="15sp"
-                    android:textColor="#535353"/>
+                    android:textColor="#535353"
+                    android:textSize="15sp"/>
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/main_mine_enter_grey"
-                    android:layout_alignParentRight="true"/>
+                    android:layout_alignParentRight="true"
+                    android:src="@mipmap/main_mine_enter_grey"/>
             </RelativeLayout>
 
             <ImageView
@@ -102,19 +109,21 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:padding="10dp"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:padding="10dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="图片浏览设置"
-                    android:textSize="15sp"
-                    android:textColor="#535353"/>
+                    android:textColor="#535353"
+                    android:textSize="15sp"/>
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/main_mine_enter_grey"
-                    android:layout_alignParentRight="true"/>
+                    android:layout_alignParentRight="true"
+                    android:src="@mipmap/main_mine_enter_grey"/>
             </RelativeLayout>
 
             <ImageView
@@ -125,19 +134,21 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:padding="10dp"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:padding="10dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="意见反馈"
-                    android:textSize="15sp"
-                    android:textColor="#535353"/>
+                    android:textColor="#535353"
+                    android:textSize="15sp"/>
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/main_mine_enter_grey"
-                    android:layout_alignParentRight="true"/>
+                    android:layout_alignParentRight="true"
+                    android:src="@mipmap/main_mine_enter_grey"/>
             </RelativeLayout>
 
             <ImageView
@@ -148,19 +159,21 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:padding="10dp"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:padding="10dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="应用推荐"
-                    android:textSize="15sp"
-                    android:textColor="#535353"/>
+                    android:textColor="#535353"
+                    android:textSize="15sp"/>
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/main_mine_enter_grey"
-                    android:layout_alignParentRight="true"/>
+                    android:layout_alignParentRight="true"
+                    android:src="@mipmap/main_mine_enter_grey"/>
             </RelativeLayout>
 
             <ImageView
@@ -171,19 +184,21 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:padding="10dp"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:padding="10dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="推荐新版本"
-                    android:textSize="15sp"
-                    android:textColor="#535353"/>
+                    android:textColor="#535353"
+                    android:textSize="15sp"/>
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/main_mine_enter_grey"
-                    android:layout_alignParentRight="true"/>
+                    android:layout_alignParentRight="true"
+                    android:src="@mipmap/main_mine_enter_grey"/>
             </RelativeLayout>
 
             <ImageView
@@ -194,19 +209,21 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:padding="10dp"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:padding="10dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="诊断网络"
-                    android:textSize="15sp"
-                    android:textColor="#535353"/>
+                    android:textColor="#535353"
+                    android:textSize="15sp"/>
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/main_mine_enter_grey"
-                    android:layout_alignParentRight="true"/>
+                    android:layout_alignParentRight="true"
+                    android:src="@mipmap/main_mine_enter_grey"/>
             </RelativeLayout>
 
             <ImageView
@@ -217,20 +234,33 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:padding="10dp"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:padding="10dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="关于"
-                    android:textSize="15sp"
-                    android:textColor="#535353"/>
+                    android:textColor="#535353"
+                    android:textSize="15sp"/>
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/main_mine_enter_grey"
-                    android:layout_alignParentRight="true"/>
+                    android:layout_alignParentRight="true"
+                    android:src="@mipmap/main_mine_enter_grey"/>
             </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/fragment_mine_setting_wuziqi_ll"
+                android:layout_width="match_parent"
+                android:layout_height="163dp"
+                android:alpha="1"
+                android:background="#f2f2f2"
+                android:orientation="vertical"
+                />
+
+
         </LinearLayout>
     </ScrollView>
 
