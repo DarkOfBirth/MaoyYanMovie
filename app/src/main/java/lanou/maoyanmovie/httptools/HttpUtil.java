@@ -41,7 +41,7 @@ public class HttpUtil {
      * @param limit            需要请求的数据条数
      * @param responseCallBack 接口, 用于数据的返回
      */
-    public void getFindToday(int offset, int limit, ResponseCallBack<FindTodayBean> responseCallBack) {
+    public  void getFindToday(int offset, int limit, ResponseCallBack<FindTodayBean> responseCallBack) {
         String url = MovieValues.FIND_TODAY + "offset=" + offset + "&limit=" + limit;
         OkHttpManager.getInstance().get(url, FindTodayBean.class, responseCallBack);
     }
@@ -51,7 +51,7 @@ public class HttpUtil {
      *
      * @param targetId 从要点击的Item中获取到targetId
      */
-    public void getFindTodayDeail(int targetId, ResponseCallBack<FindTodayDetailBean> responseCallBack) {
+    public  void getFindTodayDeail(int targetId, ResponseCallBack<FindTodayDetailBean> responseCallBack) {
         String url = MovieValues.TODAY_DETAIL + targetId + ".json";
         OkHttpManager.getInstance().get(url, FindTodayDetailBean.class, responseCallBack);
     }
