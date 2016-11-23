@@ -59,7 +59,10 @@ public class MainActivity extends BaseActivity {
         transaction = manager.beginTransaction();
         transaction.replace(R.id.main_frame, movieFragment);
         transaction.commit();
+
     }
+
+
 
     @Override
     protected void initClick() {
@@ -93,14 +96,16 @@ public class MainActivity extends BaseActivity {
             }
         });
     }
+
     //当点击其他的时候, 字体颜色还原本色
     private void initLast(RadioButton radioButton) {
-        if(last != null){
+        if (last != null) {
             last.setSelected(false);
             last = radioButton;
-        }else {
+        } else {
             last = radioButton;
         }
+
     }
 
 }
