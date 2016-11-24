@@ -9,7 +9,12 @@ import lanou.maoyanmovie.bean.StoreTopBean;
 import lanou.maoyanmovie.tools.MovieValues;
 
 /**
+<<<<<<< HEAD
  * Created by wangYe on 16/11/21.
+=======
+ * Created by dllo on 16/11/21.
+ *
+>>>>>>> develop
  */
 
 public class HttpUtil {
@@ -42,7 +47,8 @@ public class HttpUtil {
      * @param responseCallBack 接口, 用于数据的返回
      */
 
-    public static void getFindToday(int offset, int limit, ResponseCallBack<FindTodayBean> responseCallBack) {
+
+    public  void getFindToday(int offset, int limit, ResponseCallBack<FindTodayBean> responseCallBack) {
         String url = MovieValues.FIND_TODAY + "offset=" + offset + "&limit=" + limit;
         OkHttpManager.getInstance().get(url, FindTodayBean.class, responseCallBack);
     }
@@ -53,7 +59,7 @@ public class HttpUtil {
      * @param targetId 从要点击的Item中获取到targetId
      */
 
-    public static void getFindTodayDeail(int targetId, ResponseCallBack<FindTodayDetailBean> responseCallBack) {
+    public  void getFindTodayDeail(int targetId, ResponseCallBack<FindTodayDetailBean> responseCallBack) {
         String url = MovieValues.TODAY_DETAIL + targetId + ".json";
         OkHttpManager.getInstance().get(url, FindTodayDetailBean.class, responseCallBack);
     }
