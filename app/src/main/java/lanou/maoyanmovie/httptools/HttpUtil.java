@@ -9,13 +9,12 @@ import lanou.maoyanmovie.bean.StoreTopBean;
 import lanou.maoyanmovie.tools.MovieValues;
 
 /**
- * Created by dllo on 16/11/21.
+ * Created by wangYe on 16/11/21.
  */
 
 public class HttpUtil {
     /**
      * 发现-> 周边商城 -> 你可能喜欢的网络数据
-     *
      * @param offset           数据开始的位置
      * @param limit            需要请求的数据条数
      * @param responseCallBack 接口, 用于数据的返回

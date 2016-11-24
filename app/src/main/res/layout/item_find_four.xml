@@ -1,51 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:id="@+id/find_three_item_ll"
-              android:layout_width="match_parent"
-              android:layout_height="150dp">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:id="@+id/find_four_item_rv"
+                android:orientation="vertical">
 
     <TextView
-        android:id="@+id/find_third_title_tv"
-        android:text="111111"
+        android:id="@+id/find_four_title_tv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <LinearLayout
-        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:text="123214325"/>
+    <RelativeLayout
+        android:layout_below="@id/find_four_title_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
-            android:scaleType="fitXY"
-            android:layout_margin="5dp"
-            android:id="@+id/find_third_images_one_img"
-            android:src="@mipmap/main_movie_click"
-            android:layout_weight="1"
-            android:layout_width="0dp"
+            android:id="@+id/find_four_images_one_img"
+            android:src="@mipmap/icon"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"/>
-        <ImageView
-            android:scaleType="fitXY"
-            android:layout_margin="5dp"
-            android:id="@+id/find_third_images_two_img"
-            android:src="@mipmap/main_movie_click"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"/>
-        <ImageView
-            android:scaleType="fitXY"
-            android:layout_margin="5dp"
-            android:id="@+id/find_third_images_third_img"
-            android:src="@mipmap/main_movie_click"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"/>
-    </LinearLayout>
+        <LinearLayout
+            android:layout_toRightOf="@id/find_four_images_one_img"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+            <ImageView
+                android:src="@mipmap/icon"
+                android:id="@+id/find_four_images_two_img"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+            <ImageView
+                android:src="@mipmap/icon"
+                android:id="@+id/find_four_images_three_img"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+        </LinearLayout>
+    </RelativeLayout>
+
     <RelativeLayout
+        android:layout_alignParentBottom="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <TextView
             android:text="11111"
-            android:id="@+id/find_third_nick_name_tv"
+            android:id="@+id/find_four_nick_name_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <LinearLayout
@@ -63,7 +63,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 <TextView
-                    android:id="@+id/find_third_view_count_tv"
+                    android:id="@+id/find_four_view_count_tv"
                     android:text="11111"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -78,12 +78,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 <TextView
-                    android:id="@+id/find_third_comment_count_tv"
+                    android:id="@+id/find_four_comment_count_tv"
                     android:text="11111"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
-
-</LinearLayout>
+</RelativeLayout>

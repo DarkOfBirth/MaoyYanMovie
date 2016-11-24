@@ -1,24 +1,29 @@
 package lanou.maoyanmovie.find;
 
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.util.Log;
+import android.widget.Toast;
+
+import com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView;
 
 import lanou.maoyanmovie.R;
 import lanou.maoyanmovie.base.BaseFragment;
 import lanou.maoyanmovie.bean.FindTodayBean;
+import lanou.maoyanmovie.bean.FindTopBean;
 import lanou.maoyanmovie.httptools.HttpUtil;
 import lanou.maoyanmovie.httptools.ResponseCallBack;
 
 /**
- * Created by dllo on 16/11/21.
+ * Created by wangYe on 16/11/21.
  */
 
-public class FindFragment extends BaseFragment{
+public class FindFragment extends BaseFragment implements OnFindClickListener {
 
-    private RecyclerView findRv;
+    private PullLoadMoreRecyclerView findRv;
     private FindRvAdapter mAdapter;
-    private LinearLayoutManager mManager;
+    private int count = 0;
+
 
     @Override
     protected int getLayout() {
@@ -28,24 +33,46 @@ public class FindFragment extends BaseFragment{
     @Override
     protected void initView() {
         findRv = bindView(R.id.find_rv);
-        mAdapter = new FindRvAdapter(getActivity(),this);
+        mAdapter = new FindRvAdapter(mContext);
+
         findRv.setAdapter(mAdapter);
-        mManager = new LinearLayoutManager(getActivity());
+        findRv.setLinearLayout();
+
     }
 
     @Override
     protected void initData() {
-        HttpUtil.getFindToday(0, 10, new ResponseCallBack<FindTodayBean>() {
-            @Override
-            public void onError(Exception e) {
+        //首次进入网络请求
+        initNetWorkRequest();
+        //上拉加载, 下拉刷新
+        upAndDownToRefresh();
 
+        mAdapter.setOnFindClickListener(this);
+    }
+
+    private void upAndDownToRefresh() {
+        findRv.setOnPullLoadMoreListener(new PullLoadMoreRecyclerView.PullLoadMoreListener() {
+            @Override
+            public void onRefresh() {
+                Log.d("FindFragment", "下拉刷新");
+                initNetWorkRequest();
+                findRv.setPullLoadMoreCompleted();
             }
 
             @Override
-            public void onResponse(FindTodayBean findTodayBean) {
-                mAdapter.setFindTodayBean(findTodayBean);
-                Log.d("FindFragment", "findTodayBean.getData().getFeeds().size():" + findTodayBean.getData().getFeeds().size());
-                findRv.setLayoutManager(mManager);
+            public void onLoadMore() {
+                count++;
+                HttpUtil.getFindToday(count * 10, 10, new ResponseCallBack<FindTodayBean>() {
+                    @Override
+                    public void onError(Exception e) {
+                        Toast.makeText(mContext, "网络出现问题了!", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onResponse(FindTodayBean findTodayBean) {
+                        mAdapter.addFindTodayBean(findTodayBean);
+                    }
+                });
             }
         });
     }
@@ -53,5 +80,40 @@ public class FindFragment extends BaseFragment{
     @Override
     protected void initClick() {
 
+    }
+
+    private void initNetWorkRequest() {
+        HttpUtil.getFindToday(0, 10, new ResponseCallBack<FindTodayBean>() {
+            @Override
+            public void onError(Exception e) {
+                Toast.makeText(mContext, "网络出现问题了!", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onResponse(FindTodayBean findTodayBean) {
+                mAdapter.setFindTodayBean(findTodayBean);
+            }
+        });
+        HttpUtil.getFindTop(new ResponseCallBack<FindTopBean>() {
+            @Override
+            public void onError(Exception e) {
+                Toast.makeText(mContext, "网络出现问题了!", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onResponse(FindTopBean findTopBean) {
+                mAdapter.setFindTopBean(findTopBean);
+
+            }
+        });
+    }
+
+    @Override
+    public void findClick(int targetID) {
+        FragmentManager manager = getActivity().getFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        DescriptionFragment fragment = new DescriptionFragment();
+        transaction.add(R.id.fragment_find, fragment);
+        transaction.commit();
     }
 }

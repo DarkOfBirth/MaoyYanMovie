@@ -74,22 +74,22 @@ public class MainActivity extends BaseActivity {
                     case R.id.main_movie_rb:
                         initLast(mainMovieRb);
                         mainMovieRb.setSelected(true);
-                        transaction.replace(R.id.main_frame, movieFragment);
+                        transaction.replace(R.id.main_frame, new MovieFragment());
                         break;
                     case R.id.main_cinema_rb:
                         initLast(mainCinemaRb);
                         mainCinemaRb.setSelected(true);
-                        transaction.replace(R.id.main_frame, cinemaFragment);
+                        transaction.replace(R.id.main_frame, new CinemaFragment());
                         break;
                     case R.id.main_find_rb:
                         initLast(mainFindRb);
                         mainFindRb.setSelected(true);
-                        transaction.replace(R.id.main_frame, findFragment);
+                        transaction.replace(R.id.main_frame, new FindFragment());
                         break;
                     case R.id.main_my_rb:
                         initLast(mainMyRb);
                         mainMyRb.setSelected(true);
-                        transaction.replace(R.id.main_frame, myFragment);
+                        transaction.replace(R.id.main_frame, new MyFragment());
                         break;
                 }
                 transaction.commit();
