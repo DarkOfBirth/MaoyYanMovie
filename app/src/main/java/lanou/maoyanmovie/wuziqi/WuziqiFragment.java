@@ -46,6 +46,7 @@ public class WuziqiFragment extends BaseFragment{
                         getActivity().onBackPressed();
                     }
                 });
+                builder.setCancelable(false);
                 builder.show();
             }
         });

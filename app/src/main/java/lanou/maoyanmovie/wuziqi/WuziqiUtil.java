@@ -163,7 +163,7 @@ public class WuziqiUtil {
         int count = 0;
         // 此x 为最右侧
         for (int i = 0; i < MAX_COUTN_IN_LINE; i++) {
-            if (points.contains(new Point(x + i, y - i))) {
+            if (points.contains(new Point(x + i, y + i))) {
                 count++;
             } else {
                 break;
@@ -175,7 +175,7 @@ public class WuziqiUtil {
         }
         count = 0;
         for (int i = 0; i < MAX_COUTN_IN_LINE; i++) {
-            if (points.contains(new Point(x - i, y + i))) {
+            if (points.contains(new Point(x - i, y - i))) {
                 count++;
             } else {
                 break;

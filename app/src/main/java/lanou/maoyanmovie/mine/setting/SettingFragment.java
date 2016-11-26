@@ -1,4 +1,4 @@
-package lanou.maoyanmovie.mine;
+package lanou.maoyanmovie.mine.setting;
 
 import android.view.View;
 import android.widget.ImageButton;
