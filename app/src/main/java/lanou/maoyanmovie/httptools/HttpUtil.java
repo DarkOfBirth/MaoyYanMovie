@@ -9,12 +9,12 @@ import lanou.maoyanmovie.bean.StoreTopBean;
 import lanou.maoyanmovie.tools.MovieValues;
 
 /**
-<<<<<<< HEAD
+
  * Created by wangYe on 16/11/21.
-=======
+
  * Created by dllo on 16/11/21.
  *
->>>>>>> develop
+
  */
 
 public class HttpUtil {
