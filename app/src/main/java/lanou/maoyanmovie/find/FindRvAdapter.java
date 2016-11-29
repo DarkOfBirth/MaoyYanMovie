@@ -2,7 +2,6 @@ package lanou.maoyanmovie.find;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,11 +16,13 @@ import lanou.maoyanmovie.R;
 import lanou.maoyanmovie.bean.FindTodayBean;
 import lanou.maoyanmovie.bean.FindTopBean;
 
+
 /**
  * Created by 王野 on 16/11/22.
  */
 
 public class FindRvAdapter extends RecyclerView.Adapter<FindRvAdapter.FindViewHolder> implements View.OnClickListener {
+
     private FindTopBean mFindTopBean;
     private FindTodayBean mFindTodayBean;
     private Context mContext;
@@ -50,12 +51,13 @@ public class FindRvAdapter extends RecyclerView.Adapter<FindRvAdapter.FindViewHo
         notifyDataSetChanged();
     }
 
+
     @Override
     public int getItemViewType(int position) {
         if (mFindTopBean == null) {
             return mFindTodayBean.getData().getFeeds().get(position).getStyle();
         } else {
-            return position == 0 ? -3 : mFindTodayBean.getData().getFeeds().get(position-1).getStyle();
+            return position == 0 ? -3 : mFindTodayBean.getData().getFeeds().get(position - 1).getStyle();
         }
     }
 
@@ -80,6 +82,8 @@ public class FindRvAdapter extends RecyclerView.Adapter<FindRvAdapter.FindViewHo
                 mViewHolder = new FindViewHolder(view2);
                 break;
             default:
+                View view4 = LayoutInflater.from(mContext).inflate(R.layout.item_find_seven, parent, false);
+                mViewHolder = new FindViewHolder(view4);
                 break;
         }
         return mViewHolder;
@@ -88,13 +92,17 @@ public class FindRvAdapter extends RecyclerView.Adapter<FindRvAdapter.FindViewHo
     @Override
     public void onBindViewHolder(FindViewHolder holder, int position) {
         int type = getItemViewType(position);
-        if(type != -3){
-            position = position -1;
+        if (type != -3) {
+            position = position - 1;
         }
         switch (type) {
             case 2:
                 holder.findTwoCommentCountTv.setText(String.valueOf(mFindTodayBean.getData().getFeeds().get(position).getCommentCount()));
-                holder.findTwoNickNameTv.setText(mFindTodayBean.getData().getFeeds().get(position).getUser().getNickName());
+                if (mFindTodayBean.getData().getFeeds().get(position).getUser() != null) {
+                    holder.findTwoNickNameTv.setText(mFindTodayBean.getData().getFeeds().get(position).getUser().getNickName());
+                } else {
+                    holder.findTwoNickNameTv.setText("");
+                }
                 holder.findTwoTitleTv.setText(mFindTodayBean.getData().getFeeds().get(position).getTitle());
                 holder.findTwoViewCountTv.setText(String.valueOf(mFindTodayBean.getData().getFeeds().get(position).getViewCount()));
                 Picasso.with(mContext).load(mFindTodayBean.getData().getFeeds().get(position).getImages().get(0).getUrl()).into(holder.findTwoImage);
@@ -103,7 +111,7 @@ public class FindRvAdapter extends RecyclerView.Adapter<FindRvAdapter.FindViewHo
                     @Override
                     public void onClick(View v) {
                         mOnFindClickListener.findClick(mFindTodayBean.getData().getFeeds().
-                                get(finalPosition).getImages().get(0).getTargetId());
+                                get(finalPosition).getImages().get(0).getTargetId(), mFindTodayBean.getData().getFeeds().get(finalPosition).getFeedType());
                     }
                 });
                 break;
@@ -120,7 +128,8 @@ public class FindRvAdapter extends RecyclerView.Adapter<FindRvAdapter.FindViewHo
                     @Override
                     public void onClick(View v) {
                         mOnFindClickListener.findClick(mFindTodayBean.
-                                getData().getFeeds().get(finalPosition1).getImages().get(0).getTargetId());
+                                        getData().getFeeds().get(finalPosition1).getImages().get(0).getTargetId(),
+                                mFindTodayBean.getData().getFeeds().get(finalPosition1).getFeedType());
                     }
                 });
                 break;
@@ -137,7 +146,7 @@ public class FindRvAdapter extends RecyclerView.Adapter<FindRvAdapter.FindViewHo
                     @Override
                     public void onClick(View v) {
                         mOnFindClickListener.findClick(mFindTodayBean.getData().
-                                getFeeds().get(finalPosition2).getImages().get(0).getTargetId());
+                                getFeeds().get(finalPosition2).getImages().get(0).getTargetId(), mFindTodayBean.getData().getFeeds().get(finalPosition2).getFeedType());
                     }
                 });
                 break;
@@ -150,6 +159,25 @@ public class FindRvAdapter extends RecyclerView.Adapter<FindRvAdapter.FindViewHo
                 holder.findHeaderNew.setOnClickListener(this);
                 holder.findHeaderStore.setOnClickListener(this);
                 holder.findHeaderHouse.setOnClickListener(this);
+                break;
+            case 7:
+                holder.findSevenTitleTv.setText(mFindTodayBean.getData().getFeeds().get(position).getTitle());
+                if (mFindTodayBean.getData().getFeeds().get(position).getUser() != null) {
+                    holder.findSevenNickNameTv.setText(mFindTodayBean.getData().getFeeds().get(position).getUser().getNickName());
+                } else {
+                    holder.findSevenNickNameTv.setText("");
+                }
+                Picasso.with(mContext).load(mFindTodayBean.getData().getFeeds().
+                        get(position).getImages().get(0).getUrl()).into(holder.findSevenImageImg);
+                final int finalPosition3 = position;
+                holder.findSevenItemLl.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mOnFindClickListener.findClick(mFindTodayBean.getData().
+                                getFeeds().get(finalPosition3).getImages().get(0).getTargetId(), mFindTodayBean.getData().getFeeds().get(finalPosition3).getFeedType());
+                    }
+                });
+                break;
         }
     }
 
@@ -176,22 +204,18 @@ public class FindRvAdapter extends RecyclerView.Adapter<FindRvAdapter.FindViewHo
      */
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.find_header_top:
-                Log.d("FindRvAdapter", "mFindTopBean.getData().get(0).getImage().getTargetId():" + mFindTopBean.getData().get(0).getImage().getTargetId());
-                mOnFindClickListener.findClick(mFindTopBean.getData().get(0).getImage().getTargetId());
+                mOnFindClickListener.findTopClick(mFindTopBean.getData().get(0).getTitle());
                 break;
             case R.id.find_header_new:
-                Log.d("FindRvAdapter", "mFindTopBean.getData().get(0).getImage().getTargetId():" + mFindTopBean.getData().get(1).getImage().getTargetId());
-                mOnFindClickListener.findClick(mFindTopBean.getData().get(1).getImage().getTargetId());
+                mOnFindClickListener.findTopClick(mFindTopBean.getData().get(1).getTitle());
                 break;
             case R.id.find_header_store:
-                Log.d("FindRvAdapter", "mFindTopBean.getData().get(0).getImage().getTargetId():" + mFindTopBean.getData().get(2).getImage().getTargetId());
-                mOnFindClickListener.findClick(mFindTopBean.getData().get(2).getImage().getTargetId());
+                mOnFindClickListener.findTopClick(mFindTopBean.getData().get(2).getTitle());
                 break;
             case R.id.find_header_house:
-                Log.d("FindRvAdapter", "mFindTopBean.getData().get(0).getImage().getTargetId():" + mFindTopBean.getData().get(3).getImage().getTargetId());
-                mOnFindClickListener.findClick(mFindTopBean.getData().get(3).getImage().getTargetId());
+                mOnFindClickListener.findTopClick(mFindTopBean.getData().get(3).getTitle());
                 break;
         }
     }
@@ -226,7 +250,11 @@ public class FindRvAdapter extends RecyclerView.Adapter<FindRvAdapter.FindViewHo
         private LinearLayout findThirdItemLl;
         private RelativeLayout findTwoItemRv;
         private RelativeLayout findFourItemRv;
-        private LinearLayout findHearerItemLl;
+
+        private LinearLayout findSevenItemLl;
+        private TextView findSevenTitleTv;
+        private ImageView findSevenImageImg;
+        private TextView findSevenNickNameTv;
 
         public FindViewHolder(View itemView) {
             super(itemView);
@@ -262,8 +290,23 @@ public class FindRvAdapter extends RecyclerView.Adapter<FindRvAdapter.FindViewHo
             findHeaderNew = (ImageView) itemView.findViewById(R.id.find_header_new);
             findHeaderStore = (ImageView) itemView.findViewById(R.id.find_header_store);
             findHeaderHouse = (ImageView) itemView.findViewById(R.id.find_header_house);
-            findHearerItemLl = (LinearLayout) itemView.findViewById(R.id.find_header_item_ll);
+
+
+            findSevenItemLl = (LinearLayout) itemView.findViewById(R.id.find_seven_item_ll);
+            findSevenTitleTv = (TextView) itemView.findViewById(R.id.find_seven_title_tv);
+            findSevenImageImg = (ImageView) itemView.findViewById(R.id.find_seven_image_img);
+            findSevenNickNameTv = (TextView) itemView.findViewById(R.id.find_seven_nick_name_tv);
+
 
         }
     }
+
+    @Override
+    public void unregisterAdapterDataObserver(RecyclerView.AdapterDataObserver observer) {
+        if (observer != null){
+            super.unregisterAdapterDataObserver(observer);
+        }
+    }
+
+
 }

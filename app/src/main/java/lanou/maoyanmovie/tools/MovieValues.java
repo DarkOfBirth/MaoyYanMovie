@@ -13,7 +13,7 @@ public class MovieValues {
     //发现 -> 今天
     public static final String FIND_TODAY = "http://api.maoyan.com/sns/v5/feed.json?";
     //发现 -> 今天 -> 点击详情
-    public static final String TODAY_DETAIL = "http://api.maoyan.com/sns/news/v2/";
+    public static final String TODAY_DETAIL = "http://m.maoyan.com/information/";
     //post请求都有的 url (不确定 先这样写)
     public static final String BASE_POST_URL = "http://api.mobile.meituan.com/combo/v2/combo.json";
     //周边商城 上面十个按钮

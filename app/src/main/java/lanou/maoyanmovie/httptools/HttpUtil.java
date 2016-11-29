@@ -48,7 +48,7 @@ public class HttpUtil {
      */
 
 
-    public  void getFindToday(int offset, int limit, ResponseCallBack<FindTodayBean> responseCallBack) {
+    public static void getFindToday(int offset, int limit, ResponseCallBack<FindTodayBean> responseCallBack) {
         String url = MovieValues.FIND_TODAY + "offset=" + offset + "&limit=" + limit;
         OkHttpManager.getInstance().get(url, FindTodayBean.class, responseCallBack);
     }
@@ -59,7 +59,7 @@ public class HttpUtil {
      * @param targetId 从要点击的Item中获取到targetId
      */
 
-    public  void getFindTodayDeail(int targetId, ResponseCallBack<FindTodayDetailBean> responseCallBack) {
+    public static void getFindTodayDeail(int targetId, ResponseCallBack<FindTodayDetailBean> responseCallBack) {
         String url = MovieValues.TODAY_DETAIL + targetId + ".json";
         OkHttpManager.getInstance().get(url, FindTodayDetailBean.class, responseCallBack);
     }
@@ -67,7 +67,7 @@ public class HttpUtil {
     /**
      * 发现 -> 商城 -> 上面十个按钮
      */
-    public static void getFindStoreTop(ResponseCallBack responseCallBack) {
+    public static void getFindStoreTop(ResponseCallBack<StoreTopBean> responseCallBack) {
         OkHttpManager.getInstance().get(MovieValues.STORE_TOP, StoreTopBean.class, responseCallBack);
     }
 

@@ -5,5 +5,6 @@ package lanou.maoyanmovie.find;
  */
 
 public interface OnFindClickListener {
-    void findClick(int targetID);
+    void findClick(int targetID, int feedType);
+    void findTopClick(String name);
 }
