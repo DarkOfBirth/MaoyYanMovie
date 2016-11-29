@@ -110,8 +110,10 @@ public class FindRvAdapter extends RecyclerView.Adapter<FindRvAdapter.FindViewHo
                 holder.findTwoItemRv.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        mOnFindClickListener.findClick(mFindTodayBean.getData().getFeeds().
+                        if(mOnFindClickListener != null){}
+                          mOnFindClickListener.findClick(mFindTodayBean.getData().getFeeds().
                                 get(finalPosition).getImages().get(0).getTargetId(), mFindTodayBean.getData().getFeeds().get(finalPosition).getFeedType());
+                        }
                     }
                 });
                 break;
@@ -127,9 +129,11 @@ public class FindRvAdapter extends RecyclerView.Adapter<FindRvAdapter.FindViewHo
                 holder.findThirdItemLl.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        if(mOnFindClickListener != null){}
                         mOnFindClickListener.findClick(mFindTodayBean.
                                         getData().getFeeds().get(finalPosition1).getImages().get(0).getTargetId(),
                                 mFindTodayBean.getData().getFeeds().get(finalPosition1).getFeedType());
+                        }
                     }
                 });
                 break;

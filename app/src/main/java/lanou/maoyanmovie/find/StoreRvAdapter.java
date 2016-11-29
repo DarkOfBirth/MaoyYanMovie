@@ -19,6 +19,9 @@ public class StoreRvAdapter extends RecyclerView.Adapter<CommonViewHolder> {
     private StoreMonthDiscountBean mStoreMonthDiscountBean;
     private StoreLikeBean mStoreLikeBean;
 
+    private int[] mItemLayouts = {R.layout.store_top,R.layout.store_cheap_one,
+        R.layout.store_cheap_two,R.layout.store_title,R.layout.store_maybe_like};
+
     public void setStoreLikeBean(StoreLikeBean storeLikeBean) {
         mStoreLikeBean = storeLikeBean;
         notifyDataSetChanged();
@@ -40,25 +43,9 @@ public class StoreRvAdapter extends RecyclerView.Adapter<CommonViewHolder> {
 
     @Override
     public CommonViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        CommonViewHolder commonViewHolder = null;
-        switch (viewType) {
-            case 0:
-                commonViewHolder = CommonViewHolder.getViewHolder(parent, R.layout.store_top);
-                break;
-            case 1:
-                commonViewHolder = CommonViewHolder.getViewHolder(parent, R.layout.store_cheap_one);
-                break;
-            case 2:
-                commonViewHolder = CommonViewHolder.getViewHolder(parent, R.layout.store_cheap_two);
-                break;
-            case 3:
-                commonViewHolder = CommonViewHolder.getViewHolder(parent, R.layout.store_title);
-                break;
-            case 4:
-                commonViewHolder = CommonViewHolder.getViewHolder(parent, R.layout.store_maybe_like);
-                break;
-        }
-        return commonViewHolder;
+       
+        return CommonViewHolder.getViewHolder(parent,mItemLayouts[viewType]);
+        
     }
 
     @Override
