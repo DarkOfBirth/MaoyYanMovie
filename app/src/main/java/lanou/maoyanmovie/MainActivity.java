@@ -45,17 +45,17 @@ public class MainActivity extends BaseActivity {
         mainRg = bindView(R.id.main_rg);
         activityFrame = bindView(R.id.activity_frame);
         mainFrame = bindView(R.id.main_frame);
+    }
 
+    @Override
+    protected void initData() {
         //初始化fragment
         cinemaFragment = new CinemaFragment();
         findFragment = new FindFragment();
         movieFragment = new MovieFragment();
         mineFragment = new MineFragment();
         manager = getSupportFragmentManager();
-    }
 
-    @Override
-    protected void initData() {
         //初始进入时, 显示的是电影界面
         initLast(mainMovieRb);
         mainMovieRb.setSelected(true);
@@ -64,8 +64,6 @@ public class MainActivity extends BaseActivity {
         transaction.commit();
 
     }
-
-
 
     @Override
     protected void initClick() {

@@ -25,6 +25,8 @@ public class MovieFragment extends BaseFragment implements View.OnClickListener 
 
     private TabLayout movieTab;
     private ViewPager movieVp;
+    private MovieVpAdapter mAdapter;
+    private ArrayList<Fragment> mFragments;
     private TextView mLocation;
     private TextView weather;
     private MainActivity mActivity;
@@ -46,6 +48,7 @@ public class MovieFragment extends BaseFragment implements View.OnClickListener 
 
     @Override
     protected void initData() {
+
         mActivity = (MainActivity) getActivity();
         ArrayList<Fragment> fragments = new ArrayList<>();
         fragments.add(new HotFragment());
@@ -55,8 +58,21 @@ public class MovieFragment extends BaseFragment implements View.OnClickListener 
         MovieVpAdapter adapter = new MovieVpAdapter(getChildFragmentManager());
         movieVp.setAdapter(adapter);
         adapter.setFragments(fragments);
+
+        mAdapter = new MovieVpAdapter(getChildFragmentManager());
+        mFragments = new ArrayList<>();
+        HotFragment hotFragment = new HotFragment();
+        WaitFragment waitFragment = new WaitFragment();
+        FindPageFragment findPageFragment = new FindPageFragment();
+        mFragments.add(hotFragment);
+        mFragments.add(waitFragment);
+        mFragments.add(findPageFragment);
+        mAdapter.setFragments(mFragments);
+        movieVp.setAdapter(mAdapter);
+
         movieTab.setupWithViewPager(movieVp);
-        adapter.notifyDataSetChanged();
+        movieTab.setTabTextColors(0xff373737, 0xffffffff);
+        movieTab.setSelectedTabIndicatorColor(0xffc0352f);
     }
 
     @Override

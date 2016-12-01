@@ -1,13 +1,12 @@
 package lanou.maoyanmovie.httptools;
 
-import java.util.ArrayList;
-
 import lanou.maoyanmovie.bean.FindTodayBean;
 import lanou.maoyanmovie.bean.FindTodayDetailBean;
 import lanou.maoyanmovie.bean.FindTopBean;
 import lanou.maoyanmovie.bean.LocationBean;
 import lanou.maoyanmovie.bean.MovieHotBannerBean;
 import lanou.maoyanmovie.bean.MovieHotListBean;
+import lanou.maoyanmovie.bean.MovieWaitBean;
 import lanou.maoyanmovie.bean.StoreLikeBean;
 import lanou.maoyanmovie.bean.StoreMonthDiscountBean;
 import lanou.maoyanmovie.bean.StoreTopBean;
@@ -31,27 +30,16 @@ public class HttpUtil {
     /**
      * 电影 -> 热映 -> 列表
      *
-     * @param responseCallBack 接口, 用于数据的返回
+     * @param offset            数据开始的位置
+     * @param responseCallBack  接口, 用于数据的返回
      */
-    public static void getMovieHotListFront(ResponseCallBack<MovieHotListBean> responseCallBack) {
-        String url = MovieValues.MOVIE_HOT_LIST_FRONT;
+    public static void getMovieHotList(int offset, ResponseCallBack<MovieHotListBean> responseCallBack) {
+        String url = MovieValues.MOVIE_HOT_LIST + "offset=" + offset;
         OkHttpManager.getInstance().get(url, MovieHotListBean.class, responseCallBack);
     }
 
-    public static void getMovieHotListBehind(int movieIdNum, ArrayList<Integer> movieId,
-                                             ResponseCallBack<MovieHotListBean> responseCallBack) {
-        String movieIds = String.valueOf(movieId.get(movieIdNum));
-        for (int i = movieIdNum - 12; i < movieIdNum; i++) {
-            movieIds += "%2C%20" + String.valueOf(movieId.get(i));
-        }
-        String url = MovieValues.MOVIE_HOT_LIST_BEHIND + movieIds;
-        OkHttpManager.getInstance().get(url, MovieHotListBean.class, responseCallBack);
-    }
-
-    public static void getMovieHotListDetail(int movieId, ResponseCallBack<MovieHotListBean>
-            responseCallBack) {
-        String url = MovieValues.MOVIE_HOT_LIST_DETAIL + String.valueOf(movieId);
-        OkHttpManager.getInstance().get(url, MovieHotListBean.class, responseCallBack);
+    public static void getMovieWait(ResponseCallBack<MovieWaitBean> responseCallBack) {
+        OkHttpManager.getInstance().get(MovieValues.MOVIE_WAIT, MovieWaitBean.class, responseCallBack);
     }
 
     /**

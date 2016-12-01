@@ -4,7 +4,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
     <WebView
-        android:id="@+id/fragment_mine_hot_list_detail_wv"
+        android:id="@+id/fragment_movie_hot_list_detail_wv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 </LinearLayout>
