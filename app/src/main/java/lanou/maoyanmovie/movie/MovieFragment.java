@@ -15,6 +15,7 @@ import lanou.maoyanmovie.city.CityFragment;
 import lanou.maoyanmovie.movie.find.FindPageFragment;
 import lanou.maoyanmovie.movie.hot.HotFragment;
 import lanou.maoyanmovie.movie.wait.WaitFragment;
+import lanou.maoyanmovie.weather.WeatherFragment;
 
 /**
  * Created by dllo on 16/11/21.
@@ -25,6 +26,9 @@ public class MovieFragment extends BaseFragment implements View.OnClickListener 
     private TabLayout movieTab;
     private ViewPager movieVp;
     private TextView mLocation;
+    private TextView weather;
+    private MainActivity mActivity;
+
 
     @Override
     protected int getLayout() {
@@ -36,11 +40,13 @@ public class MovieFragment extends BaseFragment implements View.OnClickListener 
         movieTab = bindView(R.id.tab_movie_fragment);
         movieVp = bindView(R.id.vp_movie_fragment);
         mLocation = bindView(R.id.location_movie_fragment);
+        weather = bindView(R.id.weather_iv);
 
     }
 
     @Override
     protected void initData() {
+        mActivity = (MainActivity) getActivity();
         ArrayList<Fragment> fragments = new ArrayList<>();
         fragments.add(new HotFragment());
         fragments.add(new WaitFragment());
@@ -56,7 +62,7 @@ public class MovieFragment extends BaseFragment implements View.OnClickListener 
     @Override
     protected void initClick() {
         mLocation.setOnClickListener(this);
-
+        weather.setOnClickListener(this);
     }
 
     /**
@@ -68,9 +74,15 @@ public class MovieFragment extends BaseFragment implements View.OnClickListener 
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.location_movie_fragment:
-                MainActivity activity = (MainActivity) getActivity();
+
+
+
                 CityFragment cityFragment = new CityFragment();
-                activity.jumpFragment(cityFragment);
+                mActivity.jumpFragment(cityFragment);
+                break;
+            case R.id.weather_iv:
+                WeatherFragment weatherFragment = new WeatherFragment();
+                mActivity.jumpFragment(weatherFragment);
                 break;
         }
     }

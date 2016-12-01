@@ -7,7 +7,7 @@ import android.widget.LinearLayout;
 import lanou.maoyanmovie.MainActivity;
 import lanou.maoyanmovie.R;
 import lanou.maoyanmovie.base.BaseFragment;
-import lanou.maoyanmovie.wuziqi.WuziqiFragment;
+import lanou.maoyanmovie.gobang.GobangFragment;
 
 /**
  * Created by 麦建东 on 16/11/22.
@@ -63,9 +63,9 @@ public class SettingFragment extends BaseFragment implements View.OnClickListene
     public boolean onLongClick(View v) {
         switch (v.getId()){
             case R.id.fragment_mine_setting_wuziqi_ll:
-                WuziqiFragment wuziqiFragment = new WuziqiFragment();
+                GobangFragment gobangFragment = new GobangFragment();
                 MainActivity activity = (MainActivity) getActivity();
-                activity.jumpFragment(wuziqiFragment);
+                activity.jumpFragment(gobangFragment);
                 break;
         }
         return true;

@@ -11,6 +11,7 @@ import lanou.maoyanmovie.bean.MovieHotListBean;
 import lanou.maoyanmovie.bean.StoreLikeBean;
 import lanou.maoyanmovie.bean.StoreMonthDiscountBean;
 import lanou.maoyanmovie.bean.StoreTopBean;
+import lanou.maoyanmovie.bean.WeatherBean;
 import lanou.maoyanmovie.tools.MovieValues;
 
 /**
@@ -116,6 +117,13 @@ public class HttpUtil {
     public static  void getLocationByLongitudeAndLatitude(double longitude, double latitude, ResponseCallBack<LocationBean> responseCallBack) {
         String url = MovieValues.LOCATION_LONGITUDE_LATITUDE + "lat=" + latitude + "&lon=" + longitude;
         OkHttpManager.getInstance().get(url, LocationBean.class, responseCallBack);
+    }
+    /**
+     * 根据城市的名字, 获取天气信息
+     */
+    public static void getWeatherInfo(String city,ResponseCallBack<WeatherBean> responseCallBack ){
+            String url = MovieValues.WEATHER_INFO + city;
+        OkHttpManager.getInstance().get(url, WeatherBean.class, responseCallBack );
     }
 
 

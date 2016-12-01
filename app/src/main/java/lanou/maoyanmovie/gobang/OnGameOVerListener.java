@@ -1,4 +1,4 @@
-package lanou.maoyanmovie.wuziqi;
+package lanou.maoyanmovie.gobang;
 
 /**
  * Created by dllo on 16/11/22.

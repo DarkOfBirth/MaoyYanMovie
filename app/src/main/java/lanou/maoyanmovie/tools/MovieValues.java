@@ -35,6 +35,7 @@ public class MovieValues {
     public static final String STORE_MONTH_DISCOUNT = "http://api.maoyan.com/mallpro/topicList.json";
     // 根据经纬度获取城市的名字
     public static final String LOCATION_LONGITUDE_LATITUDE = "http://api.avatardata.cn/CoordAddress/Lookup?key=b43534b71d1c4e18b935d548949205ba&";
-
+    // 获取天气状况
+    public static final String WEATHER_INFO = "http://api.avatardata.cn/Weather/Query?key=332e124a609c4e8ebcb1493a380ff48a&cityname=";
 
 }
