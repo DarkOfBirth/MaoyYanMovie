@@ -115,7 +115,7 @@ public class MainActivity extends BaseActivity {
      * @param t
      * @param <T>
      */
-    public <T extends Fragment> void jumpFragment(T t) {
+    public void jumpFragment(Fragment t) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.add(R.id.activity_frame, t);
         transaction.addToBackStack(null);

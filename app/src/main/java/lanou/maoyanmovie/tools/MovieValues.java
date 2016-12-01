@@ -34,7 +34,8 @@ public class MovieValues {
     public static  final String STORE_TOP = "http://api.maoyan.com/mallpro/category.json";
     //周边商城 每月特价
     public static final String STORE_MONTH_DISCOUNT = "http://api.maoyan.com/mallpro/topicList.json";
-
+    // 根据经纬度获取城市的名字
+    public static final String LOCATION_LONGITUDE_LATITUDE = "http://api.avatardata.cn/CoordAddress/Lookup?key=b43534b71d1c4e18b935d548949205ba&";
 
 
 }
