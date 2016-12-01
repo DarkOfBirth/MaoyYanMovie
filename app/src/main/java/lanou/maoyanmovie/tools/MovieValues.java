@@ -7,17 +7,18 @@ package lanou.maoyanmovie.tools;
 public class MovieValues {
     //电影 -> 热映 -> 轮播图
     public static final String MOVIE_HOT_BANNER = "http://advert.mobile.meituan" +
-            ".com/api/v3/adverts?cityid=10&category=11&version=7.5.0&new=0&app=movie&clienttp=android&uuid=2C2C0ECD557F366849954BEF88D0017A2348CB73AF77F7971799A5010CBBDD2A&devid=000000000000000&uid=&movieid=&partner=1&apptype=1";
+            ".com/api/v3/adverts?cityid=10&category=11&version=7.5" +
+            ".0&new=0&app=movie&clienttp=android&uuid" +
+            "=2C2C0ECD557F366849954BEF88D0017A2348CB73AF77F7971799A5010CBBDD2A&devid" +
+            "=000000000000000&uid=&movieid=&partner=1&apptype=1";
     //电影 -> 热映 -> 列表
-    public static final String MOVIE_HOT_LIST = "http://api.maoyan.com/mmdb/movie/v3/list/hot.json?ci=65";
-
-    //电影 -> 热映 -> 列表(前12个)
-    public static final String MOVIE_HOT_LIST_FRONT = "http://api.maoyan.com/mmdb/movie/v3/list/hot.json?ci=65";
-    //电影 -> 热映 -> 列表 (从第13个开始，每次只能增加12个movieId，用%2C%20连接)
-    public static final String MOVIE_HOT_LIST_BEHIND = "http://api.maoyan.com/mmdb/movie/list/info.json?ci=65&headline=0&movieIds=";
-
+    public static final String MOVIE_HOT_LIST = "http://m.maoyan.com/movie/list" +
+            ".json?type=hot&ci＝65&limit=12&";
     //电影 -> 热映 -> 列表 -> 详情
     public static final String MOVIE_HOT_LIST_DETAIL = "http://m.maoyan.com/movie/";
+
+    //电影
+    public static final String MOVIE_WAIT = "http://api.maoyan.com/mmdb/movie/lp/list.json";
 
     //发现 -> 周边商城 -> 您可能喜欢
     public static final String STORE_LIKE = "http://api.maoyan.com/mallpro/recommended.json?";

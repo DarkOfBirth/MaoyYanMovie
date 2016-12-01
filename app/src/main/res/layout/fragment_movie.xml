@@ -9,10 +9,11 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center_horizontal"
-        android:background="#dc210f">
+        android:background="#d33a35"
+        android:padding="10dp">
         <android.support.design.widget.TabLayout
             android:id="@+id/tab_movie_fragment"
-            android:background="#c62c28"
+            android:background="#c0352f"
             android:layout_width="240dp"
             android:layout_height="40dp"/>
     </LinearLayout>

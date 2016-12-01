@@ -5,13 +5,4 @@
               android:layout_height="match_parent"
               android:paddingTop="10dp">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:gravity="center"
-        android:layout_margin="10dp"
-        android:hint="找电视剧、影人、影院"
-        android:textSize="13dp"
-        android:textColorHint="#9a9a9a"
-        android:background="@drawable/border"/>
 </LinearLayout>
