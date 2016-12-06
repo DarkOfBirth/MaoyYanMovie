@@ -17,8 +17,12 @@ public class MovieValues {
     //电影 -> 热映 -> 列表 -> 详情
     public static final String MOVIE_HOT_LIST_DETAIL = "http://m.maoyan.com/movie/";
 
-    //电影
-    public static final String MOVIE_WAIT = "http://api.maoyan.com/mmdb/movie/lp/list.json";
+    //电影 -> 待映 -> 预告片推荐
+    public static final String MOVIE_WAIT_RECOMMENDATION = "http://api.maoyan" +
+            ".com/mmdb/movie/lp/list.json";
+    //电影 -> 待映 -> 近期最受期待
+    public static final String MOVIE_WAIT_WISH = "http://api.maoyan" +
+            ".com/mmdb/movie/v1/list/wish/order/coming.json?offset=0&limit=50&ci=65";
 
     //发现 -> 周边商城 -> 您可能喜欢
     public static final String STORE_LIKE = "http://api.maoyan.com/mallpro/recommended.json?";

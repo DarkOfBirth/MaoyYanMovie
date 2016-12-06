@@ -113,7 +113,7 @@ public class MainActivity extends BaseActivity {
      * 跳转fragment 的通用方法
      *
      * @param t
-     * @param <T>
+     *
      */
     public void jumpFragment(Fragment t) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();

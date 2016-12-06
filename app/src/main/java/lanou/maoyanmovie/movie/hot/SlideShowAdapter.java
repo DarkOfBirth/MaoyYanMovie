@@ -1,6 +1,7 @@
 package lanou.maoyanmovie.movie.hot;
 
 import android.support.v4.view.PagerAdapter;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -8,8 +9,6 @@ import android.widget.ImageView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-
-import lanou.maoyanmovie.base.MyApplication;
 
 /**
  * Created by 麦建东 on 16/11/23.
@@ -35,8 +34,11 @@ public class SlideShowAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         ImageView image = new ImageView(container.getContext());
-        Picasso.with(MyApplication.getmContext()).load(stringList.get(position % stringList.size())).fit()
-                .into(image);
+        Log.d("SlideShowAdapter", "stringList.size():" + stringList.size());
+        if (stringList.size() != 0) {
+            Picasso.with(container.getContext()).load(stringList.get(position % stringList.size())).fit()
+                    .into(image);
+        }
         container.addView(image);
         return image;
 

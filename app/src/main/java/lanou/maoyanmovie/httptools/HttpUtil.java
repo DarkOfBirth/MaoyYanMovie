@@ -37,8 +37,20 @@ public class HttpUtil {
         OkHttpManager.getInstance().get(url, MovieHotListBean.class, responseCallBack);
     }
 
+    /**
+     * 电影 -> 待映 -> 预告片推荐
+     * @param responseCallBack
+     */
     public static void getMovieWait(ResponseCallBack<MovieWaitBean> responseCallBack) {
-        OkHttpManager.getInstance().get(MovieValues.MOVIE_WAIT, MovieWaitBean.class, responseCallBack);
+        OkHttpManager.getInstance().get(MovieValues.MOVIE_WAIT_RECOMMENDATION, MovieWaitBean.class, responseCallBack);
+    }
+
+    /**
+     * 电影 -> 待映 -> 列表
+     * @param responseCallBack
+     */
+    public static void getMovieWaitWish(ResponseCallBack<MovieWaitWishBean> responseCallBack) {
+        OkHttpManager.getInstance().get(MovieValues.MOVIE_WAIT_WISH, MovieWaitWishBean.class, responseCallBack);
     }
 
     /**

@@ -63,6 +63,8 @@ public class WaitAdapter extends PagerAdapter {
             }
         });
 
+
+
         container.addView(view, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         return view;
     }
