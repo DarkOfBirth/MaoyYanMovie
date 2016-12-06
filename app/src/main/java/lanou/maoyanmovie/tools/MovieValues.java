@@ -13,7 +13,7 @@ public class MovieValues {
             "=000000000000000&uid=&movieid=&partner=1&apptype=1";
     //电影 -> 热映 -> 列表
     public static final String MOVIE_HOT_LIST = "http://m.maoyan.com/movie/list" +
-            ".json?type=hot&ci＝65&limit=12&";
+            ".json?type=hot&limit=12&";
     //电影 -> 热映 -> 列表 -> 详情
     public static final String MOVIE_HOT_LIST_DETAIL = "http://m.maoyan.com/movie/";
 
@@ -38,5 +38,8 @@ public class MovieValues {
     public static final String LOCATION_LONGITUDE_LATITUDE = "http://api.avatardata.cn/CoordAddress/Lookup?key=b43534b71d1c4e18b935d548949205ba&";
     // 获取天气状况
     public static final String WEATHER_INFO = "http://api.avatardata.cn/Weather/Query?key=332e124a609c4e8ebcb1493a380ff48a&cityname=";
-
+    // 热门搜索
+    public static final String HOT_SEARCH = "http://api.maoyan.com/mmdb/search/movie/hotmovie/list.json?tp=4&keyword=&limit=0&offset=0&cityId=";
+    // 搜索框
+    public static final String SEARCH_KEY = "http://api.maoyan.com/mmdb/search/integrated/keyword/list.json?almtype=1&stype=-1&refer=1&iscorrected=false&limit=10&offset=0&ci=20&keyword=";
 }

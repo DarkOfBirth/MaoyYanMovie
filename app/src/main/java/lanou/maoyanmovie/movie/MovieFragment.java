@@ -1,8 +1,11 @@
 package lanou.maoyanmovie.movie;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -11,11 +14,11 @@ import java.util.ArrayList;
 import lanou.maoyanmovie.MainActivity;
 import lanou.maoyanmovie.R;
 import lanou.maoyanmovie.base.BaseFragment;
+import lanou.maoyanmovie.base.MyApplication;
 import lanou.maoyanmovie.city.CityFragment;
 import lanou.maoyanmovie.movie.find.FindPageFragment;
 import lanou.maoyanmovie.movie.hot.HotFragment;
 import lanou.maoyanmovie.movie.wait.WaitFragment;
-import lanou.maoyanmovie.weather.WeatherFragment;
 
 /**
  * Created by dllo on 16/11/21.
@@ -30,6 +33,7 @@ public class MovieFragment extends BaseFragment implements View.OnClickListener 
     private TextView mLocation;
     private TextView weather;
     private MainActivity mActivity;
+    private CityFragment mCityFragment;
 
 
     @Override
@@ -48,7 +52,7 @@ public class MovieFragment extends BaseFragment implements View.OnClickListener 
 
     @Override
     protected void initData() {
-
+        mCityFragment = new CityFragment();
         mActivity = (MainActivity) getActivity();
         ArrayList<Fragment> fragments = new ArrayList<>();
         fragments.add(new HotFragment());
@@ -73,6 +77,19 @@ public class MovieFragment extends BaseFragment implements View.OnClickListener 
         movieTab.setupWithViewPager(movieVp);
         movieTab.setTabTextColors(0xff373737, 0xffffffff);
         movieTab.setSelectedTabIndicatorColor(0xffc0352f);
+
+        mCityFragment.setOnSelectCity(new CityFragment.OnSelectCity() {
+            @Override
+            public void selectCityName(String name, String cityId) {
+                Log.d("MovieFragment", name);
+                mLocation.setText(name);
+             // 将当前的cityId存入文件中
+                SharedPreferences sharedPreferences = MyApplication.getmContext().getSharedPreferences("cityId", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("cityId",cityId);
+                editor.commit();
+            }
+        });
     }
 
     @Override
@@ -93,12 +110,14 @@ public class MovieFragment extends BaseFragment implements View.OnClickListener 
 
 
 
-                CityFragment cityFragment = new CityFragment();
-                mActivity.jumpFragment(cityFragment);
+                mActivity.jumpFragment(mCityFragment);
                 break;
             case R.id.weather_iv:
-                WeatherFragment weatherFragment = new WeatherFragment();
-                mActivity.jumpFragment(weatherFragment);
+//                WeatherFragment weatherFragment = new WeatherFragment();
+//                Bundle bundle = new Bundle();
+//                bundle.putString("city", mLocation.getText().toString());
+//                weatherFragment.setArguments(bundle);
+//                mActivity.jumpFragment(weatherFragment);
                 break;
         }
     }

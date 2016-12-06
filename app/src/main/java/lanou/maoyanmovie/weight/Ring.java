@@ -111,14 +111,14 @@ public class Ring extends View {
         mGrayPaint = new Paint();
         mGrayPaint.setColor(0xfff0f0f0);
         mGrayPaint.setAntiAlias(true);
-        mGrayPaint.setStrokeWidth(4.0f);
-        mGrayPaint.setStyle(Paint.Style.STROKE);
+        mGrayPaint.setStrokeWidth(2.0f);
+        mGrayPaint.setStyle(Paint.Style.FILL);
 
         mGreenPaint = new Paint();
         mGreenPaint.setColor(0xff5fdc61);
         mGreenPaint.setAntiAlias(true);
-        mGreenPaint.setStrokeWidth(5.0f);
-        mGreenPaint.setStyle(Paint.Style.STROKE);
+        mGreenPaint.setStrokeWidth(2.0f);
+        mGreenPaint.setStyle(Paint.Style.FILL);
 
     }
 
@@ -170,9 +170,11 @@ public class Ring extends View {
      * @param canvas
      */
     private void drawCircle(Canvas canvas) {
+        mGrayPaint.setStyle(Paint.Style.STROKE);
         mGrayPaint.setColor(0xfff0f0f0);
         canvas.drawArc(1.0f / 6 * mWidth, 1.0f / 6 * mHeight, 5.0f / 6 * mHeight, 5.0f / 6 * mWidth, 135, 270, false, mGrayPaint);
         setPaintColor(mGreenPaint);
+        mGreenPaint.setStyle(Paint.Style.STROKE);
         canvas.drawArc(1.0f / 6 * mWidth, 1.0f / 6 * mHeight, 5.0f / 6 * mHeight, 5.0f / 6 * mWidth, 135, mNum * 270.0f / 500, false, mGreenPaint);
     }
 
@@ -182,6 +184,8 @@ public class Ring extends View {
      * @param canvas
      */
     private void drawText(Canvas canvas) {
+        mGreenPaint.setStyle(Paint.Style.FILL);
+        mGrayPaint.setStyle(Paint.Style.FILL);
         // 居中
         mGrayPaint.setTextAlign(Paint.Align.CENTER);
         // 画简写
@@ -190,13 +194,15 @@ public class Ring extends View {
 
         // 画底部的文字
         mGrayPaint.setColor(0xff7d7d7c);
-        mGrayPaint.setTextSize(45);
+        mGrayPaint.setTextSize(35);
+
         canvas.drawText(mText, getWidth() / 2, (float) ((1.0f / 2) * mWidth + mWidth / (3 * Math.sqrt(1.2))), mGrayPaint);
 
 
         // 画指数
         mGreenPaint.setTextAlign(Paint.Align.CENTER);
-        mGreenPaint.setTextSize(120);
+
+        mGreenPaint.setTextSize(100);
         canvas.drawText(String.valueOf(mNum), getWidth() / 2,getHeight()/2 + (1.0f / 30) * mWidth, mGreenPaint);
 
     }

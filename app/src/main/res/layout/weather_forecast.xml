@@ -11,6 +11,7 @@
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:padding="10dp"
+
         android:src="@mipmap/daily_forecast_t_storm"
         />
 

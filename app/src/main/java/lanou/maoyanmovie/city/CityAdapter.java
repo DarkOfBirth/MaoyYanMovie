@@ -36,6 +36,12 @@ public class CityAdapter extends RecyclerView.Adapter<CommonVH> {
     double mLongitude;
     private String mCity;
     private String mString;
+    private CityFragment.OnSelectCity mOnSelectCity;
+
+    public CityAdapter setOnSelectCity(CityFragment.OnSelectCity onSelectCity) {
+        mOnSelectCity = onSelectCity;
+        return this;
+    }
 
     public CityAdapter(Context mContext, List<CityBean.CtsBean> mDatas) {
         this.mContext = mContext;
@@ -93,6 +99,7 @@ public class CityAdapter extends RecyclerView.Adapter<CommonVH> {
                                     holder.setText(R.id.postion_city_tv, mCity);
 
                                    getCityId();
+                                    mOnSelectCity.selectCityName(mCity,getCityId());
 
                                 }
                             });
@@ -105,6 +112,9 @@ public class CityAdapter extends RecyclerView.Adapter<CommonVH> {
             case 1:
                 break;
             case 2:
+                View view = holder.getItemView();
+
+
                 break;
 
             case 3:
@@ -113,6 +123,7 @@ public class CityAdapter extends RecyclerView.Adapter<CommonVH> {
                     @Override
                     public void onClick(View v) {
                         Toast.makeText(mContext, "mDatas.get(position).getId():" + mDatas.get(position).getId(), Toast.LENGTH_SHORT).show();
+                        mOnSelectCity.selectCityName(mDatas.get(position).getNm(),mDatas.get(position).getId() + "");
                     }
                 });
                 break;
@@ -139,6 +150,7 @@ public class CityAdapter extends RecyclerView.Adapter<CommonVH> {
                 Log.d("CityAdapter", "匹配成功");
                 Toast.makeText(mContext, "data.getId():" + data.getId() + "", Toast.LENGTH_SHORT).show();
                 cityId = String.valueOf(data.getId());
+
 
             }
         }
@@ -184,5 +196,7 @@ public class CityAdapter extends RecyclerView.Adapter<CommonVH> {
 
         return mLocation;
     }
+
+
 
 }
