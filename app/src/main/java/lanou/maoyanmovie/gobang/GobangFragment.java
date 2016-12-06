@@ -1,4 +1,4 @@
-package lanou.maoyanmovie.wuziqi;
+package lanou.maoyanmovie.gobang;
 
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
@@ -11,9 +11,9 @@ import lanou.maoyanmovie.base.BaseFragment;
  * otherwise, it is created by Wang Ye.
  */
 
-public class WuziqiFragment extends BaseFragment{
+public class GobangFragment extends BaseFragment{
 
-    private WuziqiPanel mWuziqiPanel;
+    private GobangPanel mGobangPanel;
 
     @Override
     protected int getLayout() {
@@ -22,12 +22,12 @@ public class WuziqiFragment extends BaseFragment{
 
     @Override
     protected void initView() {
-        mWuziqiPanel = bindView(R.id.wuziqi_panel);
+        mGobangPanel = bindView(R.id.wuziqi_panel);
     }
 
     @Override
     protected void initData() {
-        mWuziqiPanel.setOnGameOVerListener(new OnGameOVerListener() {
+        mGobangPanel.setOnGameOVerListener(new OnGameOVerListener() {
             @Override
             public void gameOver(boolean isWhiteWinner) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -37,7 +37,7 @@ public class WuziqiFragment extends BaseFragment{
                 builder.setPositiveButton("再来一局", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        mWuziqiPanel.restart();
+                        mGobangPanel.restart();
                     }
                 });
                 builder.setNegativeButton("不想玩了", new DialogInterface.OnClickListener() {

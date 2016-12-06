@@ -35,6 +35,13 @@ public class CityAdapter extends RecyclerView.Adapter<CommonVH> {
     // 定位后的经度
     double mLongitude;
     private String mCity;
+    private String mString;
+    private CityFragment.OnSelectCity mOnSelectCity;
+
+    public CityAdapter setOnSelectCity(CityFragment.OnSelectCity onSelectCity) {
+        mOnSelectCity = onSelectCity;
+        return this;
+    }
 
     public CityAdapter(Context mContext, List<CityBean.CtsBean> mDatas) {
         this.mContext = mContext;
@@ -66,7 +73,7 @@ public class CityAdapter extends RecyclerView.Adapter<CommonVH> {
 
 
     @Override
-    public void onBindViewHolder(final CommonVH holder, int position) {
+    public void onBindViewHolder(final CommonVH holder, final int position) {
         switch (getItemViewType(position)) {
             case 0:
                 holder.setViewClick(R.id.postion_city_tv, new View.OnClickListener() {
@@ -91,13 +98,8 @@ public class CityAdapter extends RecyclerView.Adapter<CommonVH> {
 
                                     holder.setText(R.id.postion_city_tv, mCity);
 
-                                    for (CityBean.CtsBean data : mDatas) {
-                                        if (mCity.equals(data.getNm())) {
-                                            Log.d("CityAdapter", "匹配成功");
-                                            Toast.makeText(mContext, "data.getId():" + data.getId() + "", Toast.LENGTH_SHORT).show();
-                                            break;
-                                        }
-                                    }
+                                   getCityId();
+                                    mOnSelectCity.selectCityName(mCity,getCityId());
 
                                 }
                             });
@@ -110,10 +112,20 @@ public class CityAdapter extends RecyclerView.Adapter<CommonVH> {
             case 1:
                 break;
             case 2:
+                View view = holder.getItemView();
+
+
                 break;
 
             case 3:
                 holder.setText(R.id.tvCity, mDatas.get(position).getNm());
+                holder.setItemClick(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(mContext, "mDatas.get(position).getId():" + mDatas.get(position).getId(), Toast.LENGTH_SHORT).show();
+                        mOnSelectCity.selectCityName(mDatas.get(position).getNm(),mDatas.get(position).getId() + "");
+                    }
+                });
                 break;
 
         }
@@ -131,8 +143,24 @@ public class CityAdapter extends RecyclerView.Adapter<CommonVH> {
     public int getItemCount() {
         return mDatas != null ? mDatas.size() : 0;
     }
+    private  String getCityId(){
+        String cityId = "-1";
+        for (CityBean.CtsBean data : mDatas) {
+            if (mCity.equals(data.getNm())) {
+                Log.d("CityAdapter", "匹配成功");
+                Toast.makeText(mContext, "data.getId():" + data.getId() + "", Toast.LENGTH_SHORT).show();
+                cityId = String.valueOf(data.getId());
 
 
+            }
+        }
+        return cityId;
+    }
+
+    /**
+     * 获取经纬度
+     * @return
+     */
     public Location getLocation() {
         String mProvider;
         Location mLocation;
@@ -168,5 +196,7 @@ public class CityAdapter extends RecyclerView.Adapter<CommonVH> {
 
         return mLocation;
     }
+
+
 
 }

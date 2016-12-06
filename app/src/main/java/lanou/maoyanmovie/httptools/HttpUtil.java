@@ -3,13 +3,16 @@ package lanou.maoyanmovie.httptools;
 import lanou.maoyanmovie.bean.FindTodayBean;
 import lanou.maoyanmovie.bean.FindTodayDetailBean;
 import lanou.maoyanmovie.bean.FindTopBean;
+import lanou.maoyanmovie.bean.HotSearchBean;
 import lanou.maoyanmovie.bean.LocationBean;
 import lanou.maoyanmovie.bean.MovieHotBannerBean;
 import lanou.maoyanmovie.bean.MovieHotListBean;
 import lanou.maoyanmovie.bean.MovieWaitBean;
+import lanou.maoyanmovie.bean.SearchBean;
 import lanou.maoyanmovie.bean.StoreLikeBean;
 import lanou.maoyanmovie.bean.StoreMonthDiscountBean;
 import lanou.maoyanmovie.bean.StoreTopBean;
+import lanou.maoyanmovie.bean.WeatherBean;
 import lanou.maoyanmovie.tools.MovieValues;
 
 /**
@@ -32,8 +35,9 @@ public class HttpUtil {
      * @param offset            数据开始的位置
      * @param responseCallBack  接口, 用于数据的返回
      */
-    public static void getMovieHotList(int offset, ResponseCallBack<MovieHotListBean> responseCallBack) {
-        String url = MovieValues.MOVIE_HOT_LIST + "offset=" + offset;
+    public static void getMovieHotList(String cityId, int offset, ResponseCallBack<MovieHotListBean> responseCallBack) {
+        String url = MovieValues.MOVIE_HOT_LIST + "offset=" + offset + "&ci=" + cityId;
+
         OkHttpManager.getInstance().get(url, MovieHotListBean.class, responseCallBack);
     }
 
@@ -117,6 +121,32 @@ public class HttpUtil {
         String url = MovieValues.LOCATION_LONGITUDE_LATITUDE + "lat=" + latitude + "&lon=" + longitude;
         OkHttpManager.getInstance().get(url, LocationBean.class, responseCallBack);
     }
+    /**
+     * 根据城市的名字, 获取天气信息
+     */
+    public static void getWeatherInfo(String city,ResponseCallBack<WeatherBean> responseCallBack ){
+            String url = MovieValues.WEATHER_INFO + city;
+        OkHttpManager.getInstance().get(url, WeatherBean.class, responseCallBack );
+    }
 
+    /**
+     * 获得当前城市的热门搜索
+     * @param cityId
+     * @param responseCallBack
+     */
+    public static void geHotSearchInfo(String cityId,ResponseCallBack<HotSearchBean> responseCallBack ){
+        String url = MovieValues.HOT_SEARCH + cityId;
+        OkHttpManager.getInstance().get(url, HotSearchBean.class, responseCallBack );
+    }
+
+    /**
+     * 输入搜索内容后的结果
+     * @param key
+     * @param responseCallBack
+     */
+    public static void getSearcheyInfo(String key,ResponseCallBack<SearchBean> responseCallBack ){
+        String url = MovieValues.SEARCH_KEY + key;
+        OkHttpManager.getInstance().get(url, SearchBean.class, responseCallBack );
+    }
 
 }

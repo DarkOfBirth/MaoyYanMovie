@@ -5,11 +5,16 @@ import android.util.Log;
 
 import com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import lanou.maoyanmovie.MainActivity;
 import lanou.maoyanmovie.R;
 import lanou.maoyanmovie.base.BaseFragment;
 import lanou.maoyanmovie.bean.MovieHotBannerBean;
 import lanou.maoyanmovie.bean.MovieHotListBean;
+import lanou.maoyanmovie.event.CityMessage;
 import lanou.maoyanmovie.httptools.HttpUtil;
 import lanou.maoyanmovie.httptools.ResponseCallBack;
 import lanou.maoyanmovie.tools.DividerItemDecoration;
@@ -22,6 +27,13 @@ public class HotFragment extends BaseFragment implements OnMovieIdClickListener 
     private PullLoadMoreRecyclerView mHotRv;
     private MovieHotListAdapter mMovieHotListAdapter;
     private int offset = 0;
+    private String mCityId;
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
 
     @Override
     protected int getLayout() {
@@ -31,6 +43,7 @@ public class HotFragment extends BaseFragment implements OnMovieIdClickListener 
     @Override
     protected void initView() {
         mHotRv = bindView(R.id.fragment_movie_hot_rv);
+        mCityId = "65";
     }
 
     @Override
@@ -54,8 +67,10 @@ public class HotFragment extends BaseFragment implements OnMovieIdClickListener 
             }
         });
         Log.d("HotFragment", "开始请求数据");
+
+
         //初始列表
-        HttpUtil.getMovieHotList(offset, new ResponseCallBack<MovieHotListBean>() {
+        HttpUtil.getMovieHotList(mCityId,offset, new ResponseCallBack<MovieHotListBean>() {
             @Override
             public void onError(Exception e) {
                 Log.d("HotFragment", "请求失败");
@@ -74,7 +89,7 @@ public class HotFragment extends BaseFragment implements OnMovieIdClickListener 
             @Override
             public void onRefresh() {
                 offset = 0;
-                HttpUtil.getMovieHotList(offset, new ResponseCallBack<MovieHotListBean>() {
+                HttpUtil.getMovieHotList(mCityId,offset, new ResponseCallBack<MovieHotListBean>() {
                     @Override
                     public void onError(Exception e) {
 
@@ -91,7 +106,7 @@ public class HotFragment extends BaseFragment implements OnMovieIdClickListener 
             @Override
             public void onLoadMore() {
                 offset++;
-                HttpUtil.getMovieHotList(offset * 12, new ResponseCallBack<MovieHotListBean>() {
+                HttpUtil.getMovieHotList(mCityId,offset * 12, new ResponseCallBack<MovieHotListBean>() {
                     @Override
                     public void onError(Exception e) {
 
@@ -112,6 +127,24 @@ public class HotFragment extends BaseFragment implements OnMovieIdClickListener 
 
     }
 
+    // 接收值
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(CityMessage event) {
+
+        mCityId = event.getCityId();
+        HttpUtil.getMovieHotList(mCityId,0, new ResponseCallBack<MovieHotListBean>() {
+            @Override
+            public void onError(Exception e) {
+
+            }
+            @Override
+            public void onResponse(MovieHotListBean movieHotListBean) {
+                mMovieHotListAdapter.setOnMovieIdClickListener(HotFragment.this);
+                mMovieHotListAdapter.setMovieHotListBean(movieHotListBean);
+            }
+        });
+       };
+
     //获得列表详情页所需的movieId
     @Override
     public void getId(int movieId) {
@@ -123,5 +156,11 @@ public class HotFragment extends BaseFragment implements OnMovieIdClickListener 
         MainActivity activity = (MainActivity) getActivity();
         activity.jumpFragment(hotListDetailFragment);
         Log.d("HotFragment", "movieId:" + movieId);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
     }
 }

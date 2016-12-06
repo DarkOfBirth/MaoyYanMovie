@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:padding="10dp"
+        android:background="#d33a35"
+        >
+    <EditText
+        android:id="@+id/search_content_et"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:background="@drawable/white_corner"
+        android:textSize="18sp"
+        android:paddingLeft="5dp"
+        android:hint="找影视剧、人、 影院"
+
+        android:drawableLeft="@mipmap/search"
+        />
+<TextView
+    android:id="@+id/search_cancel_tv"
+    android:clickable="true"
+    android:layout_width="0dp"
+    android:layout_weight="0.22"
+    android:layout_height="match_parent"
+    android:text="取消"
+    android:textSize="20sp"
+    android:textColor="#fff"
+    android:gravity="center"
+    />
+    </LinearLayout>
+    <FrameLayout
+        android:id="@+id/serarch_result_fl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff"
+        >
+
+
+    </FrameLayout>
+
+</LinearLayout>

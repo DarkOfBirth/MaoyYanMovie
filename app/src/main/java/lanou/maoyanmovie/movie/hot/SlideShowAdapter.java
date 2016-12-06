@@ -34,7 +34,6 @@ public class SlideShowAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         ImageView image = new ImageView(container.getContext());
-        Log.d("SlideShowAdapter", "stringList.size():" + stringList.size());
         if (stringList.size() != 0) {
             Picasso.with(container.getContext()).load(stringList.get(position % stringList.size())).fit()
                     .into(image);

@@ -1,0 +1,629 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--android:id="@+id/refreshLayout"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--app:tr_head_height="100dp"-->
+    <!--app:tr_wave_height="180dp">-->
+
+    <ScrollView
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#dededf"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/bg_weather_iv"
+                android:layout_width="match_parent"
+                android:layout_height="330dp"
+                android:background="@mipmap/bg_sunny"
+                >
+                <!--背景-->
+
+                <ImageView
+                    android:id="@+id/left_weather_iv"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_alignParentBottom="true"
+                    android:alpha="0.7"
+                    android:background="@mipmap/bg_sunny_left"
+                    />
+                <!--右边的-->
+                <ImageView
+                    android:id="@+id/right_weather_iv"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentStart="true"
+                    android:alpha="0.85"
+                    android:background="@mipmap/bg_sunny_right"/>
+                <!--大树-->
+                <ImageView
+                    android:id="@+id/tree_weather_iv"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="50dp"
+
+                    android:background="@mipmap/bg_sunny_tree"
+
+                    android:scaleType="fitXY"
+                    />
+                <!--温度显示-->
+                <LinearLayout
+                    android:id="@+id/temp_show"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="35dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="70dp"
+                        android:layout_height="50dp"
+
+                        >
+
+                        <ImageView
+                            android:id="@+id/left_number_weather_iv"
+
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1.04"
+                            android:scaleType="centerInside"
+
+                            android:src="@mipmap/num1"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/right_number_weather_iv"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+
+                            android:layout_weight="1"
+                            android:scaleType="centerInside"
+                            android:src="@mipmap/num2"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp">
+
+                        <TextView
+                            android:id="@+id/city_and_wind_weather_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="大连 | 大风"
+                            android:textColor="#fff"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+                <!--摄氏度符号-->
+                <ImageView
+                    android:layout_width="10dp"
+
+                    android:layout_height="10dp"
+                    android:layout_alignTop="@id/temp_show"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/temp_show"
+                    android:scaleType="matrix"
+                    android:src="@mipmap/temperature_unit"/>
+                <!--负号-->
+                <ImageView
+                    android:id="@+id/minus_weather_iv"
+                    android:layout_width="30dp"
+                    android:layout_height="60dp"
+                    android:layout_alignTop="@id/temp_show"
+                    android:layout_marginLeft="5dp"
+                    android:src="@mipmap/minus"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="10dp"
+                    android:weightSum="3.02">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/wind_diection_weather_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:gravity="center"
+                            android:text="西风"
+                            android:textColor="#ffffff"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/wind_level_weather_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="3级"
+                            android:textColor="#fff"
+                            android:textSize="30sp"
+                            />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.01"
+                        android:background="#ffffff"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:gravity="center"
+                            android:text="相对湿度"
+                            android:textColor="#ffffff"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/humidity_weather_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="53%"
+                            android:textColor="#fff"
+                            android:textSize="30sp"
+                            />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.01"
+                        android:background="#ffffff"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/air_weather_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:gravity="center"
+                            android:text="空气良"
+                            android:textColor="#ffffff"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/air_num_weather_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="58"
+                            android:textColor="#fff"
+                            android:textSize="30sp"
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+            <include
+                android:id="@+id/today_weather_ly"
+                layout="@layout/weather_forecast"/>
+
+            <include
+                android:id="@+id/tommorow_weather_ly"
+                layout="@layout/weather_forecast"/>
+
+            <include
+                android:id="@+id/third_weather_ly"
+                layout="@layout/weather_forecast"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:background="#ffffff"
+                android:paddingTop="9dp"
+                android:text="5 天趋势预报"
+                android:textAlignment="center"/>
+            <!--空气质量-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="270dp"
+                android:layout_marginTop="20dp"
+                android:background="#fff"
+
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:paddingTop="7dp"
+                        android:text="  空气质量  "
+                        android:textColor="#000"
+                        android:textSize="16sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/air_quaility_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:paddingTop="7dp"
+                        android:text=" |  良"
+                        android:textAlignment="center"
+                        android:textSize="14sp"/>
+
+                    <TextView
+                        android:id="@+id/publish_time_tv"
+                        android:layout_width="80dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="205dp"
+                        android:paddingTop="7dp"
+                        android:text="07:00发布"
+                        android:textSize="14sp"
+                        />
+                </LinearLayout>
+
+                <include layout="@layout/weathter_horizontal_split"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp">
+
+                    <lanou.maoyanmovie.weight.Ring
+                        xmlns:wym="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/aqi_ring"
+                        android:layout_width="0dp"
+                        android:layout_height="200dp"
+                        android:layout_weight="1"
+                        wym:abbr="AQI"
+                        wym:leval="严重污染"
+                        wym:num="90"
+                        wym:text="空气质量指数"
+
+                        />
+
+                    <lanou.maoyanmovie.weight.Ring
+                        xmlns:wym="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/pm10_ring"
+                        android:layout_width="0dp"
+                        android:layout_height="200dp"
+                        android:layout_weight="1"
+                        wym:abbr="PM10"
+                        wym:leval="轻度污染"
+                        wym:num="400"
+                        wym:text="首要污染物"
+
+                        />
+
+                </LinearLayout>
+
+                <include layout="@layout/weathter_horizontal_split"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:background="#ffffff"
+                    android:paddingTop="7dp"
+                    android:text="空气质量详情"
+                    android:textAlignment="center"/>
+
+
+            </LinearLayout>
+
+            <!--生活建议-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="#fff"
+                android:orientation="vertical"
+
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:paddingTop="7dp"
+                    android:text="  生活建议  "
+                    android:textColor="#000"
+                    android:textSize="16sp"
+                    />
+
+                <include layout="@layout/weathter_horizontal_split"/>
+                <!--空调-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    >
+
+                    <ImageView
+                        android:id="@+id/air_condition_life_iv"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/orange_corner"
+                        android:padding="5dp"
+                        android:src="@mipmap/konttiao"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:paddingLeft="5dp"
+                        >
+
+                        <TextView
+                            android:id="@+id/air_condition_title_life_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="5dp"
+                            android:text="开启制暖空调"
+                            android:textColor="#000"
+                            android:textSize="16sp"/>
+
+                        <TextView
+                            android:id="@+id/air_condition_content_life_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="您将感到有些冷，可以适当开启制暖空调调节室内温度，以免着凉感冒"
+                            android:textSize="13sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <include layout="@layout/weathter_horizontal_split"/>
+                <!--运动-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    >
+
+                    <ImageView
+                        android:id="@+id/sport_life_iv"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/green_corner"
+                        android:padding="5dp"
+                        android:src="@mipmap/yundong"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:paddingLeft="5dp"
+                        >
+
+                        <TextView
+                            android:id="@+id/sport_title_life_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="5dp"
+                            android:text="开启制暖空调"
+                            android:textColor="#000"
+                            android:textSize="16sp"/>
+
+                        <TextView
+                            android:id="@+id/sport_content_life_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="您将感到有些冷，可以适当开启制暖空调调节室内温度，以免着凉感冒"
+                            android:textSize="13sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <include layout="@layout/weathter_horizontal_split"/>
+                <!--紫外线-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    >
+
+                    <ImageView
+                        android:id="@+id/purple_line_life_iv"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/blue_corner"
+                        android:padding="5dp"
+                        android:src="@mipmap/shai"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:paddingLeft="5dp"
+                        >
+
+                        <TextView
+                            android:id="@+id/purple_line_title_life_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="5dp"
+                            android:text="开启制暖空调"
+                            android:textColor="#000"
+                            android:textSize="16sp"/>
+
+                        <TextView
+                            android:id="@+id/purple_line_content_life_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="您将感到有些冷，可以适当开启制暖空调调节室内温度，以免着凉感冒"
+                            android:textSize="13sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <include layout="@layout/weathter_horizontal_split"/>
+                <!--感冒-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp">
+
+                    <ImageView
+                        android:id="@+id/smoke_life_iv"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/yellow_corner"
+                        android:padding="5dp"
+                        android:src="@mipmap/ganmao"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:paddingLeft="5dp"
+                        >
+
+                        <TextView
+                            android:id="@+id/smoke_title_life_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="5dp"
+                            android:text="开启制暖空调"
+                            android:textColor="#000"
+                            android:textSize="16sp"/>
+
+                        <TextView
+                            android:id="@+id/smoke_content_life_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="您将感到有些冷，可以适当开启制暖空调调节室内温度，以免着凉感冒"
+                            android:textSize="13sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <include layout="@layout/weathter_horizontal_split"/>
+                <!--洗车-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp">
+
+                    <ImageView
+                        android:id="@+id/car_life_iv"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/lightblue_corner"
+                        android:padding="5dp"
+                        android:src="@mipmap/car"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:paddingLeft="5dp"
+                        >
+
+                        <TextView
+                            android:id="@+id/car_title_life_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="5dp"
+                            android:text="开启制暖空调"
+                            android:textColor="#000"
+                            android:textSize="16sp"/>
+
+                        <TextView
+                            android:id="@+id/car_content_life_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="您将感到有些冷，可以适当开启制暖空调调节室内温度，以免着凉感冒"
+                            android:textSize="13sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <include layout="@layout/weathter_horizontal_split"/>
+                <!--穿衣-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp">
+
+                    <ImageView
+                        android:id="@+id/wear_life_iv"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/red_corner"
+                        android:padding="5dp"
+                        android:src="@mipmap/clother"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:paddingLeft="5dp"
+                        >
+
+                        <TextView
+                            android:id="@+id/wear_title_life_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="5dp"
+                            android:text="开启制暖空调"
+                            android:textColor="#000"
+                            android:textSize="16sp"/>
+
+                        <TextView
+                            android:id="@+id/wear_content_life_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="您将感到有些冷，可以适当开启制暖空调调节室内温度，以免着凉感冒"
+                            android:textSize="13sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+<!--</com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>-->

@@ -113,6 +113,9 @@ public class CommonVH extends RecyclerView.ViewHolder {
 //
 //    }
 
+
+
+
     public CommonVH setViewClick(int id, View.OnClickListener listener) {
         // 此处为接口
         getView(id).setOnClickListener(listener);

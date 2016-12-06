@@ -1,4 +1,4 @@
-package lanou.maoyanmovie.wuziqi;
+package lanou.maoyanmovie.gobang;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -21,7 +21,7 @@ import lanou.maoyanmovie.R;
  * Created by 王一鸣 on 16/11/22.
  */
 
-public class WuziqiPanel extends View {
+public class GobangPanel extends View {
     // 游戏是否结束监听
     private OnGameOVerListener mOnGameOVerListener;
     // 棋盘宽度
@@ -58,18 +58,18 @@ public class WuziqiPanel extends View {
     }
 
     // 一个参数的构造方法是在new 出一个组建的时候调用
-    public WuziqiPanel(Context context) {
+    public GobangPanel(Context context) {
         this(context,null);
     }
 
     // 两个参数的构造方法时在xml中使用自定义View时调用
-    public WuziqiPanel(Context context, AttributeSet attrs) {
+    public GobangPanel(Context context, AttributeSet attrs) {
         this(context, attrs,0);
 
     }
 
     // 三个参数的构造方法是在自定你也view中使用了自定义属性的时候调用
-    public WuziqiPanel(Context context, AttributeSet attrs, int defStyleAttr) {
+    public GobangPanel(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }
@@ -237,13 +237,13 @@ public class WuziqiPanel extends View {
         Log.d("WuziqiPanel", "mWhiteArray.size():" + mWhiteArray.size());
 
         Log.d("WuziqiPanel", "mBlackArray.size():" + mBlackArray.size());
-        boolean whiteWin = WuziqiUtil.checkFiveInLine(mWhiteArray);
-        boolean blackWin = WuziqiUtil.checkFiveInLine(mBlackArray);
+        boolean whiteWin = GoBangUtil.checkFiveInLine(mWhiteArray);
+        boolean blackWin = GoBangUtil.checkFiveInLine(mBlackArray);
         if(whiteWin || blackWin){
             isGameOver = true;
             isWhiteWinner = whiteWin;
             String msg = isWhiteWinner ? "白子获胜" : "黑子获胜";
-            Toast.makeText(WuziqiPanel.this.getContext(), msg, Toast.LENGTH_SHORT).show();
+            Toast.makeText(GobangPanel.this.getContext(), msg, Toast.LENGTH_SHORT).show();
             mOnGameOVerListener.gameOver(isWhiteWinner);
         }
     }

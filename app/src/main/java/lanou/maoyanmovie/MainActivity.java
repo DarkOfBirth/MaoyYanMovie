@@ -9,7 +9,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import lanou.maoyanmovie.base.BaseActivity;
-import lanou.maoyanmovie.cinema.CinemaFragment;
+import lanou.maoyanmovie.search.SearchFragment;
 import lanou.maoyanmovie.find.FindFragment;
 import lanou.maoyanmovie.movie.MovieFragment;
 import lanou.maoyanmovie.mine.MineFragment;
@@ -22,7 +22,7 @@ public class MainActivity extends BaseActivity {
     private RadioButton mainMyRb;
     private RadioGroup mainRg;
     private RadioButton last;
-    private CinemaFragment cinemaFragment;
+    private SearchFragment mSearchFragment;
     private FindFragment findFragment;
     private MovieFragment movieFragment;
     private MineFragment mineFragment;
@@ -50,7 +50,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initData() {
         //初始化fragment
-        cinemaFragment = new CinemaFragment();
+        mSearchFragment = new SearchFragment();
         findFragment = new FindFragment();
         movieFragment = new MovieFragment();
         mineFragment = new MineFragment();
@@ -80,7 +80,7 @@ public class MainActivity extends BaseActivity {
                     case R.id.main_cinema_rb:
                         initLast(mainCinemaRb);
                         mainCinemaRb.setSelected(true);
-                        transaction.replace(R.id.main_frame, cinemaFragment);
+                        transaction.replace(R.id.main_frame, mSearchFragment);
                         break;
                     case R.id.main_find_rb:
                         initLast(mainFindRb);

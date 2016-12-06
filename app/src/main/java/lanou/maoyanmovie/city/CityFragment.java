@@ -8,6 +8,8 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,6 +22,7 @@ import lanou.maoyanmovie.R;
 import lanou.maoyanmovie.base.BaseFragment;
 import lanou.maoyanmovie.decoration.DividerItemDecoration;
 import lanou.maoyanmovie.decoration.TitleItemDecoration;
+import lanou.maoyanmovie.event.CityMessage;
 import lanou.maoyanmovie.weight.SideBar;
 
 /**
@@ -37,6 +40,14 @@ public class CityFragment extends BaseFragment {
     private TitleItemDecoration mDecoration;
     private List<CityBean.CtsBean> mDatas;
     private ArrayList<CityBean.CtsBean> mCtsBeanArrayList;
+    private OnSelectCity mOnSelectCity;
+
+
+    public CityFragment setOnSelectCity(OnSelectCity onSelectCity) {
+        mOnSelectCity = onSelectCity;
+        return this;
+    }
+
     @Override
     protected int getLayout() {
         return R.layout.fragment_city;
@@ -107,7 +118,17 @@ public class CityFragment extends BaseFragment {
         mRecyclerView.setLayoutManager(mManager = new ScrollSpeedLinearLayoutManger(mContext));
         mManager.setSpeedFast();
         mRecyclerView.setAdapter(mAdapter = new CityAdapter(mContext, getData()));
+        mAdapter.setOnSelectCity(new OnSelectCity() {
+            @Override
+            public void selectCityName(String name, String cityId) {
+                EventBus.getDefault().post(new CityMessage(cityId,name));
 
+
+
+                     mOnSelectCity.selectCityName(name,cityId);
+                getActivity().onBackPressed();
+            }
+        });
         mRecyclerView.addItemDecoration(mDecoration = new TitleItemDecoration(mContext, mCtsBeanArrayList));
         //如果add两个，那么按照先后顺序，依次渲染。
         // mRecyclerView.addItemDecoration(new TitleItemDecoration2(this, mCtsBeanArrayList));
@@ -198,5 +219,8 @@ public class CityFragment extends BaseFragment {
 
 
         return mCtsBeanArrayList;
+    }
+   public  interface OnSelectCity{
+        void selectCityName(String name, String cityId);
     }
 }

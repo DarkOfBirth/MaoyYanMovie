@@ -1,4 +1,4 @@
-package lanou.maoyanmovie.wuziqi;
+package lanou.maoyanmovie.gobang;
 
 import android.graphics.Point;
 import android.util.Log;
@@ -9,7 +9,7 @@ import java.util.List;
  * Created by 王一鸣 on 16/11/22.
  */
 
-public class WuziqiUtil {
+public class GoBangUtil {
     // 每行上的最大数目
     public static final int MAX_COUTN_IN_LINE = 5;
 
@@ -48,7 +48,7 @@ public class WuziqiUtil {
         for (int i = 0; i < MAX_COUTN_IN_LINE; i++) {
             if (points.contains(new Point(x - i, y))) {
                 count++;
-                Log.d("WuziqiUtil", "横count:" + count);
+                Log.d("GoBangUtil", "横count:" + count);
             } else {
                 break;
             }
@@ -63,7 +63,7 @@ public class WuziqiUtil {
         for (int i = 0; i < MAX_COUTN_IN_LINE; i++) {
             if (points.contains(new Point(x + i, y))) {
                 count++;
-                Log.d("WuziqiUtil", "横count:" + count);
+                Log.d("GoBangUtil", "横count:" + count);
             } else {
                 break;
             }
