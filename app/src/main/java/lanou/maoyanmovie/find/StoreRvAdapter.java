@@ -148,7 +148,7 @@ public class StoreRvAdapter extends RecyclerView.Adapter<CommonViewHolder> {
 
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
-       // super.onAttachedToRecyclerView(recyclerView);
+        super.onAttachedToRecyclerView(recyclerView);
         RecyclerView.LayoutManager manager = recyclerView.getLayoutManager();
         if (manager instanceof GridLayoutManager) {
             GridLayoutManager gridLayoutManager = (GridLayoutManager) manager;

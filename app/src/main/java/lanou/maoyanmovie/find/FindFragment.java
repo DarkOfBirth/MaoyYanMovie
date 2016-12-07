@@ -138,13 +138,16 @@ public class FindFragment extends BaseFragment implements OnFindClickListener {
     }
 
     @Override
-    public void findClick(int targetID, int feedType) {
+    public void findClick(int targetID, int feedType, String nickName, String urlImg, String title) {
         Log.d("FindFragment", "feedType:" + feedType);
         DescriptionFragment fragment = new DescriptionFragment();
         MainActivity activity = (MainActivity) getActivity();
         Bundle bundle = new Bundle();
         bundle.putInt("targetID", targetID);
         bundle.putInt("feedType", feedType);
+        bundle.putString("nickName", nickName);
+        bundle.putString("urlImg", urlImg);
+        bundle.putString("title", title);
         fragment.setArguments(bundle);
         activity.jumpFragment(fragment);
     }

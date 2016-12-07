@@ -3,6 +3,10 @@ package lanou.maoyanmovie.httptools;
 import lanou.maoyanmovie.bean.FindTodayBean;
 import lanou.maoyanmovie.bean.FindTodayDetailBean;
 import lanou.maoyanmovie.bean.FindTopBean;
+import lanou.maoyanmovie.bean.MovieFindAllPrizeBean;
+import lanou.maoyanmovie.bean.MovieFindAllPrizeBodyBean;
+import lanou.maoyanmovie.bean.MovieFindCenterBean;
+import lanou.maoyanmovie.bean.MovieFindTypeOtherBean;
 import lanou.maoyanmovie.bean.StoreLikeBean;
 import lanou.maoyanmovie.bean.StoreMonthDiscountBean;
 import lanou.maoyanmovie.bean.StoreTopBean;
@@ -55,7 +59,6 @@ public class HttpUtil {
 
     /**
      * 发现-> 今天 -> 点击后 二级界面
-     *
      * @param targetId 从要点击的Item中获取到targetId
      */
 
@@ -79,5 +82,29 @@ public class HttpUtil {
         OkHttpManager.getInstance().get(MovieValues.STORE_MONTH_DISCOUNT, StoreMonthDiscountBean.class, responseCallBack);
     }
 
+    /**
+     * 电影 -> 找片 ->年限/地区/类型
+     */
+    public static void getMovieFindTypeAndOther(ResponseCallBack<MovieFindTypeOtherBean> responseCallBack){
+        OkHttpManager.getInstance().get(MovieValues.MOVIE_FIND_TYPE_WHERE_WHEN, MovieFindTypeOtherBean.class, responseCallBack);
+    }
+    /**
+     * 电影 -> 找片 ->中间的部分
+     */
+    public static void getMovieFindCenter(ResponseCallBack<MovieFindCenterBean> responseCallBack){
+        OkHttpManager.getInstance().get(MovieValues.MOVIE_FIND_CENTER, MovieFindCenterBean.class, responseCallBack);
+    }
+    /**
+     * 电影 -> 找片 ->全球所有奖项
+     */
+    public static void getMovieFindAllPrize(ResponseCallBack<MovieFindAllPrizeBean> responseCallBack){
+        OkHttpManager.getInstance().get(MovieValues.MOVIE_FIND_ALL_PRIZE, MovieFindAllPrizeBean.class, responseCallBack);
+    }
 
+    /**
+     * 电影 -> 找片 ->全部所有奖项
+     */
+    public static void getMovieFindAllPrizebody(ResponseCallBack<MovieFindAllPrizeBodyBean> responseCallBack){
+        OkHttpManager.getInstance().get(MovieValues.MOVIE_FIND_ALL_PRIZE_BODY, MovieFindAllPrizeBodyBean.class, responseCallBack);
+    }
 }

@@ -3,48 +3,42 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-
     <RelativeLayout
         android:background="#f00"
         android:layout_width="match_parent"
         android:layout_height="55dp">
         <ImageView
-            android:id="@+id/description_back"
+            android:id="@+id/collect_back_img"
             android:layout_marginLeft="15dp"
             android:layout_centerVertical="true"
             android:src="@mipmap/back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-        <TextView
-            android:id="@+id/description_title"
+        <ImageView
             android:textSize="20sp"
+            android:background="#F2F2F2"
             android:layout_marginLeft="15dp"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/description_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <ImageView
-            android:id="@+id/description_share"
-            android:layout_marginRight="15dp"
-            android:layout_alignParentRight="true"
-            android:src="@mipmap/share"
+            android:layout_toRightOf="@id/collect_back_img"
+            android:layout_width="2dp"
+            android:layout_height="23dp"/>
+
+        <TextView
+            android:textColor="#fff"
+            android:text="我的收藏"
+            android:textSize="18sp"
+            android:layout_toRightOf="@id/collect_back_img"
+            android:layout_marginLeft="30dp"
             android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-        <ImageView
-            android:id="@+id/description_collect"
-            android:layout_marginRight="25dp"
-            android:layout_toLeftOf="@id/description_share"
-            android:layout_centerVertical="true"
-            android:src="@mipmap/xingxing"
-            android:scaleType="fitXY"
-            android:layout_width="30dp"
-            android:layout_height="30dp"/>
     </RelativeLayout>
-    <WebView
-        android:id="@+id/find_description_wv"
+
+    <android.support.v7.widget.RecyclerView
+        android:background="#e1d6d6"
+        android:id="@+id/collect_body_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </WebView>
+    </android.support.v7.widget.RecyclerView>
 </LinearLayout>

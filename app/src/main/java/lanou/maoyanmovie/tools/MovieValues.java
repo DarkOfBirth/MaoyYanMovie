@@ -20,7 +20,12 @@ public class MovieValues {
     public static  final String STORE_TOP = "http://api.maoyan.com/mallpro/category.json";
     //周边商城 每月特价
     public static final String STORE_MONTH_DISCOUNT = "http://api.maoyan.com/mallpro/topicList.json";
-
-
-
+    //电影 ->发现 ->找片 -> 类型/地区/年代
+    public static final String MOVIE_FIND_TYPE_WHERE_WHEN = "http://api.maoyan.com/mmdb/search/movie/tag/types.json?";
+    //电影 ->发现 ->找片 -> 热映口碑等四个
+    public static final String MOVIE_FIND_CENTER = "http://api.maoyan.com/mmdb/movieboard/fixedboard/v1/hot/list.json?";
+    //电影 ->发现 ->找片 -> 全球电影奖项
+    public static final String MOVIE_FIND_ALL_PRIZE = "http://api.maoyan.com/mmdb/movie/winning/film/2016-11-21/list.json?";
+    //电影 ->发现 ->找片 ->全部电影奖项
+    public static final String MOVIE_FIND_ALL_PRIZE_BODY = "http://api.maoyan.com/mmdb/movie/region/festival/list.json?";
 }

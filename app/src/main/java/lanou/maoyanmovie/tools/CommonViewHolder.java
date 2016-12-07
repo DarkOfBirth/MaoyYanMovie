@@ -43,6 +43,8 @@ public class CommonViewHolder extends RecyclerView.ViewHolder{
         }
         return (T) view;
     }
+
+
     //专门给ListView使用的方法
     public static CommonViewHolder getViewHolder(View itemView, ViewGroup parent, int itemId){
         CommonViewHolder commonViewHolder;

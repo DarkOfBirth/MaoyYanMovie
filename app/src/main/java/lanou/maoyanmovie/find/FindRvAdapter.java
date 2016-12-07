@@ -110,9 +110,13 @@ public class FindRvAdapter extends RecyclerView.Adapter<FindRvAdapter.FindViewHo
                 holder.findTwoItemRv.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(mOnFindClickListener != null){}
-                          mOnFindClickListener.findClick(mFindTodayBean.getData().getFeeds().
-                                get(finalPosition).getImages().get(0).getTargetId(), mFindTodayBean.getData().getFeeds().get(finalPosition).getFeedType());
+                        if(mOnFindClickListener != null){
+                          mOnFindClickListener.findClick(
+                                  mFindTodayBean.getData().getFeeds().get(finalPosition).getImages().get(0).getTargetId(),
+                                  mFindTodayBean.getData().getFeeds().get(finalPosition).getFeedType(),
+                                  mFindTodayBean.getData().getFeeds().get(finalPosition).getUser().getNickName(),
+                                  mFindTodayBean.getData().getFeeds().get(finalPosition).getImages().get(0).getUrl(),
+                                  mFindTodayBean.getData().getFeeds().get(finalPosition).getTitle());
                         }
                     }
                 });
@@ -129,10 +133,14 @@ public class FindRvAdapter extends RecyclerView.Adapter<FindRvAdapter.FindViewHo
                 holder.findThirdItemLl.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(mOnFindClickListener != null){}
-                        mOnFindClickListener.findClick(mFindTodayBean.
-                                        getData().getFeeds().get(finalPosition1).getImages().get(0).getTargetId(),
-                                mFindTodayBean.getData().getFeeds().get(finalPosition1).getFeedType());
+                        if(mOnFindClickListener != null){
+                        mOnFindClickListener.findClick(
+                                mFindTodayBean.getData().getFeeds().get(finalPosition1).getImages().get(0).getTargetId(),
+                                mFindTodayBean.getData().getFeeds().get(finalPosition1).getFeedType(),
+                                mFindTodayBean.getData().getFeeds().get(finalPosition1).getUser().getNickName(),
+                                mFindTodayBean.getData().getFeeds().get(finalPosition1).getImages().get(0).getUrl(),
+                                mFindTodayBean.getData().getFeeds().get(finalPosition1).getTitle()
+                                );
                         }
                     }
                 });
@@ -149,8 +157,12 @@ public class FindRvAdapter extends RecyclerView.Adapter<FindRvAdapter.FindViewHo
                 holder.findFourItemRv.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        mOnFindClickListener.findClick(mFindTodayBean.getData().
-                                getFeeds().get(finalPosition2).getImages().get(0).getTargetId(), mFindTodayBean.getData().getFeeds().get(finalPosition2).getFeedType());
+                        mOnFindClickListener.findClick(
+                                mFindTodayBean.getData().getFeeds().get(finalPosition2).getImages().get(0).getTargetId(),
+                                mFindTodayBean.getData().getFeeds().get(finalPosition2).getFeedType(),
+                                mFindTodayBean.getData().getFeeds().get(finalPosition2).getUser().getNickName(),
+                                mFindTodayBean.getData().getFeeds().get(finalPosition2).getImages().get(0).getUrl(),
+                                mFindTodayBean.getData().getFeeds().get(finalPosition2).getTitle());
                     }
                 });
                 break;
@@ -177,8 +189,12 @@ public class FindRvAdapter extends RecyclerView.Adapter<FindRvAdapter.FindViewHo
                 holder.findSevenItemLl.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        mOnFindClickListener.findClick(mFindTodayBean.getData().
-                                getFeeds().get(finalPosition3).getImages().get(0).getTargetId(), mFindTodayBean.getData().getFeeds().get(finalPosition3).getFeedType());
+                        mOnFindClickListener.findClick(
+                                mFindTodayBean.getData().getFeeds().get(finalPosition3).getImages().get(0).getTargetId(),
+                                mFindTodayBean.getData().getFeeds().get(finalPosition3).getFeedType(),
+                                mFindTodayBean.getData().getFeeds().get(finalPosition3).getUser().getNickName(),
+                                mFindTodayBean.getData().getFeeds().get(finalPosition3).getImages().get(0).getUrl(),
+                                mFindTodayBean.getData().getFeeds().get(finalPosition3).getTitle());
                     }
                 });
                 break;
