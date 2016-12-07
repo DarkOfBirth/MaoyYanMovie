@@ -34,13 +34,6 @@ public class HotListDetailFragment extends BaseFragment {
         mHotListDetailWv.getSettings().setJavaScriptEnabled(true);
         mHotListDetailWv.setWebChromeClient(new WebChromeClient());
         mHotListDetailWv.loadUrl(url);
-//        mHotListDetailWv.setWebViewClient(new WebViewClient() {
-//            @Override
-//            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-//                view.loadUrl(url);
-//                return true;
-//            }
-//        });
     }
 
     @Override

@@ -2,24 +2,69 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="horizontal"
               android:layout_width="match_parent"
-              android:layout_height="120dp">
+              android:layout_height="116dp"
+              android:layout_marginBottom="10dp"
+              android:paddingLeft="5dp"
+              android:paddingRight="5dp"
+
+    >
     <ImageView
-        android:id="@+id/search_iv"
+        android:id="@+id/img_search_result_iv"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="match_parent"/>
+
     <LinearLayout
         android:layout_width="0dp"
         android:layout_weight="3"
         android:orientation="vertical"
+        android:layout_marginLeft="10dp"
         android:layout_height="match_parent">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="1111"
+            android:id="@+id/nm_search_result_tv"
+            android:textSize="16sp"
+
+            android:lines="1"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="1111"
+            android:textSize="16sp"
+            android:id="@+id/enm_search_result_tv"
+            android:lines="1"/>
+        <TextView
+            android:id="@+id/cat_search_result_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="1111"
+            android:textSize="16sp"
+            android:lines="1"/>
+        <TextView
+            android:id="@+id/pubdesc_search_result_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="1111"
+            android:textSize="16sp"
+            android:lines="1"/>
     </LinearLayout>
 
     <TextView
+        android:id="@+id/sc_search_result_tv"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="40dp"
-        android:id="@+id/textView4"/>
+        android:textColor="#ffc107"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:text="暂无评分"
+        />
 
 </LinearLayout>

@@ -1,11 +1,11 @@
 package lanou.maoyanmovie.search;
 
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
-
 import lanou.maoyanmovie.R;
+import lanou.maoyanmovie.bean.HotSearchBean;
 import lanou.maoyanmovie.city.CommonVH;
 
 /**
@@ -13,11 +13,12 @@ import lanou.maoyanmovie.city.CommonVH;
  * 功能:
  */
 public class HotSearchAdapter extends RecyclerView.Adapter<CommonVH>{
-    private ArrayList<String> hotArrayList;
+    private HotSearchBean mHotSearchBean;
 
-    public void setHotArrayList(ArrayList<String> hotArrayList) {
-        this.hotArrayList = hotArrayList;
-       notifyDataSetChanged();
+    public HotSearchAdapter setHotSearchBean(HotSearchBean hotSearchBean) {
+        mHotSearchBean = hotSearchBean;
+        notifyDataSetChanged();
+        return this;
     }
 
     @Override
@@ -28,12 +29,18 @@ public class HotSearchAdapter extends RecyclerView.Adapter<CommonVH>{
 
     @Override
     public void onBindViewHolder(CommonVH holder, int position) {
-            holder.setText(R.id.hot_content_tv,hotArrayList.get(position));
+            holder.setText(R.id.hot_content_tv,mHotSearchBean.getData().get(position).getNm());
+            holder.setItemClick(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
     }
 
 
     @Override
     public int getItemCount() {
-        return hotArrayList == null ? 0 : hotArrayList.size();
+        return mHotSearchBean == null ? 0 : mHotSearchBean.getData().size();
     }
 }

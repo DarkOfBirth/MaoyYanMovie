@@ -5,11 +5,14 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.ArrayList;
 
 import lanou.maoyanmovie.R;
 import lanou.maoyanmovie.bean.HistoryBean;
 import lanou.maoyanmovie.city.CommonVH;
+import lanou.maoyanmovie.event.SearchHistory;
 import lanou.maoyanmovie.tools.DBTools;
 
 /**
@@ -18,7 +21,12 @@ import lanou.maoyanmovie.tools.DBTools;
  */
 public class HistorySearchAdapter extends RecyclerView.Adapter<CommonVH> {
     private ArrayList<String> historyArrayList;
+    private OnSlectHistoryInfo mOnSlectHistoryInfo;
 
+    public HistorySearchAdapter setOnSlectHistoryInfo(OnSlectHistoryInfo onSlectHistoryInfo) {
+        mOnSlectHistoryInfo = onSlectHistoryInfo;
+        return this;
+    }
 
     public void setHistoryArrayList(ArrayList<String> historyArrayList) {
         this.historyArrayList = historyArrayList;
@@ -44,11 +52,22 @@ public class HistorySearchAdapter extends RecyclerView.Adapter<CommonVH> {
                 notifyDataSetChanged();
             }
         });
+        holder.setItemClick(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EventBus.getDefault().post(new SearchHistory(historyArrayList.get(position)));
+            }
+        });
+
     }
 
 
     @Override
     public int getItemCount() {
         return historyArrayList == null ? 0 : historyArrayList.size();
+    }
+
+    interface OnSlectHistoryInfo {
+        void onSelect(String content);
     }
 }
