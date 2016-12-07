@@ -61,7 +61,7 @@
                         android:layout_weight="1"
                         android:gravity="center_horizontal"
                         android:drawableTop="@drawable/main_cinema"
-                        android:text="影院"
+                        android:text="搜索"
                         android:layout_height="match_parent"/>
 
                     <RadioButton

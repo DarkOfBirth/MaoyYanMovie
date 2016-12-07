@@ -16,6 +16,7 @@ public class MovieVpAdapter extends FragmentPagerAdapter{
 
     public void setFragments(ArrayList<Fragment> fragments) {
         this.fragments = fragments;
+        notifyDataSetChanged();
     }
 
     public MovieVpAdapter(FragmentManager fm) {

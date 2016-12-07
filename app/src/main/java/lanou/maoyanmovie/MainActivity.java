@@ -9,7 +9,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import lanou.maoyanmovie.base.BaseActivity;
-import lanou.maoyanmovie.cinema.CinemaFragment;
+import lanou.maoyanmovie.search.SearchFragment;
 import lanou.maoyanmovie.find.FindFragment;
 import lanou.maoyanmovie.movie.MovieFragment;
 import lanou.maoyanmovie.mine.MineFragment;
@@ -22,7 +22,7 @@ public class MainActivity extends BaseActivity {
     private RadioButton mainMyRb;
     private RadioGroup mainRg;
     private RadioButton last;
-    private CinemaFragment cinemaFragment;
+    private SearchFragment mSearchFragment;
     private FindFragment findFragment;
     private MovieFragment movieFragment;
     private MineFragment mineFragment;
@@ -45,17 +45,17 @@ public class MainActivity extends BaseActivity {
         mainRg = bindView(R.id.main_rg);
         activityFrame = bindView(R.id.activity_frame);
         mainFrame = bindView(R.id.main_frame);
-
-        //初始化fragment
-        cinemaFragment = new CinemaFragment();
-        findFragment = new FindFragment();
-        movieFragment = new MovieFragment();
-        mineFragment = new MineFragment();
-        manager = getSupportFragmentManager();
     }
 
     @Override
     protected void initData() {
+        //初始化fragment
+        mSearchFragment = new SearchFragment();
+        findFragment = new FindFragment();
+        movieFragment = new MovieFragment();
+        mineFragment = new MineFragment();
+        manager = getSupportFragmentManager();
+
         //初始进入时, 显示的是电影界面
         initLast(mainMovieRb);
         mainMovieRb.setSelected(true);
@@ -64,8 +64,6 @@ public class MainActivity extends BaseActivity {
         transaction.commit();
 
     }
-
-
 
     @Override
     protected void initClick() {
@@ -82,7 +80,7 @@ public class MainActivity extends BaseActivity {
                     case R.id.main_cinema_rb:
                         initLast(mainCinemaRb);
                         mainCinemaRb.setSelected(true);
-                        transaction.replace(R.id.main_frame, cinemaFragment);
+                        transaction.replace(R.id.main_frame, mSearchFragment);
                         break;
                     case R.id.main_find_rb:
                         initLast(mainFindRb);
@@ -117,7 +115,7 @@ public class MainActivity extends BaseActivity {
      * @param t
      * @param <T>
      */
-    public <T extends Fragment> void jumpFragment(T t) {
+    public void jumpFragment(Fragment t) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.add(R.id.activity_frame, t);
         transaction.addToBackStack(null);
