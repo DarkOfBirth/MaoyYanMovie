@@ -8,7 +8,7 @@ import org.greenrobot.eventbus.EventBus;
 
 import lanou.maoyanmovie.R;
 import lanou.maoyanmovie.bean.HotSearchBean;
-import lanou.maoyanmovie.city.CommonVH;
+import lanou.maoyanmovie.tools.CommonVH;
 import lanou.maoyanmovie.event.SearchHistory;
 
 /**
@@ -36,7 +36,7 @@ public class HotSearchAdapter extends RecyclerView.Adapter<CommonVH>{
             holder.setItemClick(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    EventBus.getDefault().post(new SearchHistory(mHotSearchBean.getData().get(position).getId() + ""));
+                    EventBus.getDefault().post(new SearchHistory(mHotSearchBean.getData().get(position).getNm()+ ""));
                 }
             });
     }

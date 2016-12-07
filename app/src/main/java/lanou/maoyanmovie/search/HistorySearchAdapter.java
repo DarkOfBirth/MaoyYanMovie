@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 import lanou.maoyanmovie.R;
 import lanou.maoyanmovie.bean.HistoryBean;
-import lanou.maoyanmovie.city.CommonVH;
+import lanou.maoyanmovie.tools.CommonVH;
 import lanou.maoyanmovie.event.SearchHistory;
 import lanou.maoyanmovie.tools.DBTools;
 
