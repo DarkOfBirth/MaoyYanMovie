@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 import lanou.maoyanmovie.R;
 import lanou.maoyanmovie.bean.SearchBean;
-import lanou.maoyanmovie.city.CommonVH;
+import lanou.maoyanmovie.tools.CommonVH;
 
 /**
  * created by 王一鸣 16/12/6.

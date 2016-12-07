@@ -17,7 +17,7 @@ import lanou.maoyanmovie.R;
 import lanou.maoyanmovie.base.MyApplication;
 import lanou.maoyanmovie.bean.HistoryBean;
 import lanou.maoyanmovie.bean.HotSearchBean;
-import lanou.maoyanmovie.city.CommonVH;
+import lanou.maoyanmovie.tools.CommonVH;
 import lanou.maoyanmovie.httptools.HttpUtil;
 import lanou.maoyanmovie.httptools.ResponseCallBack;
 import lanou.maoyanmovie.tools.DBTools;
