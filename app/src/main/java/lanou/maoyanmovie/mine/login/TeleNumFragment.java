@@ -14,7 +14,18 @@ public class TeleNumFragment extends BaseFragment {
 
     @Override
     protected void initView() {
-
+//        HttpUtil.getStoreLike(0, 10, new ResponseCallBack() {
+//            @Override
+//            public void onError(Exception e) {
+//
+//            }
+//
+//            @Override
+//            public void onResponse(Object o) {
+//                StoreLikeBean storeLikeBean = (StoreLikeBean) o;
+//                storeLikeBean.getData().getTotal();
+//            }
+//        });
     }
 
     @Override

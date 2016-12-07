@@ -67,7 +67,6 @@ public class OkHttpManager {
     public <T> void get(String url, Class<T> tClass, ResponseCallBack<T> responseCallBack) {
         Request mRequest = new Request.Builder().url(url).build();
         sendHttpRequest(url, mRequest, tClass, responseCallBack);
-
     }
 
     /**

@@ -27,13 +27,23 @@ public class MovieValues {
     //发现 -> 今天
     public static final String FIND_TODAY = "http://api.maoyan.com/sns/v5/feed.json?";
     //发现 -> 今天 -> 点击详情
-    public static final String TODAY_DETAIL = "http://api.maoyan.com/sns/news/v2/";
+    public static final String TODAY_DETAIL = "http://m.maoyan.com/information/";
     //post请求都有的 url (不确定 先这样写)
     public static final String BASE_POST_URL = "http://api.mobile.meituan.com/combo/v2/combo.json";
     //周边商城 上面十个按钮
-    public static  final String STORE_TOP = "http://api.maoyan.com/mallpro/category.json";
+    public static final String STORE_TOP = "http://api.maoyan.com/mallpro/category.json";
     //周边商城 每月特价
     public static final String STORE_MONTH_DISCOUNT = "http://api.maoyan.com/mallpro/topicList.json";
+
+    //电影 ->发现 ->找片 -> 类型/地区/年代
+    public static final String MOVIE_FIND_TYPE_WHERE_WHEN = "http://api.maoyan.com/mmdb/search/movie/tag/types.json?";
+    //电影 ->发现 ->找片 -> 热映口碑等四个
+    public static final String MOVIE_FIND_CENTER = "http://api.maoyan.com/mmdb/movieboard/fixedboard/v1/hot/list.json?";
+    //电影 ->发现 ->找片 -> 全球电影奖项
+    public static final String MOVIE_FIND_ALL_PRIZE = "http://api.maoyan.com/mmdb/movie/winning/film/2016-11-21/list.json?";
+    //电影 ->发现 ->找片 ->全部电影奖项
+    public static final String MOVIE_FIND_ALL_PRIZE_BODY = "http://api.maoyan.com/mmdb/movie/region/festival/list.json?";
+
     // 根据经纬度获取城市的名字
     public static final String LOCATION_LONGITUDE_LATITUDE = "http://api.avatardata.cn/CoordAddress/Lookup?key=b43534b71d1c4e18b935d548949205ba&";
     // 获取天气状况
@@ -42,4 +52,5 @@ public class MovieValues {
     public static final String HOT_SEARCH = "http://api.maoyan.com/mmdb/search/movie/hotmovie/list.json?tp=4&keyword=&limit=0&offset=0&cityId=";
     // 搜索框
     public static final String SEARCH_KEY = "http://api.maoyan.com/mmdb/search/integrated/keyword/list.json?almtype=1&stype=-1&refer=1&iscorrected=false&limit=10&offset=0&ci=20&keyword=";
+
 }

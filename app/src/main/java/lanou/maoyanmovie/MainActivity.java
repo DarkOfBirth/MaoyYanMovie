@@ -75,7 +75,7 @@ public class MainActivity extends BaseActivity {
                     case R.id.main_movie_rb:
                         initLast(mainMovieRb);
                         mainMovieRb.setSelected(true);
-                        transaction.replace(R.id.main_frame, movieFragment);
+                        transaction.replace(R.id.main_frame, new MovieFragment());
                         break;
                     case R.id.main_cinema_rb:
                         initLast(mainCinemaRb);
@@ -85,7 +85,7 @@ public class MainActivity extends BaseActivity {
                     case R.id.main_find_rb:
                         initLast(mainFindRb);
                         mainFindRb.setSelected(true);
-                        transaction.replace(R.id.main_frame, findFragment);
+                        transaction.replace(R.id.main_frame, new FindFragment());
                         break;
                     case R.id.main_my_rb:
                         initLast(mainMyRb);
@@ -113,7 +113,6 @@ public class MainActivity extends BaseActivity {
      * 跳转fragment 的通用方法
      *
      * @param t
-     * @param <T>
      */
     public void jumpFragment(Fragment t) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
