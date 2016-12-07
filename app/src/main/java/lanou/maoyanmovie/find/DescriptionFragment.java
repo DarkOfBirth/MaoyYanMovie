@@ -61,20 +61,19 @@ public class DescriptionFragment extends BaseFragment implements View.OnClickLis
         mNickName = bundle.getString("nickName");
         mUrlImg = bundle.getString("urlImg");
         mMainTitle = bundle.getString("title");
-
-
+        
         mTitle = bundle.getString("Title");
         descriptionTitle.setText(mTitle);
         if (mFeedType == 7) {
             mUrlIntent = MovieValues.TODAY_DETAIL + mTargetId + "?_v_=yes";
         } else if (mFeedType == 2 || mFeedType == 10) {
-            mUrlIntent = "http://m.maoyan.com/topic/" + mTargetId + "?_v_=yes";
+            mUrlIntent = MovieValues.TODAY_DETAIL_ELSE + mTargetId + "?_v_=yes";
         } else if (mTitle.equals("今日TOP10")) {
-            mUrlIntent = "http://m.maoyan.com/information?_v_=yes&groupId=1481354&pageType=1&title=今日TOP10";
+            mUrlIntent = MovieValues.MOVIE_FIND_TOP10;
         } else if (mTitle.equals("实时票房")) {
-            mUrlIntent = "http://piaofang.maoyan.com/?f=android&userid=-1";
+            mUrlIntent = MovieValues.MOVIE_FIND_NOW;
         } else if (mTitle.equals("影视快讯")) {
-            mUrlIntent = "http://m.maoyan.com/information?_v_=yes";
+            mUrlIntent = MovieValues.MOVIE_FIND_FAST_MSG;
         }
         mFindWv.loadUrl(mUrlIntent);
         mFindWv.setWebViewClient(new WebViewClient() {

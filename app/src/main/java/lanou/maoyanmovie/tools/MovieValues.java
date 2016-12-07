@@ -28,6 +28,8 @@ public class MovieValues {
     public static final String FIND_TODAY = "http://api.maoyan.com/sns/v5/feed.json?";
     //发现 -> 今天 -> 点击详情
     public static final String TODAY_DETAIL = "http://m.maoyan.com/information/";
+    //发现 -> 今天 -> 点击详情(另一种)
+    public static final String TODAY_DETAIL_ELSE = "http://m.maoyan.com/topic/";
     //post请求都有的 url (不确定 先这样写)
     public static final String BASE_POST_URL = "http://api.mobile.meituan.com/combo/v2/combo.json";
     //周边商城 上面十个按钮
@@ -35,6 +37,13 @@ public class MovieValues {
     //周边商城 每月特价
     public static final String STORE_MONTH_DISCOUNT = "http://api.maoyan.com/mallpro/topicList.json";
 
+
+    //电影 ->发现 ->快讯
+    public static final String MOVIE_FIND_FAST_MSG = "http://m.maoyan.com/information?_v_=yes";
+    //电影 ->发现 ->实时票房
+    public static final String MOVIE_FIND_NOW = "http://piaofang.maoyan.com/?f=android&userid=-1";
+    //电影 ->发现 ->TOP10
+    public static final String MOVIE_FIND_TOP10 = "http://m.maoyan.com/information?_v_=yes&groupId=1481354&pageType=1&title=今日TOP10";
     //电影 ->发现 ->找片 -> 类型/地区/年代
     public static final String MOVIE_FIND_TYPE_WHERE_WHEN = "http://api.maoyan.com/mmdb/search/movie/tag/types.json?";
     //电影 ->发现 ->找片 -> 热映口碑等四个
