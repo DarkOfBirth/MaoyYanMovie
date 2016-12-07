@@ -54,14 +54,20 @@ public class StoreLikeBean {
             this.list = list;
         }
 
+        public void add(List<ListBean> list) {
+            for (int i = 0; i < list.size(); i++) {
+                this.list.add(this.list.size(), list.get(i));
+            }
+        }
+
         public static class ListBean {
             private int dealid;
             private String notes;
             private String pic;
-            private int price;
+            private float price;
             private String shortTitle;
             private String title;
-            private int value;
+            private float value;
 
             public int getDealid() {
                 return dealid;
@@ -87,13 +93,7 @@ public class StoreLikeBean {
                 this.pic = pic;
             }
 
-            public int getPrice() {
-                return price;
-            }
 
-            public void setPrice(int price) {
-                this.price = price;
-            }
 
             public String getShortTitle() {
                 return shortTitle;
@@ -111,11 +111,19 @@ public class StoreLikeBean {
                 this.title = title;
             }
 
-            public int getValue() {
+            public float getPrice() {
+                return price;
+            }
+
+            public void setPrice(float price) {
+                this.price = price;
+            }
+
+            public float getValue() {
                 return value;
             }
 
-            public void setValue(int value) {
+            public void setValue(float value) {
                 this.value = value;
             }
         }

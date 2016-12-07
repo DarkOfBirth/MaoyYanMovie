@@ -20,9 +20,10 @@ import lanou.maoyanmovie.base.MyApplication;
 import lanou.maoyanmovie.bean.LocationBean;
 import lanou.maoyanmovie.httptools.HttpUtil;
 import lanou.maoyanmovie.httptools.ResponseCallBack;
+import lanou.maoyanmovie.tools.CommonVH;
 
 /**
- * Created by zhangxutong .
+ * Created by 王一鸣
  * Date: 16/08/28
  */
 
@@ -80,12 +81,12 @@ public class CityAdapter extends RecyclerView.Adapter<CommonVH> {
                     @Override
                     public void onClick(View v) {
                         Location cityLocation = getLocation();
-
+                        Log.d("CityAdapter", "cityLocation:" + cityLocation);
                         if (cityLocation != null) {
                             // 显示当前设备的位置信息
                             mLatitude = cityLocation.getLatitude();
                             mLongitude = cityLocation.getLongitude();
-
+                            Log.d("CityAdapter", "mLatitude:" + mLatitude);
                             HttpUtil.getLocationByLongitudeAndLatitude(mLongitude, mLatitude, new ResponseCallBack<LocationBean>() {
                                 @Override
                                 public void onError(Exception e) {
@@ -98,8 +99,8 @@ public class CityAdapter extends RecyclerView.Adapter<CommonVH> {
 
                                     holder.setText(R.id.postion_city_tv, mCity);
 
-                                   getCityId();
-                                    mOnSelectCity.selectCityName(mCity,getCityId());
+                                    getCityId();
+                                    mOnSelectCity.selectCityName(mCity, getCityId());
 
                                 }
                             });
@@ -123,7 +124,7 @@ public class CityAdapter extends RecyclerView.Adapter<CommonVH> {
                     @Override
                     public void onClick(View v) {
                         Toast.makeText(mContext, "mDatas.get(position).getId():" + mDatas.get(position).getId(), Toast.LENGTH_SHORT).show();
-                        mOnSelectCity.selectCityName(mDatas.get(position).getNm(),mDatas.get(position).getId() + "");
+                        mOnSelectCity.selectCityName(mDatas.get(position).getNm(), mDatas.get(position).getId() + "");
                     }
                 });
                 break;
@@ -143,12 +144,12 @@ public class CityAdapter extends RecyclerView.Adapter<CommonVH> {
     public int getItemCount() {
         return mDatas != null ? mDatas.size() : 0;
     }
-    private  String getCityId(){
+
+    private String getCityId() {
         String cityId = "-1";
         for (CityBean.CtsBean data : mDatas) {
             if (mCity.equals(data.getNm())) {
-                Log.d("CityAdapter", "匹配成功");
-                Toast.makeText(mContext, "data.getId():" + data.getId() + "", Toast.LENGTH_SHORT).show();
+
                 cityId = String.valueOf(data.getId());
 
 
@@ -159,6 +160,7 @@ public class CityAdapter extends RecyclerView.Adapter<CommonVH> {
 
     /**
      * 获取经纬度
+     *
      * @return
      */
     public Location getLocation() {
@@ -183,20 +185,18 @@ public class CityAdapter extends RecyclerView.Adapter<CommonVH> {
         List<String> providerList = locationManager.getProviders(true);
 
         if (providerList.contains(LocationManager.NETWORK_PROVIDER)) {
-            Log.d("MainActivity", "network");
 
             mProvider = LocationManager.NETWORK_PROVIDER;
         } else {
             Toast.makeText(MyApplication.getmContext(), "No location provider to use", Toast.LENGTH_SHORT).show();
         }
-        Log.d("MainActivity1", mProvider);
+
 
         mLocation = locationManager.getLastKnownLocation(mProvider);
-        Log.d("MainActivity", "mLocation:" + mLocation);
+
 
         return mLocation;
     }
-
 
 
 }

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--<com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout-->
-    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
-    <!--android:id="@+id/refreshLayout"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--app:tr_head_height="100dp"-->
-    <!--app:tr_wave_height="180dp">-->
+<com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/refreshLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:tr_head_height="100dp"
+    app:tr_wave_height="180dp">
 
     <ScrollView
 
@@ -626,4 +626,4 @@
 
         </LinearLayout>
     </ScrollView>
-<!--</com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>-->
+</com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>

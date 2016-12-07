@@ -6,6 +6,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -16,7 +17,7 @@ import lanou.maoyanmovie.R;
 import lanou.maoyanmovie.base.MyApplication;
 import lanou.maoyanmovie.bean.HistoryBean;
 import lanou.maoyanmovie.bean.HotSearchBean;
-import lanou.maoyanmovie.city.CommonVH;
+import lanou.maoyanmovie.tools.CommonVH;
 import lanou.maoyanmovie.httptools.HttpUtil;
 import lanou.maoyanmovie.httptools.ResponseCallBack;
 import lanou.maoyanmovie.tools.DBTools;
@@ -85,7 +86,7 @@ public class InitAdapter extends RecyclerView.Adapter<CommonVH> {
                 RecyclerView recyclerView = (RecyclerView) holder.getItemView().findViewById(R.id.hot_search_rv);
                 HotSearchAdapter adapter = new HotSearchAdapter();
                 recyclerView.setAdapter(adapter);
-                StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.HORIZONTAL);
+                StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
 
                 GridLayoutManager gridLayoutManager = new GridLayoutManager(holder.getItemView().getContext(), 3);
                 recyclerView.setLayoutManager(manager);
@@ -100,10 +101,8 @@ public class InitAdapter extends RecyclerView.Adapter<CommonVH> {
 
                     @Override
                     public void onResponse(HotSearchBean hotSearchBean) {
-                        for (int i = 0; i < hotSearchBean.getData().size(); i++) {
-                            hotArrayList.add(hotSearchBean.getData().get(i).getNm());
-                        }
-                        adapter.setHotArrayList(hotArrayList);
+                        Log.d("InitAdapter", "热门数据");
+                       adapter.setHotSearchBean(hotSearchBean);
                     }
                 });
 

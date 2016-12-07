@@ -2,6 +2,7 @@ package lanou.maoyanmovie.movie;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -19,6 +20,7 @@ import lanou.maoyanmovie.city.CityFragment;
 import lanou.maoyanmovie.movie.find.FindPageFragment;
 import lanou.maoyanmovie.movie.hot.HotFragment;
 import lanou.maoyanmovie.movie.wait.WaitFragment;
+import lanou.maoyanmovie.weather.WeatherFragment;
 
 /**
  * Created by dllo on 16/11/21.
@@ -113,11 +115,11 @@ public class MovieFragment extends BaseFragment implements View.OnClickListener 
                 mActivity.jumpFragment(mCityFragment);
                 break;
             case R.id.weather_iv:
-//                WeatherFragment weatherFragment = new WeatherFragment();
-//                Bundle bundle = new Bundle();
-//                bundle.putString("city", mLocation.getText().toString());
-//                weatherFragment.setArguments(bundle);
-//                mActivity.jumpFragment(weatherFragment);
+                WeatherFragment weatherFragment = new WeatherFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("city", mLocation.getText().toString());
+                weatherFragment.setArguments(bundle);
+                mActivity.jumpFragment(weatherFragment);
                 break;
         }
     }
