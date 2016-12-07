@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#f9f9f9">
+
+    <FrameLayout
+        android:id="@+id/register_fl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:layout_marginTop="10dp"
+                android:hint="请输入验证码"
+                android:background="#ffffff"/>
+
+            <Button
+                android:id="@+id/code_check_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:text="验证"
+                android:textSize="20sp"
+                android:textColor="#ffffff"
+                android:background="#f27f78"/>
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

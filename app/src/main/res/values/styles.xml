@@ -1,11 +1,21 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-
+    <declare-styleable name="Ring">
+        <!--文本内容-->
+        <attr name="text" format="string"/>
+        <!--数值-->
+        <attr name="num"  format="integer"/>
+        <!--缩写-->
+        <attr name="abbr" format="string"/>
+        <!--级别-->
+        <attr name="leval" format="string"/>
+        
+    </declare-styleable>
 </resources>

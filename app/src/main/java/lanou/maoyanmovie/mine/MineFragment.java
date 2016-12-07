@@ -1,15 +1,17 @@
 package lanou.maoyanmovie.mine;
 
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+import lanou.maoyanmovie.base.BaseFragment;
+
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-
 import lanou.maoyanmovie.MainActivity;
 import lanou.maoyanmovie.R;
-import lanou.maoyanmovie.base.BaseFragment;
 import lanou.maoyanmovie.collect.CollectFragment;
+import lanou.maoyanmovie.mine.login.LoginFragment;
+import lanou.maoyanmovie.mine.setting.SettingFragment;
+
 
 /**
  * Created by dllo on 16/11/21.
@@ -18,11 +20,12 @@ import lanou.maoyanmovie.collect.CollectFragment;
 public class MineFragment extends BaseFragment implements View.OnClickListener {
 
     private RelativeLayout mMainMineSettingRl;
-    private FragmentManager manager;
-    private FragmentTransaction transaction;
     private SettingFragment mSettingFragment;
     private RelativeLayout mMainMineCollectRl;
     private CollectFragment mCollectFragment;
+    private LoginFragment mLoginFragment;
+    private LinearLayout mLoginLl;
+    private MainActivity mActivity;
 
     @Override
     protected int getLayout() {
@@ -33,19 +36,19 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
     protected void initView() {
         mMainMineSettingRl = bindView(R.id.main_mine_setting_rl);
         mMainMineCollectRl = bindView(R.id.main_mine_collect_rl);
+        mLoginLl = bindView(R.id.fragment_mine_login_ll);
     }
 
     @Override
     protected void initData() {
-        //初始化fragment
-
-        manager = getFragmentManager();
+        mActivity = (MainActivity) getActivity();
     }
 
     @Override
     protected void initClick() {
         mMainMineSettingRl.setOnClickListener(this);
         mMainMineCollectRl.setOnClickListener(this);
+        mLoginLl.setOnClickListener(this);
     }
 
     @Override
@@ -53,8 +56,11 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.main_mine_setting_rl:
                 mSettingFragment = new SettingFragment();
-                MainActivity activity = (MainActivity) getActivity();
-                activity.jumpFragment(mSettingFragment);
+                mActivity.jumpFragment(mSettingFragment);
+                break;
+            case R.id.fragment_mine_login_ll:
+                mLoginFragment = new LoginFragment();
+                mActivity.jumpFragment(mLoginFragment);
                 break;
             case R.id.main_mine_collect_rl:
                 Log.d("MineFragment", "点击了");

@@ -5,6 +5,20 @@ package lanou.maoyanmovie.tools;
  */
 
 public class MovieValues {
+    //电影 -> 热映 -> 轮播图
+    public static final String MOVIE_HOT_BANNER = "http://advert.mobile.meituan" +
+            ".com/api/v3/adverts?cityid=10&category=11&version=7.5" +
+            ".0&new=0&app=movie&clienttp=android&uuid" +
+            "=2C2C0ECD557F366849954BEF88D0017A2348CB73AF77F7971799A5010CBBDD2A&devid" +
+            "=000000000000000&uid=&movieid=&partner=1&apptype=1";
+    //电影 -> 热映 -> 列表
+    public static final String MOVIE_HOT_LIST = "http://m.maoyan.com/movie/list" +
+            ".json?type=hot&limit=12&";
+    //电影 -> 热映 -> 列表 -> 详情
+    public static final String MOVIE_HOT_LIST_DETAIL = "http://m.maoyan.com/movie/";
+
+    //电影
+    public static final String MOVIE_WAIT = "http://api.maoyan.com/mmdb/movie/lp/list.json";
 
     //发现 -> 周边商城 -> 您可能喜欢
     public static final String STORE_LIKE = "http://api.maoyan.com/mallpro/recommended.json?";
@@ -17,9 +31,10 @@ public class MovieValues {
     //post请求都有的 url (不确定 先这样写)
     public static final String BASE_POST_URL = "http://api.mobile.meituan.com/combo/v2/combo.json";
     //周边商城 上面十个按钮
-    public static  final String STORE_TOP = "http://api.maoyan.com/mallpro/category.json";
+    public static final String STORE_TOP = "http://api.maoyan.com/mallpro/category.json";
     //周边商城 每月特价
     public static final String STORE_MONTH_DISCOUNT = "http://api.maoyan.com/mallpro/topicList.json";
+
     //电影 ->发现 ->找片 -> 类型/地区/年代
     public static final String MOVIE_FIND_TYPE_WHERE_WHEN = "http://api.maoyan.com/mmdb/search/movie/tag/types.json?";
     //电影 ->发现 ->找片 -> 热映口碑等四个
@@ -28,4 +43,14 @@ public class MovieValues {
     public static final String MOVIE_FIND_ALL_PRIZE = "http://api.maoyan.com/mmdb/movie/winning/film/2016-11-21/list.json?";
     //电影 ->发现 ->找片 ->全部电影奖项
     public static final String MOVIE_FIND_ALL_PRIZE_BODY = "http://api.maoyan.com/mmdb/movie/region/festival/list.json?";
+
+    // 根据经纬度获取城市的名字
+    public static final String LOCATION_LONGITUDE_LATITUDE = "http://api.avatardata.cn/CoordAddress/Lookup?key=b43534b71d1c4e18b935d548949205ba&";
+    // 获取天气状况
+    public static final String WEATHER_INFO = "http://api.avatardata.cn/Weather/Query?key=332e124a609c4e8ebcb1493a380ff48a&cityname=";
+    // 热门搜索
+    public static final String HOT_SEARCH = "http://api.maoyan.com/mmdb/search/movie/hotmovie/list.json?tp=4&keyword=&limit=0&offset=0&cityId=";
+    // 搜索框
+    public static final String SEARCH_KEY = "http://api.maoyan.com/mmdb/search/integrated/keyword/list.json?almtype=1&stype=-1&refer=1&iscorrected=false&limit=10&offset=0&ci=20&keyword=";
+
 }
