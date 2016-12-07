@@ -1,7 +1,6 @@
 package lanou.maoyanmovie.movie.hot;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 
@@ -29,18 +28,10 @@ public class HotListDetailFragment extends BaseFragment {
     protected void initData() {
         Bundle arguments = getArguments();
         int movieId = arguments.getInt("movieId");
-        Log.d("HotListDetailFragment", "movieId:" + movieId);
         String url = MovieValues.MOVIE_HOT_LIST_DETAIL  + String.valueOf(movieId) + "?_v_=yes";
         mHotListDetailWv.getSettings().setJavaScriptEnabled(true);
         mHotListDetailWv.setWebChromeClient(new WebChromeClient());
         mHotListDetailWv.loadUrl(url);
-//        mHotListDetailWv.setWebViewClient(new WebViewClient() {
-//            @Override
-//            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-//                view.loadUrl(url);
-//                return true;
-//            }
-//        });
     }
 
     @Override

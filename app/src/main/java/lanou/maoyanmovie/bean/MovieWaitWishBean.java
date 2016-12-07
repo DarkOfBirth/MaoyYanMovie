@@ -1,4 +1,4 @@
-package lanou.maoyanmovie.httptools;
+package lanou.maoyanmovie.bean;
 
 import java.util.List;
 
@@ -110,18 +110,18 @@ public class MovieWaitWishBean {
             private String img;
             private boolean late;
             private int localPubSt;
-            private int mk;
+            private float mk;
             private String nm;
             private int pn;
             private boolean preShow;
-            private int proScore;
+            private float proScore;
             private int proScoreNum;
             private long pubDate;
             private int pubShowNum;
             private int recentShowDate;
             private int recentShowNum;
             private String rt;
-            private int sc;
+            private float sc;
             private String scm;
             private String showInfo;
             private int showNum;
@@ -260,11 +260,11 @@ public class MovieWaitWishBean {
                 this.localPubSt = localPubSt;
             }
 
-            public int getMk() {
+            public float getMk() {
                 return mk;
             }
 
-            public void setMk(int mk) {
+            public void setMk(float mk) {
                 this.mk = mk;
             }
 
@@ -292,11 +292,11 @@ public class MovieWaitWishBean {
                 this.preShow = preShow;
             }
 
-            public int getProScore() {
+            public float getProScore() {
                 return proScore;
             }
 
-            public void setProScore(int proScore) {
+            public void setProScore(float proScore) {
                 this.proScore = proScore;
             }
 
@@ -348,11 +348,11 @@ public class MovieWaitWishBean {
                 this.rt = rt;
             }
 
-            public int getSc() {
+            public float getSc() {
                 return sc;
             }
 
-            public void setSc(int sc) {
+            public void setSc(float sc) {
                 this.sc = sc;
             }
 

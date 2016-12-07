@@ -8,6 +8,7 @@ import lanou.maoyanmovie.bean.LocationBean;
 import lanou.maoyanmovie.bean.MovieHotBannerBean;
 import lanou.maoyanmovie.bean.MovieHotListBean;
 import lanou.maoyanmovie.bean.MovieWaitBean;
+import lanou.maoyanmovie.bean.MovieWaitWishBean;
 import lanou.maoyanmovie.bean.SearchBean;
 import lanou.maoyanmovie.bean.StoreLikeBean;
 import lanou.maoyanmovie.bean.StoreMonthDiscountBean;

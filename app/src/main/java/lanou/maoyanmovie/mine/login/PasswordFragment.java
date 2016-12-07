@@ -1,5 +1,6 @@
 package lanou.maoyanmovie.mine.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -8,13 +9,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
-import lanou.maoyanmovie.MainActivity;
 import lanou.maoyanmovie.R;
 import lanou.maoyanmovie.base.BaseFragment;
 import lanou.maoyanmovie.bean.MyUser;
-import lanou.maoyanmovie.mine.MineFragment;
 import lanou.maoyanmovie.tools.LoginTool;
 
 /**
@@ -73,20 +73,17 @@ public class PasswordFragment extends BaseFragment implements View.OnClickListen
                 myUser.setUsername(mPhoneNum);
                 myUser.setPassword(mPwd);
                 myUser.setIcon(LoginTool.icon);
-                myUser.save(new SaveListener<MyUser>() {
+                myUser.signUp(new SaveListener<MyUser>() {
                     @Override
-                 public void done(MyUser user, BmobException e) {
+                    public void done(MyUser myUser, BmobException e) {
                         if (e == null) {
                             Toast.makeText(mContext, "注册成功", Toast.LENGTH_SHORT).show();
                             //注册成功，切换到"我的"界面
-                            MainActivity activity = (MainActivity) getActivity();
-                            MineFragment mineFragment = new MineFragment();
-                            Bundle bundle = new Bundle();
-                            bundle.putString("objectId", user.getObjectId());
-                            mineFragment.setArguments(bundle);
-                            activity.jumpFragment(mineFragment);
-                        } else {
-                            Toast.makeText(mContext, "注册失败", Toast.LENGTH_SHORT).show();
+                            MyUser user = BmobUser.getCurrentUser(MyUser.class);
+                            Intent intent = new Intent("sendInfo");
+                            intent.putExtra("objectId", user.getObjectId());
+                            mContext.sendBroadcast(intent);
+                            getActivity().onBackPressed();
                         }
                     }
                 });

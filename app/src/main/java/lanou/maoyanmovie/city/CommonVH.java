@@ -9,6 +9,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
+import lanou.maoyanmovie.base.MyApplication;
+
 /**
  * Created by dllo on 16/10/31.
  * 通用的Viewholder
@@ -105,16 +109,11 @@ public class CommonVH extends RecyclerView.ViewHolder {
         return this;
     }
 
-//    public CommonVH setImage(int id, String imgurl) {
-//        ImageView imageView = getView(id);
-//
-//        SingleVolley.getInstance().getImage(imgurl,imageView);
-//        return this;
-//
-//    }
-
-
-
+    public CommonVH setImage(int id, String url) {
+        ImageView imageView = getView(id);
+        Picasso.with(MyApplication.getmContext()).load(url).fit().into(imageView);
+        return this;
+    }
 
     public CommonVH setViewClick(int id, View.OnClickListener listener) {
         // 此处为接口

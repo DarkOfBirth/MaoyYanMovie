@@ -70,7 +70,7 @@ public class HotFragment extends BaseFragment implements OnMovieIdClickListener 
 
 
         //初始列表
-        HttpUtil.getMovieHotList(mCityId,offset, new ResponseCallBack<MovieHotListBean>() {
+        HttpUtil.getMovieHotList(mCityId, offset, new ResponseCallBack<MovieHotListBean>() {
             @Override
             public void onError(Exception e) {
                 Log.d("HotFragment", "请求失败");
@@ -132,7 +132,7 @@ public class HotFragment extends BaseFragment implements OnMovieIdClickListener 
     public void onMessageEvent(CityMessage event) {
 
         mCityId = event.getCityId();
-        HttpUtil.getMovieHotList(mCityId,0, new ResponseCallBack<MovieHotListBean>() {
+        HttpUtil.getMovieHotList(mCityId, 0, new ResponseCallBack<MovieHotListBean>() {
             @Override
             public void onError(Exception e) {
 
@@ -153,9 +153,8 @@ public class HotFragment extends BaseFragment implements OnMovieIdClickListener 
         bundle.putInt("movieId", movieId);
         hotListDetailFragment.setArguments(bundle);
         //用占位替换Fragment
-        MainActivity activity = (MainActivity) getActivity();
+        MainActivity activity = (MainActivity) mContext;
         activity.jumpFragment(hotListDetailFragment);
-        Log.d("HotFragment", "movieId:" + movieId);
     }
 
     @Override

@@ -83,7 +83,6 @@ public class CodeFragment extends BaseFragment implements View.OnClickListener {
                 if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE) {
                     //提交验证码成功
                     Toast.makeText(mContext, "提交验证码成功", Toast.LENGTH_SHORT).show();
-
                     PasswordFragment passwordFragment = new PasswordFragment();
                     Bundle bundle = new Bundle();
                     bundle.putString("phoneNum", mPhoneNum);
@@ -92,6 +91,7 @@ public class CodeFragment extends BaseFragment implements View.OnClickListener {
                     FragmentManager manager = getChildFragmentManager();
                     FragmentTransaction transaction = manager.beginTransaction();
                     transaction.replace(R.id.register_fl, passwordFragment);
+                    transaction.addToBackStack(null);
                     transaction.commit();
                 } else if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE) {
                     //获取验证码成功
