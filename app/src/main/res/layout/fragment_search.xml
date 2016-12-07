@@ -18,6 +18,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/white_corner"
         android:textSize="18sp"
+
         android:paddingLeft="5dp"
         android:hint="找影视剧、人、 影院"
 
@@ -31,6 +32,7 @@
     android:layout_height="match_parent"
     android:text="取消"
     android:textSize="20sp"
+    android:contextClickable="true"
     android:textColor="#fff"
     android:gravity="center"
     />

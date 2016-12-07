@@ -2,7 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:paddingTop="10dp">
+              android:layout_height="match_parent">
+    <com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView
+        android:id="@+id/movie_find_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+    </com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView>
 </LinearLayout>

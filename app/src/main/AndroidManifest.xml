@@ -19,6 +19,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:name=".base.MyApplication"
+
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".MainActivity">
             <intent-filter>

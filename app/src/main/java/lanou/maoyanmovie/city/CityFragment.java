@@ -67,7 +67,6 @@ public class CityFragment extends BaseFragment {
             @Override
             public void onMove(float cellHeight, String character, int index) {
                 buddle.setVisibility(View.VISIBLE);
-                Log.d("MainActivity", character);
                 buddle.setY(cellHeight * index);
                 buddle.setText(character);
                 //优化部分
@@ -77,7 +76,6 @@ public class CityFragment extends BaseFragment {
 
                     mRecyclerView.smoothScrollToPosition(currentPostion + 3);
                 }
-                //              Log.d("MainActivity", "System.currentTimeMillis() - startTime:" + (System.currentTimeMillis() - startTime));
             }
 
             @Override
@@ -190,7 +188,6 @@ public class CityFragment extends BaseFragment {
             }
         }
 
-        Log.d("MainActivity", stringBuilder.toString());
         mGson = new Gson();
         CityBean cityBean = mGson.fromJson(stringBuilder.toString(), CityBean.class);
         Toast.makeText(mContext, "cityBean.getCts().get(1).getId():" + cityBean.getCts().get(1).getId(), Toast.LENGTH_SHORT).show();
@@ -200,13 +197,11 @@ public class CityFragment extends BaseFragment {
             cityBean.getCts().get(i).setFirstLetter(firstLetter);
 
             mCtsBeanArrayList.add(cityBean.getCts().get(i));
-            Log.d("MainActivity", mCtsBeanArrayList.get(i).getFirstLetter() + mCtsBeanArrayList.get(i).getNm());
 
         }
         Collections.sort(mCtsBeanArrayList, new PinyinComparator());
         for (int i = 0; i < cityBean.getCts().size(); i++) {
 
-            Log.d("MainActivity", mCtsBeanArrayList.get(i).getFirstLetter() + mCtsBeanArrayList.get(i).getNm());
 
         }
 

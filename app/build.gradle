@@ -55,9 +55,9 @@ dependencies {
     compile name: 'SMSSDK-2.1.2', ext: 'aar'
     compile name: 'SMSSDKGUI-2.1.2', ext: 'aar'
     compile files('libs/BmobSDK_3.5.2_20161027.jar')
-  //  compile 'com.lcodecorex:tkrefreshlayout:1.0.3'
-    compile 'org.greenrobot:eventbus:3.0.0'
     compile files('libs/lite-orm-1.9.2.jar')
+    compile 'com.lcodecorex:tkrefreshlayout:1.0.3'
+    compile 'org.greenrobot:eventbus:3.0.0'
 }
 
 dependencies {

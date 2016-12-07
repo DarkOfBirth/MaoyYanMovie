@@ -1,6 +1,7 @@
 package lanou.maoyanmovie.mine;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -17,8 +18,10 @@ import lanou.maoyanmovie.MainActivity;
 import lanou.maoyanmovie.R;
 import lanou.maoyanmovie.base.BaseFragment;
 import lanou.maoyanmovie.bean.MyUser;
+import lanou.maoyanmovie.collect.CollectFragment;
 import lanou.maoyanmovie.mine.login.LoginFragment;
 import lanou.maoyanmovie.mine.setting.SettingFragment;
+
 
 /**
  * Created by dllo on 16/11/21.
@@ -30,6 +33,8 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
     private RelativeLayout mMainMineSettingRl;
     private TextView mUserTv;
     private SettingFragment mSettingFragment;
+    private RelativeLayout mMainMineCollectRl;
+    private CollectFragment mCollectFragment;
     private LoginFragment mLoginFragment;
     private LinearLayout mLoginLl;
     private MainActivity mActivity;
@@ -44,6 +49,7 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
     protected void initView() {
         mMainMineSettingRl = bindView(R.id.main_mine_setting_rl);
         mUserTv = bindView(R.id.main_mine_username);
+        mMainMineCollectRl = bindView(R.id.main_mine_collect_rl);
         mLoginLl = bindView(R.id.fragment_mine_login_ll);
         mIconIv = bindView(R.id.fragment_mine_login_icon);
     }
@@ -71,6 +77,7 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
     @Override
     protected void initClick() {
         mMainMineSettingRl.setOnClickListener(this);
+        mMainMineCollectRl.setOnClickListener(this);
         mLoginLl.setOnClickListener(this);
     }
 
@@ -85,6 +92,12 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
             case R.id.fragment_mine_login_ll:
                 mLoginFragment = new LoginFragment();
                 mActivity.jumpFragment(mLoginFragment);
+                break;
+            case R.id.main_mine_collect_rl:
+                Log.d("MineFragment", "点击了");
+                mCollectFragment = new CollectFragment();
+                MainActivity activity1 = (MainActivity) getActivity();
+                activity1.jumpFragment(mCollectFragment);
                 break;
         }
     }

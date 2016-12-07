@@ -1,4 +1,4 @@
-package lanou.maoyanmovie.city;
+package lanou.maoyanmovie.tools;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -8,6 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
+
+import lanou.maoyanmovie.base.MyApplication;
 
 /**
  * Created by dllo on 16/10/31.
@@ -105,13 +109,14 @@ public class CommonVH extends RecyclerView.ViewHolder {
         return this;
     }
 
-//    public CommonVH setImage(int id, String imgurl) {
-//        ImageView imageView = getView(id);
-//
-//        SingleVolley.getInstance().getImage(imgurl,imageView);
-//        return this;
-//
-//    }
+    public CommonVH setImage(int id, String imgurl) {
+        ImageView imageView = getView(id);
+
+        //SingleVolley.getInstance().getImage(imgurl,imageView);\
+        Picasso.with(MyApplication.getmContext()).load(imgurl).fit().into(imageView);
+        return this;
+
+    }
 
 
 

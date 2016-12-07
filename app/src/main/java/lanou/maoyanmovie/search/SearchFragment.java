@@ -1,15 +1,19 @@
 package lanou.maoyanmovie.search;
 
+import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import lanou.maoyanmovie.R;
 import lanou.maoyanmovie.base.BaseFragment;
 import lanou.maoyanmovie.bean.HistoryBean;
-import lanou.maoyanmovie.bean.SearchBean;
-import lanou.maoyanmovie.httptools.HttpUtil;
-import lanou.maoyanmovie.httptools.ResponseCallBack;
+import lanou.maoyanmovie.event.SearchHistory;
 import lanou.maoyanmovie.tools.DBTools;
 
 /**
@@ -19,6 +23,20 @@ import lanou.maoyanmovie.tools.DBTools;
 public class SearchFragment extends BaseFragment {
 
     private EditText searchKey;
+    private TextView cancelTv;
+    private InitSearchFragment mInitSearchFragment;
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
 
     @Override
     protected int getLayout() {
@@ -29,15 +47,22 @@ public class SearchFragment extends BaseFragment {
     @Override
     protected void initView() {
         searchKey = bindView(R.id.search_content_et);
+        cancelTv = bindView(R.id.search_cancel_tv);
     }
 
     @Override
     protected void initData() {
-        InitSearchFragment initSearchFragment = new InitSearchFragment();
-        getFragmentManager().beginTransaction().add(R.id.serarch_result_fl, initSearchFragment).addToBackStack(null).commit();
+        mInitSearchFragment = new InitSearchFragment();
+        getFragmentManager().beginTransaction().add(R.id.serarch_result_fl, mInitSearchFragment).addToBackStack(null).commit();
+
 
     }
+ @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(SearchHistory event){
+        jumpToResult(event.getContent());
 
+
+    }
     @Override
     protected void initClick() {
         searchKey.setOnKeyListener(new View.OnKeyListener() {
@@ -45,33 +70,49 @@ public class SearchFragment extends BaseFragment {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
 
-                if(keyCode==KeyEvent.KEYCODE_ENTER){
-                  // 如果是回车键, 进行插入数据库操作
-                    if(event.getAction() == KeyEvent.ACTION_UP){
+                if (keyCode == KeyEvent.KEYCODE_ENTER) {
+                    String str = searchKey.getText().toString();
+                    if ("".equals(str)) {
+                        return false;
+                    }
+                    // 如果是回车键, 进行插入数据库操作
+                    if (event.getAction() == KeyEvent.ACTION_UP) {
 
-                    DBTools.getInstance().inserthistoryInfo(new HistoryBean(searchKey.getText().toString()));
-                        HttpUtil.getSearcheyInfo(searchKey.getText().toString(), new ResponseCallBack<SearchBean>() {
-                            @Override
-                            public void onError(Exception e) {
+                    jumpToResult(str);
 
-                            }
-
-                            @Override
-                            public void onResponse(SearchBean searchBean) {
-
-                            }
-                        });
                     }
 
                     return true;
                 }
                 return false;
             }
+
+
         });
 
 
+        cancelTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mInitSearchFragment = new InitSearchFragment();
+                getFragmentManager().beginTransaction().replace(R.id.serarch_result_fl, mInitSearchFragment).addToBackStack(null).commit();
+            }
+        });
 
 
+    }
+
+    private void jumpToResult(String str) {
+
+        DBTools.getInstance().deleteOneHistoryInfo(HistoryBean.class,str);
+        DBTools.getInstance().inserthistoryInfo(new HistoryBean(str));
+
+        SearchResultFragment searchResultFragment = new SearchResultFragment();
+        Bundle bundle = new Bundle();
+
+        bundle.putString("key", str);
+        searchResultFragment.setArguments(bundle);
+        getFragmentManager().beginTransaction().add(R.id.serarch_result_fl, searchResultFragment).addToBackStack(null).commit();
 
     }
 
