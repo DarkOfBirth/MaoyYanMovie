@@ -4,9 +4,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.greenrobot.eventbus.EventBus;
+
 import lanou.maoyanmovie.R;
 import lanou.maoyanmovie.bean.HotSearchBean;
 import lanou.maoyanmovie.city.CommonVH;
+import lanou.maoyanmovie.event.SearchHistory;
 
 /**
  * created by 王一鸣 16/12/5.
@@ -33,7 +36,7 @@ public class HotSearchAdapter extends RecyclerView.Adapter<CommonVH>{
             holder.setItemClick(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    EventBus.getDefault().post(new SearchHistory(mHotSearchBean.getData().get(position).getId() + ""));
                 }
             });
     }

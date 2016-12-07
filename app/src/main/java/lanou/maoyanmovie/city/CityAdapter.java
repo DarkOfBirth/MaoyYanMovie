@@ -147,8 +147,7 @@ public class CityAdapter extends RecyclerView.Adapter<CommonVH> {
         String cityId = "-1";
         for (CityBean.CtsBean data : mDatas) {
             if (mCity.equals(data.getNm())) {
-                Log.d("CityAdapter", "匹配成功");
-                Toast.makeText(mContext, "data.getId():" + data.getId() + "", Toast.LENGTH_SHORT).show();
+
                 cityId = String.valueOf(data.getId());
 
 
@@ -183,16 +182,15 @@ public class CityAdapter extends RecyclerView.Adapter<CommonVH> {
         List<String> providerList = locationManager.getProviders(true);
 
         if (providerList.contains(LocationManager.NETWORK_PROVIDER)) {
-            Log.d("MainActivity", "network");
 
             mProvider = LocationManager.NETWORK_PROVIDER;
         } else {
             Toast.makeText(MyApplication.getmContext(), "No location provider to use", Toast.LENGTH_SHORT).show();
         }
-        Log.d("MainActivity1", mProvider);
+
 
         mLocation = locationManager.getLastKnownLocation(mProvider);
-        Log.d("MainActivity", "mLocation:" + mLocation);
+
 
         return mLocation;
     }

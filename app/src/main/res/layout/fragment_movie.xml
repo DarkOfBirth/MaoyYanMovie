@@ -19,6 +19,7 @@
             android:clickable="true"
             android:gravity="center_vertical|right"
             android:text="大连"
+            android:lines="1"
             android:textColor="#fff"
             android:textSize="18sp"
             />
@@ -43,8 +44,9 @@
             android:id="@+id/weather_iv"
             android:layout_width="0dp"
             android:layout_height="30dp"
+
             android:layout_weight="1"
-            android:text="天气"
+            android:text="     天气"
             android:textSize="18sp"
             android:textColor="#fff"
             />
