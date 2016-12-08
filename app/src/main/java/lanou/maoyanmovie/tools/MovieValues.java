@@ -52,7 +52,8 @@ public class MovieValues {
     public static final String MOVIE_FIND_ALL_PRIZE = "http://api.maoyan.com/mmdb/movie/winning/film/2016-11-21/list.json?";
     //电影 ->发现 ->找片 ->全部电影奖项
     public static final String MOVIE_FIND_ALL_PRIZE_BODY = "http://api.maoyan.com/mmdb/movie/region/festival/list.json?";
-
+    //电影 ->发现 ->商城 ->头照片
+    public static final String STORE_HEADER = "http://advert.mobile.meituan.com/api/v3/adverts?cityid=65&category=15&version=7.6.0&new=0&app=movie&clienttp=android&uuid=6FEB56DD6FD340B8CB800D9D855B138E207AEF644221B5FC6E9C8B47C9E30F57&devid=861599034806975&uid=352381858";
     // 根据经纬度获取城市的名字
     public static final String LOCATION_LONGITUDE_LATITUDE = "http://api.avatardata.cn/CoordAddress/Lookup?key=b43534b71d1c4e18b935d548949205ba&";
     // 获取天气状况

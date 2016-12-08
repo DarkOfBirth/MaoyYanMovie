@@ -13,6 +13,7 @@ import lanou.maoyanmovie.bean.MovieHotBannerBean;
 import lanou.maoyanmovie.bean.MovieHotListBean;
 import lanou.maoyanmovie.bean.MovieWaitBean;
 import lanou.maoyanmovie.bean.SearchBean;
+import lanou.maoyanmovie.bean.StoreHeaderBean;
 import lanou.maoyanmovie.bean.StoreLikeBean;
 import lanou.maoyanmovie.bean.StoreMonthDiscountBean;
 import lanou.maoyanmovie.bean.StoreTopBean;
@@ -112,6 +113,12 @@ public class HttpUtil {
         OkHttpManager.getInstance().get(MovieValues.STORE_TOP, StoreTopBean.class, responseCallBack);
     }
 
+    /**
+     * 发现 -> 商城 -> 头图片
+     */
+    public static void getStoreHeader(ResponseCallBack<StoreHeaderBean> responseCallBack){
+        OkHttpManager.getInstance().get(MovieValues.STORE_HEADER, StoreHeaderBean.class, responseCallBack);
+    }
     /**
      * 发现 -> 商城 -> 每月特价
      */

@@ -97,106 +97,118 @@ public class FindRvAdapter extends RecyclerView.Adapter<FindRvAdapter.FindViewHo
         }
         switch (type) {
             case 2:
-                holder.findTwoCommentCountTv.setText(String.valueOf(mFindTodayBean.getData().getFeeds().get(position).getCommentCount()));
-                if (mFindTodayBean.getData().getFeeds().get(position).getUser() != null) {
-                    holder.findTwoNickNameTv.setText(mFindTodayBean.getData().getFeeds().get(position).getUser().getNickName());
-                } else {
-                    holder.findTwoNickNameTv.setText("");
-                }
-                holder.findTwoTitleTv.setText(mFindTodayBean.getData().getFeeds().get(position).getTitle());
-                holder.findTwoViewCountTv.setText(String.valueOf(mFindTodayBean.getData().getFeeds().get(position).getViewCount()));
-                Picasso.with(mContext).load(mFindTodayBean.getData().getFeeds().get(position).getImages().get(0).getUrl()).into(holder.findTwoImage);
-                final int finalPosition = position;
-                holder.findTwoItemRv.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if(mOnFindClickListener != null){
-                          mOnFindClickListener.findClick(
-                                  mFindTodayBean.getData().getFeeds().get(finalPosition).getImages().get(0).getTargetId(),
-                                  mFindTodayBean.getData().getFeeds().get(finalPosition).getFeedType(),
-                                  mFindTodayBean.getData().getFeeds().get(finalPosition).getUser().getNickName(),
-                                  mFindTodayBean.getData().getFeeds().get(finalPosition).getImages().get(0).getUrl(),
-                                  mFindTodayBean.getData().getFeeds().get(finalPosition).getTitle());
-                        }
+                if (mFindTodayBean != null && mFindTopBean != null) {
+                    holder.findTwoCommentCountTv.setText(String.valueOf(mFindTodayBean.getData().getFeeds().get(position).getCommentCount()));
+                    if (mFindTodayBean.getData().getFeeds().get(position).getUser() != null) {
+                        holder.findTwoNickNameTv.setText(mFindTodayBean.getData().getFeeds().get(position).getUser().getNickName());
+                    } else {
+                        holder.findTwoNickNameTv.setText("");
                     }
-                });
+                    holder.findTwoTitleTv.setText(mFindTodayBean.getData().getFeeds().get(position).getTitle());
+                    holder.findTwoViewCountTv.setText(String.valueOf(mFindTodayBean.getData().getFeeds().get(position).getViewCount()));
+                    Picasso.with(mContext).load(mFindTodayBean.getData().getFeeds().get(position).getImages().get(0).getUrl()).into(holder.findTwoImage);
+                    final int finalPosition = position;
+                    holder.findTwoItemRv.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if (mOnFindClickListener != null) {
+                                mOnFindClickListener.findClick(
+                                        mFindTodayBean.getData().getFeeds().get(finalPosition).getImages().get(0).getTargetId(),
+                                        mFindTodayBean.getData().getFeeds().get(finalPosition).getFeedType(),
+                                        mFindTodayBean.getData().getFeeds().get(finalPosition).getUser().getNickName(),
+                                        mFindTodayBean.getData().getFeeds().get(finalPosition).getImages().get(0).getUrl(),
+                                        mFindTodayBean.getData().getFeeds().get(finalPosition).getTitle());
+                            }
+                        }
+                    });
+                }
                 break;
             case 3:
-                holder.findThirdCommentCountTv.setText(String.valueOf(mFindTodayBean.getData().getFeeds().get(position).getCommentCount()));
-                holder.findThirdNickNameTv.setText(mFindTodayBean.getData().getFeeds().get(position).getUser().getNickName());
-                holder.findThirdTitleTv.setText(mFindTodayBean.getData().getFeeds().get(position).getTitle());
-                holder.findThirdViewCountTv.setText(String.valueOf(mFindTodayBean.getData().getFeeds().get(position).getViewCount()));
-                Picasso.with(mContext).load(mFindTodayBean.getData().getFeeds().get(position).getImages().get(0).getUrl()).into(holder.findThirdImagesOneImg);
-                Picasso.with(mContext).load(mFindTodayBean.getData().getFeeds().get(position).getImages().get(1).getUrl()).into(holder.findThirdImagesTwoImg);
-                Picasso.with(mContext).load(mFindTodayBean.getData().getFeeds().get(position).getImages().get(2).getUrl()).into(holder.findThirdImagesThirdImg);
-                final int finalPosition1 = position;
-                holder.findThirdItemLl.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if(mOnFindClickListener != null){
-                        mOnFindClickListener.findClick(
-                                mFindTodayBean.getData().getFeeds().get(finalPosition1).getImages().get(0).getTargetId(),
-                                mFindTodayBean.getData().getFeeds().get(finalPosition1).getFeedType(),
-                                mFindTodayBean.getData().getFeeds().get(finalPosition1).getUser().getNickName(),
-                                mFindTodayBean.getData().getFeeds().get(finalPosition1).getImages().get(0).getUrl(),
-                                mFindTodayBean.getData().getFeeds().get(finalPosition1).getTitle()
-                                );
-                        }
+                if (mFindTodayBean != null && mFindTopBean != null) {
+                    holder.findThirdCommentCountTv.setText(String.valueOf(mFindTodayBean.getData().getFeeds().get(position).getCommentCount()));
+                    if (mFindTodayBean.getData().getFeeds().get(position).getUser() != null) {
+                        holder.findThirdNickNameTv.setText(mFindTodayBean.getData().getFeeds().get(position).getUser().getNickName());
                     }
-                });
+                    holder.findThirdTitleTv.setText(mFindTodayBean.getData().getFeeds().get(position).getTitle());
+                    holder.findThirdViewCountTv.setText(String.valueOf(mFindTodayBean.getData().getFeeds().get(position).getViewCount()));
+                    Picasso.with(mContext).load(mFindTodayBean.getData().getFeeds().get(position).getImages().get(0).getUrl()).into(holder.findThirdImagesOneImg);
+                    Picasso.with(mContext).load(mFindTodayBean.getData().getFeeds().get(position).getImages().get(1).getUrl()).into(holder.findThirdImagesTwoImg);
+                    Picasso.with(mContext).load(mFindTodayBean.getData().getFeeds().get(position).getImages().get(2).getUrl()).into(holder.findThirdImagesThirdImg);
+                    final int finalPosition1 = position;
+                    holder.findThirdItemLl.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if (mOnFindClickListener != null) {
+                                mOnFindClickListener.findClick(
+                                        mFindTodayBean.getData().getFeeds().get(finalPosition1).getImages().get(0).getTargetId(),
+                                        mFindTodayBean.getData().getFeeds().get(finalPosition1).getFeedType(),
+                                        mFindTodayBean.getData().getFeeds().get(finalPosition1).getUser().getNickName(),
+                                        mFindTodayBean.getData().getFeeds().get(finalPosition1).getImages().get(0).getUrl(),
+                                        mFindTodayBean.getData().getFeeds().get(finalPosition1).getTitle()
+                                );
+                            }
+                        }
+                    });
+                }
                 break;
             case 4:
-                holder.findFourCommentCountTv.setText(String.valueOf(mFindTodayBean.getData().getFeeds().get(position).getCommentCount()));
-                holder.findFourNickNameTv.setText(mFindTodayBean.getData().getFeeds().get(position).getUser().getNickName());
-                holder.findFourTitleTv.setText(mFindTodayBean.getData().getFeeds().get(position).getTitle());
-                holder.findFourViewCountTv.setText(String.valueOf(mFindTodayBean.getData().getFeeds().get(position).getViewCount()));
-                Picasso.with(mContext).load(mFindTodayBean.getData().getFeeds().get(position).getImages().get(0).getUrl()).into(holder.findFourImagesOneImg);
-                Picasso.with(mContext).load(mFindTodayBean.getData().getFeeds().get(position).getImages().get(1).getUrl()).into(holder.findFourImagesTwoImg);
-                Picasso.with(mContext).load(mFindTodayBean.getData().getFeeds().get(position).getImages().get(2).getUrl()).into(holder.findFourImagesThreeImg);
-                final int finalPosition2 = position;
-                holder.findFourItemRv.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        mOnFindClickListener.findClick(
-                                mFindTodayBean.getData().getFeeds().get(finalPosition2).getImages().get(0).getTargetId(),
-                                mFindTodayBean.getData().getFeeds().get(finalPosition2).getFeedType(),
-                                mFindTodayBean.getData().getFeeds().get(finalPosition2).getUser().getNickName(),
-                                mFindTodayBean.getData().getFeeds().get(finalPosition2).getImages().get(0).getUrl(),
-                                mFindTodayBean.getData().getFeeds().get(finalPosition2).getTitle());
-                    }
-                });
+                if (mFindTodayBean != null && mFindTopBean != null) {
+                    holder.findFourCommentCountTv.setText(String.valueOf(mFindTodayBean.getData().getFeeds().get(position).getCommentCount()));
+                    holder.findFourNickNameTv.setText(mFindTodayBean.getData().getFeeds().get(position).getUser().getNickName());
+                    holder.findFourTitleTv.setText(mFindTodayBean.getData().getFeeds().get(position).getTitle());
+                    holder.findFourViewCountTv.setText(String.valueOf(mFindTodayBean.getData().getFeeds().get(position).getViewCount()));
+                    Picasso.with(mContext).load(mFindTodayBean.getData().getFeeds().get(position).getImages().get(0).getUrl()).into(holder.findFourImagesOneImg);
+                    Picasso.with(mContext).load(mFindTodayBean.getData().getFeeds().get(position).getImages().get(1).getUrl()).into(holder.findFourImagesTwoImg);
+                    Picasso.with(mContext).load(mFindTodayBean.getData().getFeeds().get(position).getImages().get(2).getUrl()).into(holder.findFourImagesThreeImg);
+                    final int finalPosition2 = position;
+                    holder.findFourItemRv.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            mOnFindClickListener.findClick(
+                                    mFindTodayBean.getData().getFeeds().get(finalPosition2).getImages().get(0).getTargetId(),
+                                    mFindTodayBean.getData().getFeeds().get(finalPosition2).getFeedType(),
+                                    mFindTodayBean.getData().getFeeds().get(finalPosition2).getUser().getNickName(),
+                                    mFindTodayBean.getData().getFeeds().get(finalPosition2).getImages().get(0).getUrl(),
+                                    mFindTodayBean.getData().getFeeds().get(finalPosition2).getTitle());
+                        }
+                    });
+                }
                 break;
             case -3:
-                Picasso.with(mContext).load(mFindTopBean.getData().get(0).getImage().getUrl()).into(holder.findHeaderTop);
-                Picasso.with(mContext).load(mFindTopBean.getData().get(1).getImage().getUrl()).into(holder.findHeaderNew);
-                Picasso.with(mContext).load(mFindTopBean.getData().get(2).getImage().getUrl()).into(holder.findHeaderStore);
-                Picasso.with(mContext).load(mFindTopBean.getData().get(3).getImage().getUrl()).into(holder.findHeaderHouse);
-                holder.findHeaderTop.setOnClickListener(this);
-                holder.findHeaderNew.setOnClickListener(this);
-                holder.findHeaderStore.setOnClickListener(this);
-                holder.findHeaderHouse.setOnClickListener(this);
+                if (mFindTopBean != null) {
+                    Picasso.with(mContext).load(mFindTopBean.getData().get(0).getImage().getUrl()).into(holder.findHeaderTop);
+                    Picasso.with(mContext).load(mFindTopBean.getData().get(1).getImage().getUrl()).into(holder.findHeaderNew);
+                    Picasso.with(mContext).load(mFindTopBean.getData().get(2).getImage().getUrl()).into(holder.findHeaderStore);
+                    Picasso.with(mContext).load(mFindTopBean.getData().get(3).getImage().getUrl()).into(holder.findHeaderHouse);
+                    holder.findHeaderTop.setOnClickListener(this);
+                    holder.findHeaderNew.setOnClickListener(this);
+                    holder.findHeaderStore.setOnClickListener(this);
+                    holder.findHeaderHouse.setOnClickListener(this);
+                }
                 break;
             case 7:
-                holder.findSevenTitleTv.setText(mFindTodayBean.getData().getFeeds().get(position).getTitle());
-                if (mFindTodayBean.getData().getFeeds().get(position).getUser() != null) {
-                    holder.findSevenNickNameTv.setText(mFindTodayBean.getData().getFeeds().get(position).getUser().getNickName());
-                } else {
-                    holder.findSevenNickNameTv.setText("");
-                }
-                Picasso.with(mContext).load(mFindTodayBean.getData().getFeeds().
-                        get(position).getImages().get(0).getUrl()).into(holder.findSevenImageImg);
-                final int finalPosition3 = position;
-                holder.findSevenItemLl.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        mOnFindClickListener.findClick(
-                                mFindTodayBean.getData().getFeeds().get(finalPosition3).getImages().get(0).getTargetId(),
-                                mFindTodayBean.getData().getFeeds().get(finalPosition3).getFeedType(),
-                                mFindTodayBean.getData().getFeeds().get(finalPosition3).getUser().getNickName(),
-                                mFindTodayBean.getData().getFeeds().get(finalPosition3).getImages().get(0).getUrl(),
-                                mFindTodayBean.getData().getFeeds().get(finalPosition3).getTitle());
+                if (mFindTodayBean != null && mFindTopBean != null) {
+                    holder.findSevenTitleTv.setText(mFindTodayBean.getData().getFeeds().get(position).getTitle());
+                    if (mFindTodayBean.getData().getFeeds().get(position).getUser() != null) {
+                        holder.findSevenNickNameTv.setText(mFindTodayBean.getData().getFeeds().get(position).getUser().getNickName());
+                    } else {
+                        holder.findSevenNickNameTv.setText("");
                     }
-                });
+                    Picasso.with(mContext).load(mFindTodayBean.getData().getFeeds().
+                            get(position).getImages().get(0).getUrl()).into(holder.findSevenImageImg);
+                    final int finalPosition3 = position;
+                    holder.findSevenItemLl.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            mOnFindClickListener.findClick(
+                                    mFindTodayBean.getData().getFeeds().get(finalPosition3).getImages().get(0).getTargetId(),
+                                    mFindTodayBean.getData().getFeeds().get(finalPosition3).getFeedType(),
+                                    mFindTodayBean.getData().getFeeds().get(finalPosition3).getUser().getNickName(),
+                                    mFindTodayBean.getData().getFeeds().get(finalPosition3).getImages().get(0).getUrl(),
+                                    mFindTodayBean.getData().getFeeds().get(finalPosition3).getTitle());
+                        }
+                    });
+                }
                 break;
         }
     }
@@ -208,11 +220,7 @@ public class FindRvAdapter extends RecyclerView.Adapter<FindRvAdapter.FindViewHo
             num += 1;
         }
         if (mFindTodayBean != null) {
-            try {
-                num += mFindTodayBean.getData().getFeeds().size();
-            } catch (NullPointerException e) {
-
-            }
+            num += mFindTodayBean.getData().getFeeds().size();
         }
         return num;
     }
@@ -323,7 +331,7 @@ public class FindRvAdapter extends RecyclerView.Adapter<FindRvAdapter.FindViewHo
 
     @Override
     public void unregisterAdapterDataObserver(RecyclerView.AdapterDataObserver observer) {
-        if (observer != null){
+        if (observer != null) {
             super.unregisterAdapterDataObserver(observer);
         }
     }
