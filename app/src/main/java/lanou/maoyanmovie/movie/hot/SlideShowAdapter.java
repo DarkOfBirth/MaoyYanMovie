@@ -39,7 +39,6 @@ public class SlideShowAdapter extends PagerAdapter {
         }
         container.addView(image);
         return image;
-
     }
 
     @Override

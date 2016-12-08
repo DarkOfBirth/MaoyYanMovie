@@ -18,8 +18,10 @@
             android:clickable="true"
             android:src="@mipmap/main_mine_item_return"/>
     </LinearLayout>
+
     <WebView
         android:id="@+id/fragment_movie_hot_list_detail_wv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
 </LinearLayout>
