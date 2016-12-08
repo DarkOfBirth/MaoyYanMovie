@@ -39,7 +39,6 @@ public class SlideShowAdapter extends PagerAdapter {
         }
         container.addView(image);
         return image;
-
     }
 
     @Override
@@ -48,13 +47,5 @@ public class SlideShowAdapter extends PagerAdapter {
             container.removeViewAt(position);
         }
     }
-
-//    /**
-//     * 获取图片的数量
-//     * @return
-//     */
-//    public int getImageCount() {
-//        return stringList.size();
-//    }
 
 }

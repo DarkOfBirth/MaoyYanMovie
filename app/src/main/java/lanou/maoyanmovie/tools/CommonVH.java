@@ -1,4 +1,4 @@
-package lanou.maoyanmovie.city;
+package lanou.maoyanmovie.tools;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -109,17 +109,11 @@ public class CommonVH extends RecyclerView.ViewHolder {
         return this;
     }
 
-    public CommonVH setImage(int id, String imgurl) {
+    public CommonVH setImage(int id, String url) {
         ImageView imageView = getView(id);
-
-        //SingleVolley.getInstance().getImage(imgurl,imageView);\
-        Picasso.with(MyApplication.getmContext()).load(imgurl).fit().into(imageView);
+        Picasso.with(MyApplication.getmContext()).load(url).fit().into(imageView);
         return this;
-
     }
-
-
-
 
     public CommonVH setViewClick(int id, View.OnClickListener listener) {
         // 此处为接口

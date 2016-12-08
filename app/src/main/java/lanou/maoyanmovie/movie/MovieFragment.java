@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -37,7 +36,6 @@ public class MovieFragment extends BaseFragment implements View.OnClickListener 
     private MainActivity mActivity;
     private CityFragment mCityFragment;
 
-
     @Override
     protected int getLayout() {
         return R.layout.fragment_movie;
@@ -49,7 +47,6 @@ public class MovieFragment extends BaseFragment implements View.OnClickListener 
         movieVp = bindView(R.id.vp_movie_fragment);
         mLocation = bindView(R.id.location_movie_fragment);
         weather = bindView(R.id.weather_iv);
-
     }
 
     @Override
@@ -83,9 +80,8 @@ public class MovieFragment extends BaseFragment implements View.OnClickListener 
         mCityFragment.setOnSelectCity(new CityFragment.OnSelectCity() {
             @Override
             public void selectCityName(String name, String cityId) {
-                Log.d("MovieFragment", name);
                 mLocation.setText(name);
-             // 将当前的cityId存入文件中
+                // 将当前的cityId存入文件中
                 SharedPreferences sharedPreferences = MyApplication.getmContext().getSharedPreferences("cityId", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString("cityId",cityId);
@@ -109,9 +105,6 @@ public class MovieFragment extends BaseFragment implements View.OnClickListener 
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.location_movie_fragment:
-
-
-
                 mActivity.jumpFragment(mCityFragment);
                 break;
             case R.id.weather_iv:

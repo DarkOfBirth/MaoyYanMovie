@@ -17,7 +17,7 @@ public class GobangFragment extends BaseFragment{
 
     @Override
     protected int getLayout() {
-        return R.layout.fragment_wuziqi;
+        return R.layout.fragment_gobang;
     }
 
     @Override

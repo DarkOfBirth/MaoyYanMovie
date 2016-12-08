@@ -1,7 +1,7 @@
 package lanou.maoyanmovie.mine.setting;
 
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import lanou.maoyanmovie.MainActivity;
@@ -14,8 +14,8 @@ import lanou.maoyanmovie.gobang.GobangFragment;
  */
 public class SettingFragment extends BaseFragment implements View.OnClickListener, View.OnLongClickListener {
 
-    private ImageButton mSettingReturnIb;
-    private LinearLayout wuziqi;
+    private ImageView mSettingReturnIv;
+    private LinearLayout gobang;
 
     @Override
     protected int getLayout() {
@@ -24,8 +24,8 @@ public class SettingFragment extends BaseFragment implements View.OnClickListene
 
     @Override
     protected void initView() {
-        mSettingReturnIb = bindView(R.id.fragment_mine_setting_return_ib);
-        wuziqi = bindView(R.id.fragment_mine_setting_wuziqi_ll);
+        mSettingReturnIv = bindView(R.id.fragment_mine_setting_return_iv);
+        gobang = bindView(R.id.fragment_mine_setting_gobang_ll);
     }
 
     @Override
@@ -35,8 +35,8 @@ public class SettingFragment extends BaseFragment implements View.OnClickListene
 
     @Override
     protected void initClick() {
-        mSettingReturnIb.setOnClickListener(this);
-        wuziqi.setOnLongClickListener(this);
+        mSettingReturnIv.setOnClickListener(this);
+        gobang.setOnLongClickListener(this);
     }
 
     /**
@@ -47,7 +47,7 @@ public class SettingFragment extends BaseFragment implements View.OnClickListene
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.fragment_mine_setting_return_ib:
+            case R.id.fragment_mine_setting_return_iv:
                 getFragmentManager().popBackStack();
                 break;
         }
@@ -62,7 +62,7 @@ public class SettingFragment extends BaseFragment implements View.OnClickListene
     @Override
     public boolean onLongClick(View v) {
         switch (v.getId()){
-            case R.id.fragment_mine_setting_wuziqi_ll:
+            case R.id.fragment_mine_setting_gobang_ll:
                 GobangFragment gobangFragment = new GobangFragment();
                 MainActivity activity = (MainActivity) getActivity();
                 activity.jumpFragment(gobangFragment);
