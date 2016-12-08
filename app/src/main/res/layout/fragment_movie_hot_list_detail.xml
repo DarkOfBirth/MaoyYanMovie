@@ -3,6 +3,21 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#d02d2b"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/fragment_movie_hot_list_detail_return_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:clickable="true"
+            android:src="@mipmap/main_mine_item_return"/>
+    </LinearLayout>
     <WebView
         android:id="@+id/fragment_movie_hot_list_detail_wv"
         android:layout_width="match_parent"

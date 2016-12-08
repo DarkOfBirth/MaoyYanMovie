@@ -1,7 +1,7 @@
 package lanou.maoyanmovie.mine.setting;
 
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import lanou.maoyanmovie.MainActivity;
@@ -14,7 +14,7 @@ import lanou.maoyanmovie.gobang.GobangFragment;
  */
 public class SettingFragment extends BaseFragment implements View.OnClickListener, View.OnLongClickListener {
 
-    private ImageButton mSettingReturnIb;
+    private ImageView mSettingReturnIv;
     private LinearLayout gobang;
 
     @Override
@@ -24,7 +24,7 @@ public class SettingFragment extends BaseFragment implements View.OnClickListene
 
     @Override
     protected void initView() {
-        mSettingReturnIb = bindView(R.id.fragment_mine_setting_return_ib);
+        mSettingReturnIv = bindView(R.id.fragment_mine_setting_return_iv);
         gobang = bindView(R.id.fragment_mine_setting_gobang_ll);
     }
 
@@ -35,7 +35,7 @@ public class SettingFragment extends BaseFragment implements View.OnClickListene
 
     @Override
     protected void initClick() {
-        mSettingReturnIb.setOnClickListener(this);
+        mSettingReturnIv.setOnClickListener(this);
         gobang.setOnLongClickListener(this);
     }
 
@@ -47,7 +47,7 @@ public class SettingFragment extends BaseFragment implements View.OnClickListene
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.fragment_mine_setting_return_ib:
+            case R.id.fragment_mine_setting_return_iv:
                 getFragmentManager().popBackStack();
                 break;
         }

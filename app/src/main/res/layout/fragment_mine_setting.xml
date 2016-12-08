@@ -13,12 +13,12 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <ImageButton
-            android:id="@+id/fragment_mine_setting_return_ib"
+        <ImageView
+            android:id="@+id/fragment_mine_setting_return_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:background="@null"
+            android:clickable="true"
             android:src="@mipmap/main_mine_item_return"/>
 
         <TextView

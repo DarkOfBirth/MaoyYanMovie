@@ -18,6 +18,7 @@ import lanou.maoyanmovie.bean.FindTodayBean;
 import lanou.maoyanmovie.bean.FindTopBean;
 import lanou.maoyanmovie.httptools.HttpUtil;
 import lanou.maoyanmovie.httptools.ResponseCallBack;
+import lanou.maoyanmovie.tools.DividerItemDecoration;
 
 /**
  * Created by wangYe on 16/11/21.
@@ -50,7 +51,7 @@ public class FindFragment extends BaseFragment implements OnFindClickListener {
 
         findRv.setAdapter(mAdapter);
         findRv.setLinearLayout();
-
+        findRv.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL_LIST));
     }
 
     @Override

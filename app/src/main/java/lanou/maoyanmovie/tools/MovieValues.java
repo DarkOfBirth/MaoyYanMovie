@@ -48,13 +48,13 @@ public class MovieValues {
     public static final String MOVIE_FIND_NOW = "http://piaofang.maoyan.com/?f=android&userid=-1";
     //电影 ->发现 ->TOP10
     public static final String MOVIE_FIND_TOP10 = "http://m.maoyan.com/information?_v_=yes&groupId=1481354&pageType=1&title=今日TOP10";
-    //电影 ->发现 ->找片 -> 类型/地区/年代
+    //电影 ->搜索 ->找片 -> 类型/地区/年代
     public static final String MOVIE_FIND_TYPE_WHERE_WHEN = "http://api.maoyan.com/mmdb/search/movie/tag/types.json?";
-    //电影 ->发现 ->找片 -> 热映口碑等四个
+    //电影 ->搜索 ->找片 -> 热映口碑等四个
     public static final String MOVIE_FIND_CENTER = "http://api.maoyan.com/mmdb/movieboard/fixedboard/v1/hot/list.json?";
-    //电影 ->发现 ->找片 -> 全球电影奖项
+    //电影 ->搜索 ->找片 -> 全球电影奖项
     public static final String MOVIE_FIND_ALL_PRIZE = "http://api.maoyan.com/mmdb/movie/winning/film/2016-11-21/list.json?";
-    //电影 ->发现 ->找片 ->全部电影奖项
+    //电影 ->搜索 ->找片 ->全部电影奖项
     public static final String MOVIE_FIND_ALL_PRIZE_BODY = "http://api.maoyan.com/mmdb/movie/region/festival/list.json?";
 
     // 根据经纬度获取城市的名字
