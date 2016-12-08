@@ -3,10 +3,10 @@ package lanou.maoyanmovie.mine.login;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -29,6 +29,9 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
 
     private EditText mPhoneEt;
     private Button mSendCodeBtn;
+    private TextView mPhoneTv;
+    private TextView mCodeTv;
+    private TextView mPasswordTv;
 
     @Override
     protected int getLayout() {
@@ -39,10 +42,16 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
     protected void initView() {
         mPhoneEt = bindView(R.id.phone_et);
         mSendCodeBtn = bindView(R.id.send_code_btn);
+        mPhoneTv = bindView(R.id.fragment_mine_register_phone_tv);
+        mCodeTv = bindView(R.id.fragment_mine_register_code_tv);
+        mPasswordTv = bindView(R.id.fragment_mine_register_password_tv);
     }
 
     @Override
     protected void initData() {
+        mPhoneTv.setTextColor(0xfff27f78);
+        mCodeTv.setTextColor(0xff757575);
+        mPasswordTv.setTextColor(0xff757575);
         //BMob初始化
         Bmob.initialize(mContext, LoginTool.APP_ID);
         //Mob初始化
@@ -60,7 +69,6 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
         if (LoginTool.judgePhoneNum(mPhoneNum)) {
             BmobQuery<MyUser> query = new BmobQuery<>();
             query.addWhereEqualTo("username", mPhoneNum);
-            Log.d("LoginFragment", "s:" + mPhoneNum);
             query.findObjects(new FindListener<MyUser>() {
                 @Override
                 public void done(List<MyUser> list, BmobException e) {

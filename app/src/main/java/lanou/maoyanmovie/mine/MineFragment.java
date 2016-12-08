@@ -4,7 +4,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -34,7 +33,6 @@ import lanou.maoyanmovie.tools.LoginTool;
  * Created by dllo on 16/11/21.
  * "我的"界面
  */
-
 public class MineFragment extends BaseFragment implements View.OnClickListener {
 
     private RelativeLayout mMainMineSettingRl;
@@ -119,7 +117,6 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
                 mLoginLl.setClickable(true);
                 break;
             case R.id.main_mine_collect_rl:
-                Log.d("MineFragment", "点击了");
                 mCollectFragment = new CollectFragment();
                 MainActivity activity1 = (MainActivity) getActivity();
                 activity1.jumpFragment(mCollectFragment);

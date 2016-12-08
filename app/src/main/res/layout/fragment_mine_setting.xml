@@ -252,14 +252,19 @@
             </RelativeLayout>
 
             <LinearLayout
-                android:id="@+id/fragment_mine_setting_wuziqi_ll"
+                android:id="@+id/fragment_mine_setting_gobang_ll"
                 android:layout_width="match_parent"
                 android:layout_height="163dp"
-                android:alpha="1"
                 android:background="#f2f2f2"
                 android:orientation="vertical"
-                />
-
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="长按有惊喜"
+                    android:textSize="25sp"
+                    android:textColor="#d02d2b"/>
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>

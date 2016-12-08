@@ -3,7 +3,6 @@ package lanou.maoyanmovie.mine.login;
 import android.content.Intent;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,7 +30,6 @@ import lanou.maoyanmovie.tools.LoginTool;
  * Created by 麦建东 on 16/11/23.
  * "登录"界面
  */
-
 public class LoginFragment extends BaseFragment implements View.OnClickListener {
 
     private TextView mRegisterTv;
@@ -116,8 +114,6 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                 mActivity.jumpFragment(mRegisterFragment);
                 break;
             case R.id.fragment_mine_login_btn:
-                Log.d("LoginFragment", mPhoneNum);
-                Log.d("LoginFragment", mPassword);
                 //查询用户是否存在
                 BmobQuery<MyUser> query = new BmobQuery<>();
                 query.addWhereEqualTo("username", mPhoneNum);

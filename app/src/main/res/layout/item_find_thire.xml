@@ -3,7 +3,8 @@
               android:orientation="vertical"
               android:id="@+id/find_three_item_ll"
               android:layout_width="match_parent"
-              android:layout_height="150dp">
+              android:layout_height="150dp"
+              android:padding="5dp">
 
     <TextView
         android:id="@+id/find_third_title_tv"

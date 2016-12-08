@@ -16,8 +16,15 @@ public class LoginTool {
     //Bmob
     public static final String APP_ID = "11b8881cca97f0dec45c89a94c149894";
     //头像
-    public static final String icon = "http://file.popoho" +
-            ".com/wmpic/2016061352/1461908702_JQUhdVyQ.jpg";
+    public static final String icon[] = {
+            "http://file.popoho.com/wmpic/2016061352/1461908702_JQUhdVyQ.jpg",
+            "http://www.qq1234.org/uploads/allimg/150706/8_150706160053_6.jpg",
+            "http://v1.qzone.cc/avatar/201405/10/19/54/536e136f35188055.jpg!200x200.jpg",
+            "http://img5.duitang.com/uploads/item/201411/01/20141101235509_NVNer.jpeg",
+            "http://v1.qzone.cc/avatar/201407/28/19/57/53d63ab74671d732.jpg!200x200.jpg",
+            "http://www.poluoluo.com/qq/UploadFiles_7828/201611/2016110420035680.jpg",
+            "http://www.poluoluo.com/qq/UploadFiles_7828/201610/2016102120092169.png"
+    };
 
     /**
      * 判断手机号码是否合理

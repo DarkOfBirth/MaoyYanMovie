@@ -3,7 +3,8 @@
               android:orientation="vertical"
               android:id="@+id/find_seven_item_ll"
               android:layout_width="match_parent"
-              android:layout_height="140dp">
+              android:layout_height="140dp"
+              android:padding="5dp">
     <TextView
         android:id="@+id/find_seven_title_tv"
         android:layout_width="match_parent"

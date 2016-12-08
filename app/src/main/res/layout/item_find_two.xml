@@ -1,74 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
                 android:id="@+id/find_two_item_rv"
-              android:layout_height="110dp">
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:padding="5dp">
 
     <ImageView
         android:id="@+id/find_two_image"
-        android:layout_centerVertical="true"
-        android:src="@mipmap/icon"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:src="@mipmap/icon"/>
+
     <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
         android:layout_centerVertical="true"
         android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@id/find_two_image"
-        android:layout_width="wrap_content"
-        android:layout_height="100dp">
+        android:layout_toRightOf="@id/find_two_image">
 
         <TextView
             android:id="@+id/find_two_title_tv"
-            android:layout_marginTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:text="2321321321321321321"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_marginTop="15dp"
+            android:text="2321321321321321321"/>
+
         <RelativeLayout
-            android:layout_marginBottom="15dp"
-            android:layout_alignParentBottom="true"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="15dp">
+
             <TextView
-                android:text="11111"
                 android:id="@+id/find_two_nick_name_tv"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:text="11111"/>
+
             <LinearLayout
-                android:layout_marginRight="10dp"
-                android:layout_alignParentRight="true"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp">
 
                 <LinearLayout
-                    android:layout_marginRight="10dp"
-                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:orientation="horizontal">
+
                     <ImageView
-                        android:src="@mipmap/eyes"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/eyes"/>
+
                     <TextView
                         android:id="@+id/find_two_view_count_tv"
-                        android:text="11111"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:text="11111"/>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
                     <ImageView
-                        android:src="@mipmap/message"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/message"/>
+
                     <TextView
                         android:id="@+id/find_two_comment_count_tv"
-                        android:text="11111"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:text="11111"/>
                 </LinearLayout>
             </LinearLayout>
         </RelativeLayout>

@@ -1,7 +1,6 @@
 package lanou.maoyanmovie.movie.hot;
 
 import android.support.v4.view.PagerAdapter;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -49,13 +48,5 @@ public class SlideShowAdapter extends PagerAdapter {
             container.removeViewAt(position);
         }
     }
-
-//    /**
-//     * 获取图片的数量
-//     * @return
-//     */
-//    public int getImageCount() {
-//        return stringList.size();
-//    }
 
 }

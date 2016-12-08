@@ -6,7 +6,8 @@ import android.view.ViewGroup;
 
 import lanou.maoyanmovie.R;
 import lanou.maoyanmovie.bean.MovieWaitWishBean;
-import lanou.maoyanmovie.city.CommonVH;
+import lanou.maoyanmovie.tools.CommonVH;
+
 
 /**
  * Created by 麦建东 on 16/12/6.

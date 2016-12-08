@@ -15,7 +15,7 @@ import lanou.maoyanmovie.gobang.GobangFragment;
 public class SettingFragment extends BaseFragment implements View.OnClickListener, View.OnLongClickListener {
 
     private ImageButton mSettingReturnIb;
-    private LinearLayout wuziqi;
+    private LinearLayout gobang;
 
     @Override
     protected int getLayout() {
@@ -25,7 +25,7 @@ public class SettingFragment extends BaseFragment implements View.OnClickListene
     @Override
     protected void initView() {
         mSettingReturnIb = bindView(R.id.fragment_mine_setting_return_ib);
-        wuziqi = bindView(R.id.fragment_mine_setting_wuziqi_ll);
+        gobang = bindView(R.id.fragment_mine_setting_gobang_ll);
     }
 
     @Override
@@ -36,7 +36,7 @@ public class SettingFragment extends BaseFragment implements View.OnClickListene
     @Override
     protected void initClick() {
         mSettingReturnIb.setOnClickListener(this);
-        wuziqi.setOnLongClickListener(this);
+        gobang.setOnLongClickListener(this);
     }
 
     /**
@@ -62,7 +62,7 @@ public class SettingFragment extends BaseFragment implements View.OnClickListene
     @Override
     public boolean onLongClick(View v) {
         switch (v.getId()){
-            case R.id.fragment_mine_setting_wuziqi_ll:
+            case R.id.fragment_mine_setting_gobang_ll:
                 GobangFragment gobangFragment = new GobangFragment();
                 MainActivity activity = (MainActivity) getActivity();
                 activity.jumpFragment(gobangFragment);
