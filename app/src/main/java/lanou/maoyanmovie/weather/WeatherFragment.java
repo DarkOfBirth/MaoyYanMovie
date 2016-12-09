@@ -245,6 +245,7 @@ public class WeatherFragment extends BaseFragment {
         airQuailityTv.setText(mWeatherBean.getResult().getPm25().getPm25().getQuality());
         String time = mWeatherBean.getResult().getPm25().getDateTime().substring(11, 13) + ":00 发布";
         publishTimeTv.setText(time);
+
         aqiRing.setLevel(mWeatherBean.getResult().getPm25().getPm25().getQuality());
         aqiRing.setNum(Integer.parseInt(mWeatherBean.getResult().getPm25().getPm25().getCurPm()));
 

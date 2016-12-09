@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import lanou.maoyanmovie.R;
@@ -59,7 +60,9 @@ public class Ring extends View {
 
     public void setLevel(String level) {
         mLevel = level;
+        Log.d("Ring", level);
         invalidate();
+
     }
 
     public Ring(Context context) {
@@ -161,7 +164,7 @@ public class Ring extends View {
         super.onDraw(canvas);
         drawCircle(canvas);
         drawText(canvas);
-
+        invalidate();
     }
 
     /**
@@ -172,8 +175,8 @@ public class Ring extends View {
     private void drawCircle(Canvas canvas) {
         mGrayPaint.setStyle(Paint.Style.STROKE);
         mGrayPaint.setColor(0xfff0f0f0);
+        mGreenPaint = setPaintColor(mGreenPaint);
         canvas.drawArc(1.0f / 6 * mWidth, 1.0f / 6 * mHeight, 5.0f / 6 * mHeight, 5.0f / 6 * mWidth, 135, 270, false, mGrayPaint);
-        setPaintColor(mGreenPaint);
         mGreenPaint.setStyle(Paint.Style.STROKE);
         canvas.drawArc(1.0f / 6 * mWidth, 1.0f / 6 * mHeight, 5.0f / 6 * mHeight, 5.0f / 6 * mWidth, 135, mNum * 270.0f / 500, false, mGreenPaint);
     }
@@ -211,16 +214,18 @@ public class Ring extends View {
      * 根据天气级别设置画笔的颜色
      * @param paint
      */
-    private void setPaintColor(Paint paint){
+    private  Paint setPaintColor(Paint paint){
         if(mLevel.equals("优")){
             paint.setColor(0xff5fdc61);
         }else if(mLevel.equals("轻度污染")){
             paint.setColor(0xfff5592d);
-        }else if (mLevel.equals("严重污染")){
+        }else if (mLevel.equals("重度污染")){
             paint.setColor(0xffeb1223);
         }
         else {
             paint.setColor(0xff5fdc61);
         }
+
+        return paint;
     }
 }
