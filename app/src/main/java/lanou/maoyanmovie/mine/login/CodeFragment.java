@@ -1,15 +1,14 @@
 package lanou.maoyanmovie.mine.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import cn.smssdk.EventHandler;
@@ -27,9 +26,6 @@ public class CodeFragment extends BaseFragment implements View.OnClickListener {
     private EditText mCodeEt;
     private Button mCodeCheckBtn;
     private String mPhoneNum;
-    private TextView mPhoneTv;
-    private TextView mCodeTv;
-    private TextView mPasswordTv;
 
     @Override
     protected int getLayout() {
@@ -40,18 +36,10 @@ public class CodeFragment extends BaseFragment implements View.OnClickListener {
     protected void initView() {
         mCodeEt = bindView(R.id.code_et);
         mCodeCheckBtn = bindView(R.id.code_check_btn);
-        View view = LayoutInflater.from(mContext).inflate(R.layout.fragment_mine_login_register,
-                null);
-        mPhoneTv = (TextView) view.findViewById(R.id.fragment_mine_register_phone_tv);
-        mCodeTv = (TextView) view.findViewById(R.id.fragment_mine_register_code_tv);
-        mPasswordTv = (TextView) view.findViewById(R.id.fragment_mine_register_password_tv);
     }
 
     @Override
     protected void initData() {
-        mPhoneTv.setTextColor(0xff757575);
-        mCodeTv.setTextColor(0xfff27f78);
-        mPasswordTv.setTextColor(0xff757575);
         Bundle arguments = getArguments();
         mPhoneNum = arguments.getString("phoneNum");
         //Mob初始化
@@ -102,6 +90,10 @@ public class CodeFragment extends BaseFragment implements View.OnClickListener {
                     transaction.replace(R.id.register_fl, passwordFragment);
                     transaction.addToBackStack(null);
                     transaction.commit();
+                    //发广播通知文字变色
+                    Intent intent = new Intent("colorChanged");
+                    intent.putExtra("color", true);
+                    mContext.sendBroadcast(intent);
                 } else if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE) {
                     //获取验证码成功
                     Toast.makeText(mContext, "正在获取验证码", Toast.LENGTH_SHORT).show();
