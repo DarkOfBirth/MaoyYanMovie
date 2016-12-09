@@ -63,7 +63,7 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
         Bmob.initialize(mContext, LoginTool.APP_ID);
         //Mob初始化
         SMSSDK.initSDK(mContext, LoginTool.APP_KEY, LoginTool.APP_SECRETE);
-
+        //广播注册
         mReceiver = new ColorNotifyBroadcastReceiver();
         IntentFilter filter = new IntentFilter();
         filter.addAction("colorChanged");

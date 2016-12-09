@@ -24,6 +24,8 @@ import lanou.maoyanmovie.base.BaseFragment;
 import lanou.maoyanmovie.bean.MyUser;
 import lanou.maoyanmovie.collect.CollectFragment;
 import lanou.maoyanmovie.mine.login.LoginFragment;
+import lanou.maoyanmovie.mine.login.LoginModel;
+import lanou.maoyanmovie.mine.login.LoginPresenter;
 import lanou.maoyanmovie.mine.setting.SettingFragment;
 import lanou.maoyanmovie.tools.CircleImageView;
 import lanou.maoyanmovie.tools.LoginTool;
@@ -106,6 +108,10 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
             //登录
             case R.id.fragment_mine_login_ll:
                 mLoginFragment = new LoginFragment();
+                LoginModel loginModel = new LoginModel();
+                LoginPresenter loginPresenter = new LoginPresenter(mLoginFragment, loginModel);
+                mLoginFragment.setPresenter(loginPresenter);
+                loginModel.setPresenter(loginPresenter);
                 mActivity.jumpFragment(mLoginFragment);
                 break;
             //退出登录

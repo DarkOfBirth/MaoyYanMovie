@@ -1,6 +1,5 @@
 package lanou.maoyanmovie.mine.login;
 
-import android.content.Intent;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -15,10 +14,8 @@ import java.util.List;
 
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
-import cn.bmob.v3.listener.LogInListener;
 import lanou.maoyanmovie.MainActivity;
 import lanou.maoyanmovie.R;
 import lanou.maoyanmovie.base.BaseFragment;
@@ -30,7 +27,7 @@ import lanou.maoyanmovie.tools.LoginTool;
  * Created by 麦建东 on 16/11/23.
  * "登录"界面
  */
-public class LoginFragment extends BaseFragment implements View.OnClickListener {
+public class LoginFragment extends BaseFragment implements View.OnClickListener, LoginContract.View {
 
     private TextView mRegisterTv;
     private RegisterFragment mRegisterFragment;
@@ -41,6 +38,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
     private CircleImageView mLoginHeadIv;
     private String mPhoneNum;
     private String mPassword;
+    private LoginContract.Presenter mPresenter;
 
     @Override
     protected int getLayout() {
@@ -60,7 +58,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
     protected void initData() {
         //Bmob初始化
         Bmob.initialize(mContext, LoginTool.APP_ID);
-        //判断账号的输入状态，当满足条件时，显示相应的头像
+        //监听账号输入框的状态
         mPhoneEt.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -74,6 +72,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
 
             @Override
             public void afterTextChanged(Editable s) {
+                //判断手机号码符合11位，在Bmob上查询用户信息
                 if (s.length() == 11) {
                     //查询用户是否存在
                     BmobQuery<MyUser> query = new BmobQuery<>();
@@ -81,6 +80,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                     query.findObjects(new FindListener<MyUser>() {
                         @Override
                         public void done(List<MyUser> list, BmobException e) {
+                            //查找用户成功，显示头像
                             if (e == null) {
                                 for (MyUser myUser : list) {
                                     String icon = myUser.getIcon();
@@ -114,36 +114,30 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                 mActivity.jumpFragment(mRegisterFragment);
                 break;
             case R.id.fragment_mine_login_btn:
-                //查询用户是否存在
-                BmobQuery<MyUser> query = new BmobQuery<>();
-                query.addWhereEqualTo("username", mPhoneNum);
-                query.findObjects(new FindListener<MyUser>() {
-                    @Override
-                    public void done(List<MyUser> list, BmobException e) {
-                        if (e == null) {//查询用户成功
-                            //使用手机号码＋密码登录
-
-                            BmobUser.loginByAccount(mPhoneNum, mPassword, new LogInListener<MyUser>() {
-                                @Override
-                                public void done(MyUser myUser, BmobException e) {
-                                    if (myUser != null) {
-                                        Toast.makeText(mContext, "登录成功", Toast.LENGTH_SHORT).show();
-                                        MyUser user = BmobUser.getCurrentUser(MyUser.class);
-                                        Intent intent = new Intent("sendInfo");
-                                        intent.putExtra("objectId", user.getObjectId());
-                                        mContext.sendBroadcast(intent);
-                                        getActivity().onBackPressed();
-                                    } else {
-                                        Toast.makeText(mContext, "密码错误", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            });
-                        } else {//查询用户失败
-                            Toast.makeText(mContext, "该号码未被注册", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+                //将值传到Presenter
+                mPresenter.login(mPhoneNum, mPassword);
                 break;
         }
+    }
+
+    @Override
+    public void showEmptyMsg() {
+        Toast.makeText(mContext, "手机号码/密码为空", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void loginSuccess() {
+        getActivity().onBackPressed();
+        Toast.makeText(mContext, "登录成功", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void loginError(String msg) {
+        Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void setPresenter(LoginContract.Presenter presenter) {
+        mPresenter = presenter;
     }
 }

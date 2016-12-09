@@ -59,7 +59,6 @@ public class MainActivity extends BaseActivity {
         transaction = manager.beginTransaction();
         transaction.replace(R.id.main_frame, movieFragment);
         transaction.commit();
-
     }
 
     @Override
