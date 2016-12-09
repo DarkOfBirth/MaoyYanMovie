@@ -1,13 +1,12 @@
 package lanou.maoyanmovie.find;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Interpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -23,6 +22,7 @@ import lanou.maoyanmovie.bean.StoreMonthDiscountBean;
 import lanou.maoyanmovie.bean.StoreTopBean;
 import lanou.maoyanmovie.httptools.HttpUtil;
 import lanou.maoyanmovie.httptools.ResponseCallBack;
+import lanou.maoyanmovie.tools.MainLoadingDialogFragment;
 
 /**
  * Created by wangYe on 16/11/24.
@@ -57,30 +57,27 @@ public class StoreFragment extends BaseFragment {
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.setAdapter(mAdapter);
 
-
         storeLoadingImg = bindView(R.id.store_loading_img);
         storeLoadingBefore = bindView(R.id.store_loading_before);
 
+        //开启动画
+        MainLoadingDialogFragment fragment = new MainLoadingDialogFragment();
+        fragment.show(getActivity().getFragmentManager(), "dialog_fragment");
     }
 
     @Override
     protected void initData() {
-        //开启动画
-        startAnim();
-
         initInternetRequest();
         //页面的上拉加载下拉刷新
         mStoreRv.setOnPullLoadMoreListener(new PullLoadMoreRecyclerView.PullLoadMoreListener() {
             @Override
             public void onRefresh() {
-                startAnim();
                 initInternetRequest();
                 mStoreRv.setPullLoadMoreCompleted();
             }
 
             @Override
             public void onLoadMore() {
-                startAnim();
                 count++;
                 HttpUtil.getFindStoreTop(new ResponseCallBack<StoreTopBean>() {
                     @Override
@@ -90,8 +87,12 @@ public class StoreFragment extends BaseFragment {
 
                     @Override
                     public void onResponse(StoreTopBean storeTopBean) {
+                        //网络请求成功时, 结束动画
+                        Log.d("zzz", "数据请求成功");
+                        Intent intent = new Intent("Hello");
+                        intent.putExtra("text","终止动画");
+                        mContext.sendBroadcast(intent);
                         mAdapter.setStoreTopBeen(storeTopBean);
-
                     }
                 });
                 HttpUtil.getFindStoreMonthDiscount(new ResponseCallBack<StoreMonthDiscountBean>() {
@@ -114,9 +115,7 @@ public class StoreFragment extends BaseFragment {
 
                     @Override
                     public void onResponse(StoreLikeBean storeLikeBean) {
-                        storeLoadingImg.clearAnimation();
-                        storeLoadingImg.setVisibility(View.GONE);
-                        storeLoadingBefore.setVisibility(View.GONE);
+
                         mAdapter.addStoreLikeBean(storeLikeBean);
                     }
                 });
@@ -158,9 +157,10 @@ public class StoreFragment extends BaseFragment {
 
             @Override
             public void onResponse(StoreHeaderBean storeHeaderBean) {
-                storeLoadingImg.clearAnimation();
-                storeLoadingImg.setVisibility(View.GONE);
-                storeLoadingBefore.setVisibility(View.GONE);
+                Log.d("zzz", "数据请求成功");
+                Intent intent = new Intent("Hello");
+                intent.putExtra("text","终止动画");
+                mContext.sendBroadcast(intent);
                 mAdapter.setStoreHeaderBean(storeHeaderBean);
             }
         });
@@ -203,38 +203,6 @@ public class StoreFragment extends BaseFragment {
         });
 
     }
-
-    //开始动画
-    public void startAnim() {
-
-        storeLoadingImg.setVisibility(View.VISIBLE);
-        storeLoadingBefore.setVisibility(View.VISIBLE);
-
-        ra = new RotateAnimation(0, 7200, Animation.RELATIVE_TO_SELF, 0.5f,
-                Animation.RELATIVE_TO_SELF, 0.5f);
-        ra.setInterpolator(new Interpolator() {
-            @Override
-            public float getInterpolation(float input) {
-                return input;
-            }
-        });
-        ra.setInterpolator(new Interpolator() {
-            @Override
-            public float getInterpolation(float input) {
-                return input;
-            }
-        });
-        //设置播放时间
-        ra.setDuration(10000);
-        //设置重复次数
-        ra.setRepeatCount(30);
-        //动画重复播放的模式
-        ra.setRepeatMode(Animation.RESTART);
-        //动画播放完毕后，组件停留在动画结束的位置上
-        ra.setFillAfter(true);
-        storeLoadingImg.startAnimation(ra);
-    }
-
 
     //第一个item的距离
     private int getScrolled() {
