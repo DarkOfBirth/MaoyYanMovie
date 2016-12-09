@@ -4,7 +4,7 @@ package lanou.maoyanmovie.tools;
  * Created by dllo on 16/11/21.
  */
 
-public class MovieValues {
+public final class MovieValues {
     //电影 -> 热映 -> 轮播图
     public static final String MOVIE_HOT_BANNER = "http://advert.mobile.meituan" +
             ".com/api/v3/adverts?cityid=10&category=11&version=7.5" +
