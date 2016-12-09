@@ -5,22 +5,30 @@ import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
 import lanou.maoyanmovie.R;
+import lanou.maoyanmovie.bean.StoreHeaderBean;
 import lanou.maoyanmovie.bean.StoreLikeBean;
 import lanou.maoyanmovie.bean.StoreMonthDiscountBean;
 import lanou.maoyanmovie.bean.StoreTopBean;
-import lanou.maoyanmovie.tools.CommonViewHolder;
+import lanou.maoyanmovie.tools.CommonVH;
 
 /**
  * Created by wangYe on 16/11/24.
  */
 
-public class StoreRvAdapter extends RecyclerView.Adapter<CommonViewHolder> {
+public class StoreRvAdapter extends RecyclerView.Adapter<CommonVH> {
     private StoreTopBean mStoreTopBeen;
     private StoreMonthDiscountBean mStoreMonthDiscountBean;
     private StoreLikeBean mStoreLikeBean;
+    private StoreHeaderBean mStoreHeaderBean;
 
-    private int[] mItemLayouts = {R.layout.store_top,R.layout.store_cheap_one,
+
+    private int[] mItemLayouts = {R.layout.store_header, R.layout.store_top,R.layout.store_cheap_one,
         R.layout.store_cheap_two,R.layout.store_title,R.layout.store_maybe_like};
+
+    public void setStoreHeaderBean(StoreHeaderBean storeHeaderBean) {
+        mStoreHeaderBean = storeHeaderBean;
+        notifyDataSetChanged();
+    }
 
     public void setStoreLikeBean(StoreLikeBean storeLikeBean) {
         mStoreLikeBean = storeLikeBean;
@@ -42,17 +50,20 @@ public class StoreRvAdapter extends RecyclerView.Adapter<CommonViewHolder> {
     }
 
     @Override
-    public CommonViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-       
-        return CommonViewHolder.getViewHolder(parent,mItemLayouts[viewType]);
-        
+    public CommonVH onCreateViewHolder(ViewGroup parent, int viewType) {
+        return CommonVH.getViewHolder(parent,mItemLayouts[viewType]);
     }
 
     @Override
-    public void onBindViewHolder(CommonViewHolder holder, int position) {
+    public void onBindViewHolder(CommonVH holder, int position) {
         int pos = getItemViewType(position);
         switch (pos) {
             case 0:
+                if (mStoreHeaderBean != null){
+                    holder.setImage(R.id.store_header_img, mStoreHeaderBean.getData().get(0).getBigImgTypeUrl());
+                }
+                break;
+            case 1:
                 if (mStoreTopBeen != null) {
                     holder.setText(R.id.find_header_store_top_tv, mStoreTopBeen.getData().getList().get(0).getTitle());
                     holder.setText(R.id.find_header_store_top_tv1, mStoreTopBeen.getData().getList().get(1).getTitle());
@@ -76,7 +87,7 @@ public class StoreRvAdapter extends RecyclerView.Adapter<CommonViewHolder> {
                     holder.setImage(R.id.find_header_store_top_img9, mStoreTopBeen.getData().getList().get(9).getPic());
                 }
                 break;
-            case 1:
+            case 2:
                 if (mStoreMonthDiscountBean != null) {
                     holder.setText(R.id.find_header_store_cheap_one_title_one, mStoreMonthDiscountBean.getData().getList().get(0).getDeals().get(0).getTitle());
                     holder.setText(R.id.find_header_store_cheap_one_title_two, mStoreMonthDiscountBean.getData().getList().get(0).getDeals().get(1).getTitle());
@@ -91,7 +102,7 @@ public class StoreRvAdapter extends RecyclerView.Adapter<CommonViewHolder> {
                     holder.setImage(R.id.find_header_store_cheap_one_pic_three, mStoreMonthDiscountBean.getData().getList().get(0).getDeals().get(2).getPic());
                 }
                 break;
-            case 2:
+            case 3:
                 if (mStoreMonthDiscountBean != null) {
                     holder.setText(R.id.find_header_store_cheap_two_title_one, mStoreMonthDiscountBean.getData().getList().get(1).getDeals().get(0).getTitle());
                     holder.setText(R.id.find_header_store_cheap_two_title_two, mStoreMonthDiscountBean.getData().getList().get(1).getDeals().get(1).getTitle());
@@ -106,10 +117,10 @@ public class StoreRvAdapter extends RecyclerView.Adapter<CommonViewHolder> {
                     holder.setImage(R.id.find_header_store_cheap_two_pic_three, mStoreMonthDiscountBean.getData().getList().get(1).getDeals().get(2).getPic());
                 }
                 break;
-            case 3:
+            case 4:
                 holder.setText(R.id.find_header_store_title, "您可能喜欢");
                 break;
-            case 4:
+            case 5:
                 if (mStoreLikeBean != null) {
                     holder.setText(R.id.find_header_store_like_title, mStoreLikeBean.getData().getList().get(position - 4).getTitle());
                     holder.setText(R.id.find_header_store_like_price, String.valueOf(mStoreLikeBean.getData().getList().get(position - 4).getPrice()));
@@ -123,6 +134,9 @@ public class StoreRvAdapter extends RecyclerView.Adapter<CommonViewHolder> {
     @Override
     public int getItemCount() {
         int count = 0;
+        if (mStoreHeaderBean != null){
+            count +=1;
+        }
         if (mStoreTopBeen != null) {
             count += 1;
         }
@@ -138,8 +152,8 @@ public class StoreRvAdapter extends RecyclerView.Adapter<CommonViewHolder> {
     @Override
     public int getItemViewType(int position) {
         int num = 0;
-        if (position >= 4) {
-            num = 4;
+        if (position >= 5) {
+            num = 5;
         } else {
             num = position;
         }
@@ -156,7 +170,7 @@ public class StoreRvAdapter extends RecyclerView.Adapter<CommonViewHolder> {
             gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
                 @Override
                 public int getSpanSize(int position) {
-                    if (position < 4) {
+                    if (position < 5) {
                         return spanCount;
                     } else {
                         return 1;

@@ -22,7 +22,5 @@ public class MyApplication extends Application {
     public static Context getmContext(){
         return mContext;
     }
-//    public static MainActivity getInstance(){
-//
-//    }
+
 }

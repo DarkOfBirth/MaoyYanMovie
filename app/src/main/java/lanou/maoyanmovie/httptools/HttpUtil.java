@@ -12,7 +12,9 @@ import lanou.maoyanmovie.bean.LocationBean;
 import lanou.maoyanmovie.bean.MovieHotBannerBean;
 import lanou.maoyanmovie.bean.MovieHotListBean;
 import lanou.maoyanmovie.bean.MovieWaitBean;
+import lanou.maoyanmovie.bean.MovieWaitWishBean;
 import lanou.maoyanmovie.bean.SearchBean;
+import lanou.maoyanmovie.bean.StoreHeaderBean;
 import lanou.maoyanmovie.bean.StoreLikeBean;
 import lanou.maoyanmovie.bean.StoreMonthDiscountBean;
 import lanou.maoyanmovie.bean.StoreTopBean;
@@ -52,8 +54,20 @@ public class HttpUtil {
         OkHttpManager.getInstance().get(url, MovieHotListBean.class, responseCallBack);
     }
 
+    /**
+     * 电影 -> 待映 -> 预告片推荐
+     * @param responseCallBack
+     */
     public static void getMovieWait(ResponseCallBack<MovieWaitBean> responseCallBack) {
-        OkHttpManager.getInstance().get(MovieValues.MOVIE_WAIT, MovieWaitBean.class, responseCallBack);
+        OkHttpManager.getInstance().get(MovieValues.MOVIE_WAIT_RECOMMENDATION, MovieWaitBean.class, responseCallBack);
+    }
+
+    /**
+     * 电影 -> 待映 -> 列表
+     * @param responseCallBack
+     */
+    public static void getMovieWaitWish(ResponseCallBack<MovieWaitWishBean> responseCallBack) {
+        OkHttpManager.getInstance().get(MovieValues.MOVIE_WAIT_WISH, MovieWaitWishBean.class, responseCallBack);
     }
 
     /**
@@ -112,6 +126,12 @@ public class HttpUtil {
         OkHttpManager.getInstance().get(MovieValues.STORE_TOP, StoreTopBean.class, responseCallBack);
     }
 
+    /**
+     * 发现 -> 商城 -> 头图片
+     */
+    public static void getStoreHeader(ResponseCallBack<StoreHeaderBean> responseCallBack){
+        OkHttpManager.getInstance().get(MovieValues.STORE_HEADER, StoreHeaderBean.class, responseCallBack);
+    }
     /**
      * 发现 -> 商城 -> 每月特价
      */

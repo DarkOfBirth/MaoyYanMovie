@@ -109,17 +109,11 @@ public class CommonVH extends RecyclerView.ViewHolder {
         return this;
     }
 
-    public CommonVH setImage(int id, String imgurl) {
+    public CommonVH setImage(int id, String url) {
         ImageView imageView = getView(id);
-
-        //SingleVolley.getInstance().getImage(imgurl,imageView);\
-        Picasso.with(MyApplication.getmContext()).load(imgurl).fit().into(imageView);
+        Picasso.with(MyApplication.getmContext()).load(url).fit().into(imageView);
         return this;
-
     }
-
-
-
 
     public CommonVH setViewClick(int id, View.OnClickListener listener) {
         // 此处为接口
@@ -132,7 +126,7 @@ public class CommonVH extends RecyclerView.ViewHolder {
         return this;
     }
 
-
+    //给行布局设置点击事件
     public CommonVH setItemClick(View.OnClickListener listener) {
         itemView.setOnClickListener(listener);
         return this;

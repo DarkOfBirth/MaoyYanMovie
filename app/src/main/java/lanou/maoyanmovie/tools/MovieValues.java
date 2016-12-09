@@ -4,7 +4,7 @@ package lanou.maoyanmovie.tools;
  * Created by dllo on 16/11/21.
  */
 
-public class MovieValues {
+public final class MovieValues {
     //电影 -> 热映 -> 轮播图
     public static final String MOVIE_HOT_BANNER = "http://advert.mobile.meituan" +
             ".com/api/v3/adverts?cityid=10&category=11&version=7.5" +
@@ -17,8 +17,12 @@ public class MovieValues {
     //电影 -> 热映 -> 列表 -> 详情
     public static final String MOVIE_HOT_LIST_DETAIL = "http://m.maoyan.com/movie/";
 
-    //电影
-    public static final String MOVIE_WAIT = "http://api.maoyan.com/mmdb/movie/lp/list.json";
+    //电影 -> 待映 -> 预告片推荐
+    public static final String MOVIE_WAIT_RECOMMENDATION = "http://api.maoyan" +
+            ".com/mmdb/movie/lp/list.json";
+    //电影 -> 待映 -> 近期最受期待
+    public static final String MOVIE_WAIT_WISH = "http://api.maoyan" +
+            ".com/mmdb/movie/v1/list/wish/order/coming.json?offset=0&limit=50&ci=65";
 
     //发现 -> 周边商城 -> 您可能喜欢
     public static final String STORE_LIKE = "http://api.maoyan.com/mallpro/recommended.json?";
@@ -44,15 +48,16 @@ public class MovieValues {
     public static final String MOVIE_FIND_NOW = "http://piaofang.maoyan.com/?f=android&userid=-1";
     //电影 ->发现 ->TOP10
     public static final String MOVIE_FIND_TOP10 = "http://m.maoyan.com/information?_v_=yes&groupId=1481354&pageType=1&title=今日TOP10";
-    //电影 ->发现 ->找片 -> 类型/地区/年代
+    //电影 ->搜索 ->找片 -> 类型/地区/年代
     public static final String MOVIE_FIND_TYPE_WHERE_WHEN = "http://api.maoyan.com/mmdb/search/movie/tag/types.json?";
-    //电影 ->发现 ->找片 -> 热映口碑等四个
+    //电影 ->搜索 ->找片 -> 热映口碑等四个
     public static final String MOVIE_FIND_CENTER = "http://api.maoyan.com/mmdb/movieboard/fixedboard/v1/hot/list.json?";
-    //电影 ->发现 ->找片 -> 全球电影奖项
+    //电影 ->搜索 ->找片 -> 全球电影奖项
     public static final String MOVIE_FIND_ALL_PRIZE = "http://api.maoyan.com/mmdb/movie/winning/film/2016-11-21/list.json?";
-    //电影 ->发现 ->找片 ->全部电影奖项
+    //电影 ->搜索 ->找片 ->全部电影奖项
     public static final String MOVIE_FIND_ALL_PRIZE_BODY = "http://api.maoyan.com/mmdb/movie/region/festival/list.json?";
-
+    //电影 ->发现 ->商城 ->头照片
+    public static final String STORE_HEADER = "http://advert.mobile.meituan.com/api/v3/adverts?cityid=65&category=15&version=7.6.0&new=0&app=movie&clienttp=android&uuid=6FEB56DD6FD340B8CB800D9D855B138E207AEF644221B5FC6E9C8B47C9E30F57&devid=861599034806975&uid=352381858";
     // 根据经纬度获取城市的名字
     public static final String LOCATION_LONGITUDE_LATITUDE = "http://api.avatardata.cn/CoordAddress/Lookup?key=b43534b71d1c4e18b935d548949205ba&";
     // 获取天气状况

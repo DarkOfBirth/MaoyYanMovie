@@ -1,6 +1,5 @@
 package lanou.maoyanmovie.weather;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -246,10 +245,10 @@ public class WeatherFragment extends BaseFragment {
         airQuailityTv.setText(mWeatherBean.getResult().getPm25().getPm25().getQuality());
         String time = mWeatherBean.getResult().getPm25().getDateTime().substring(11, 13) + ":00 发布";
         publishTimeTv.setText(time);
+
         aqiRing.setLevel(mWeatherBean.getResult().getPm25().getPm25().getQuality());
         aqiRing.setNum(Integer.parseInt(mWeatherBean.getResult().getPm25().getPm25().getCurPm()));
 
-        Log.d("WeatherSysout", mWeatherBean.getResult().getPm25().getPm25().getQuality());
         pm10Ring.setLevel(mWeatherBean.getResult().getPm25().getPm25().getQuality());
         pm10Ring.setNum(Integer.parseInt(mWeatherBean.getResult().getPm25().getPm25().getPm10()));
 
@@ -389,12 +388,9 @@ public class WeatherFragment extends BaseFragment {
      */
     private void changeBackGround() {
         String weatherImg = mWeatherBean.getResult().getRealtime().getWeather().getImg();
-        Log.d("WeatherFragment", weatherImg);
         switch (weatherImg) {
             case "1":
-                Log.d("WeatherFragment", "进入多云");
                 changeBackGroudByImg("cloudy");
-
                 break;
             case "18":
                 changeBackGroudByImg("foggy");
@@ -428,8 +424,6 @@ public class WeatherFragment extends BaseFragment {
      * @param str
      */
     private void changeBackGroudByImg(String str) {
-        Log.d("WeatherFragment", "str" + str);
-
         int[] bgs = mBgMap.get(str);
         if (bgs == null) {
             return;
@@ -439,7 +433,7 @@ public class WeatherFragment extends BaseFragment {
         rightWeatherIv.setBackgroundResource(bgs[2]);
         treeWeatherIv.setImageResource(bgs[3]);
         // 如果是多云 霾, 没有树
-        if (str.equals("cloudy") || str.equals("pmdirt")) {
+        if ("cloudy".equals(str) || "pmdirt".equals(str) || "foggy".equals(str)) {
             treeWeatherIv.setVisibility(View.INVISIBLE);
         }
 

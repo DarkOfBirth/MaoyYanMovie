@@ -23,7 +23,7 @@ import lanou.maoyanmovie.base.MyApplication;
 
 public class DBTools {
 
-    // 此方法为 恶汉式 单例
+    // 此方法为 饿汉式 单例
     // LiteOrm 在使用的时候要使用单例
     private static DBTools dbTools = new DBTools();
     private final ExecutorService mThreadPool;
@@ -52,7 +52,6 @@ public class DBTools {
     public <T> void inserthistoryInfo(T t) {
 
       long  kk =  mLiteOrm.insert(t);
-        Log.d("DBTools", "kk:" + kk);
 
     }
 

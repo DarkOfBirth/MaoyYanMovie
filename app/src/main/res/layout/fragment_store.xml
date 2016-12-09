@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:background="#fff"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#fff"
+                android:orientation="vertical">
+
 
     <com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView
         android:id="@+id/find_header_store_body_rv"
@@ -13,17 +14,45 @@
     </com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView>
 
     <ImageView
-        android:visibility="gone"
         android:id="@+id/store_loading_img"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_centerInParent="true"
         android:src="@mipmap/loading_before"
-        android:layout_width="50dp"
-        android:layout_height="50dp"/>
+        android:visibility="gone"/>
+
     <ImageView
-        android:visibility="gone"
         android:id="@+id/store_loading_before"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
         android:layout_centerInParent="true"
         android:src="@mipmap/loading_background"
-        android:layout_width="47dp"
-        android:layout_height="47dp"/>
+        android:visibility="gone"/>
+
+
+    <TextView
+        android:id="@+id/find_header_store_header"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:textColor="#fff"
+        android:background="#f00"
+        android:gravity="center"
+        android:text="商城"
+        android:textSize="23sp"/>
+
+    <ImageView
+        android:id="@+id/find_header_store_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:src="@mipmap/back"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="15dp"
+        android:src="@mipmap/find"/>
 </RelativeLayout>
