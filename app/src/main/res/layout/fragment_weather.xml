@@ -293,7 +293,7 @@
                         android:id="@+id/publish_time_tv"
                         android:layout_width="80dp"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="205dp"
+                        android:layout_marginLeft="200dp"
                         android:paddingTop="7dp"
                         android:text="07:00发布"
                         android:textSize="14sp"

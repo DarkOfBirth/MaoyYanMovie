@@ -126,7 +126,7 @@ public class CommonVH extends RecyclerView.ViewHolder {
         return this;
     }
 
-
+    //给行布局设置点击事件
     public CommonVH setItemClick(View.OnClickListener listener) {
         itemView.setOnClickListener(listener);
         return this;

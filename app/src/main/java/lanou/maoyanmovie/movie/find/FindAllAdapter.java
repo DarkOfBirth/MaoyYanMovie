@@ -5,12 +5,12 @@ import android.view.ViewGroup;
 
 import lanou.maoyanmovie.R;
 import lanou.maoyanmovie.bean.MovieFindAllPrizeBean;
-import lanou.maoyanmovie.tools.CommonViewHolder;
+import lanou.maoyanmovie.tools.CommonVH;
 
 /**
  * Created by wangYe on 16/12/2.
  */
-public class FindAllAdapter extends RecyclerView.Adapter<CommonViewHolder>{
+public class FindAllAdapter extends RecyclerView.Adapter<CommonVH>{
     private MovieFindAllPrizeBean mMovieFindAllPrizeBean;
 
     public void setMovieFindAllPrizeBean(MovieFindAllPrizeBean movieFindAllPrizeBean) {
@@ -18,12 +18,12 @@ public class FindAllAdapter extends RecyclerView.Adapter<CommonViewHolder>{
         notifyDataSetChanged();
     }
     @Override
-    public CommonViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return CommonViewHolder.getViewHolder(parent, R.layout.movie_find_all_rv);
+    public CommonVH onCreateViewHolder(ViewGroup parent, int viewType) {
+        return CommonVH.getViewHolder(parent, R.layout.movie_find_all_rv);
     }
 
     @Override
-    public void onBindViewHolder(CommonViewHolder holder, int position) {
+    public void onBindViewHolder(CommonVH holder, int position) {
         holder.setText(R.id.movie_find_all_festival_name, mMovieFindAllPrizeBean.getData().get(position).getFestivalName());
         holder.setText(R.id.movie_find_all_date, mMovieFindAllPrizeBean.getData().get(position).getHeldDate().substring(5));
         holder.setText(R.id.movie_find_all_prize_name, mMovieFindAllPrizeBean.getData().get(position).getPrizeName());

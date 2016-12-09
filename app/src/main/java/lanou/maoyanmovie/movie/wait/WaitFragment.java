@@ -27,6 +27,8 @@ public class WaitFragment extends BaseFragment implements OnMovieWaitWishClickLi
     private WaitAdapter mWaitAdapter;
     private ViewPager mWaitVp;
     private LinearLayout mWaitLl;
+    //获取手机屏幕分辨率
+
     private DisplayMetrics mOutMetrics;
     private RecyclerView mWishRv;
     private WishAdapter mWishAdapter;
@@ -58,6 +60,7 @@ public class WaitFragment extends BaseFragment implements OnMovieWaitWishClickLi
 
             @Override
             public void onResponse(MovieWaitBean movieWaitBean) {
+                //是否限制子视图在它的范围内进行绘制。默认是true
                 mWaitLl.setClipChildren(false);
                 mWaitVp.setClipChildren(false);
 

@@ -2,11 +2,9 @@ package lanou.maoyanmovie.mine.login;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Random;
@@ -32,9 +30,6 @@ public class PasswordFragment extends BaseFragment implements View.OnClickListen
     private String mPhoneNum;
     private String mPwd;
     private String mPwdAgain;
-    private TextView mPhoneTv;
-    private TextView mCodeTv;
-    private TextView mPasswordTv;
 
     @Override
     protected int getLayout() {
@@ -46,11 +41,6 @@ public class PasswordFragment extends BaseFragment implements View.OnClickListen
         mPwdEt = bindView(R.id.password_et);
         mPwdAgainEt = bindView(R.id.password_again_et);
         mPasswordBtn = bindView(R.id.password_btn);
-        View view = LayoutInflater.from(mContext).inflate(R.layout.fragment_mine_login_register,
-                null);
-        mPhoneTv = (TextView) view.findViewById(R.id.fragment_mine_register_phone_tv);
-        mCodeTv = (TextView) view.findViewById(R.id.fragment_mine_register_code_tv);
-        mPasswordTv = (TextView) view.findViewById(R.id.fragment_mine_register_password_tv);
     }
 
     @Override
@@ -66,9 +56,6 @@ public class PasswordFragment extends BaseFragment implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-        mPhoneTv.setTextColor(0xff757575);
-        mCodeTv.setTextColor(0xff757575);
-        mPasswordTv.setTextColor(0xfff27f78);
         //接收从CodeFragment传来的数据
         Bundle arguments = getArguments();
         mPhoneNum = arguments.getString("phoneNum");

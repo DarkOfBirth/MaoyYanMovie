@@ -77,6 +77,10 @@ public class MovieFragment extends BaseFragment implements View.OnClickListener 
         movieTab.setTabTextColors(0xff373737, 0xffffffff);
         movieTab.setSelectedTabIndicatorColor(0xffc0352f);
 
+        SharedPreferences sharedPreferences = MyApplication.getmContext().getSharedPreferences("cityId", Context.MODE_PRIVATE);
+        String cityName = sharedPreferences.getString("cityName","大连");
+        mLocation.setText(cityName);
+
         mCityFragment.setOnSelectCity(new CityFragment.OnSelectCity() {
             @Override
             public void selectCityName(String name, String cityId) {
@@ -85,6 +89,8 @@ public class MovieFragment extends BaseFragment implements View.OnClickListener 
                 SharedPreferences sharedPreferences = MyApplication.getmContext().getSharedPreferences("cityId", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString("cityId",cityId);
+                editor.putString("cityName",name);
+
                 editor.commit();
             }
         });

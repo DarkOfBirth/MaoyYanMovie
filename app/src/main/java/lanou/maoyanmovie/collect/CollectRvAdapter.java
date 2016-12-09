@@ -11,12 +11,12 @@ import lanou.maoyanmovie.MainActivity;
 import lanou.maoyanmovie.R;
 import lanou.maoyanmovie.bean.CollectBean;
 import lanou.maoyanmovie.find.DescriptionFragment;
-import lanou.maoyanmovie.tools.CommonViewHolder;
+import lanou.maoyanmovie.tools.CommonVH;
 
 /**
  * Created by wangYe on 16/12/6.
  */
-public class CollectRvAdapter extends RecyclerView.Adapter<CommonViewHolder> {
+public class CollectRvAdapter extends RecyclerView.Adapter<CommonVH> {
     ArrayList<CollectBean> mCollectBeen;
 
     public void setCollectBeen(ArrayList<CollectBean> collectBeen) {
@@ -25,12 +25,12 @@ public class CollectRvAdapter extends RecyclerView.Adapter<CommonViewHolder> {
     }
 
     @Override
-    public CommonViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return CommonViewHolder.getViewHolder(parent, R.layout.item_collect);
+    public CommonVH onCreateViewHolder(ViewGroup parent, int viewType) {
+        return CommonVH.getViewHolder(parent, R.layout.item_collect);
     }
 
     @Override
-    public void onBindViewHolder(final CommonViewHolder holder, final int position) {
+    public void onBindViewHolder(final CommonVH holder, final int position) {
         holder.setText(R.id.item_collect_nick_name, mCollectBeen.get(position).getNickName());
         holder.setText(R.id.item_collect_title, mCollectBeen.get(position).getTitle());
         holder.setImage(R.id.item_collect_img, mCollectBeen.get(position).getUrlImg());

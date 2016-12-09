@@ -9,13 +9,13 @@ import lanou.maoyanmovie.bean.StoreHeaderBean;
 import lanou.maoyanmovie.bean.StoreLikeBean;
 import lanou.maoyanmovie.bean.StoreMonthDiscountBean;
 import lanou.maoyanmovie.bean.StoreTopBean;
-import lanou.maoyanmovie.tools.CommonViewHolder;
+import lanou.maoyanmovie.tools.CommonVH;
 
 /**
  * Created by wangYe on 16/11/24.
  */
 
-public class StoreRvAdapter extends RecyclerView.Adapter<CommonViewHolder> {
+public class StoreRvAdapter extends RecyclerView.Adapter<CommonVH> {
     private StoreTopBean mStoreTopBeen;
     private StoreMonthDiscountBean mStoreMonthDiscountBean;
     private StoreLikeBean mStoreLikeBean;
@@ -50,12 +50,12 @@ public class StoreRvAdapter extends RecyclerView.Adapter<CommonViewHolder> {
     }
 
     @Override
-    public CommonViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return CommonViewHolder.getViewHolder(parent,mItemLayouts[viewType]);
+    public CommonVH onCreateViewHolder(ViewGroup parent, int viewType) {
+        return CommonVH.getViewHolder(parent,mItemLayouts[viewType]);
     }
 
     @Override
-    public void onBindViewHolder(CommonViewHolder holder, int position) {
+    public void onBindViewHolder(CommonVH holder, int position) {
         int pos = getItemViewType(position);
         switch (pos) {
             case 0:

@@ -1,5 +1,9 @@
 package lanou.maoyanmovie.mine.login;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -32,6 +36,8 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
     private TextView mPhoneTv;
     private TextView mCodeTv;
     private TextView mPasswordTv;
+    private Boolean color = false;
+    private ColorNotifyBroadcastReceiver mReceiver;
 
     @Override
     protected int getLayout() {
@@ -49,6 +55,7 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
 
     @Override
     protected void initData() {
+        //使"输入手机号"字变色，表示为当前状态
         mPhoneTv.setTextColor(0xfff27f78);
         mCodeTv.setTextColor(0xff757575);
         mPasswordTv.setTextColor(0xff757575);
@@ -56,6 +63,11 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
         Bmob.initialize(mContext, LoginTool.APP_ID);
         //Mob初始化
         SMSSDK.initSDK(mContext, LoginTool.APP_KEY, LoginTool.APP_SECRETE);
+
+        mReceiver = new ColorNotifyBroadcastReceiver();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("colorChanged");
+        mContext.registerReceiver(mReceiver, filter);
     }
 
     @Override
@@ -83,6 +95,10 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
                         transaction.replace(R.id.register_fl, codeFragment);
                         transaction.addToBackStack(null);
                         transaction.commit();
+                        //使"输入验证码"字变色，表示为当前状态
+                        mPhoneTv.setTextColor(0xff757575);
+                        mCodeTv.setTextColor(0xfff27f78);
+                        mPasswordTv.setTextColor(0xff757575);
                     } else {
                         Toast.makeText(mContext, "该手机号已注册过", Toast.LENGTH_SHORT).show();
                     }
@@ -90,6 +106,25 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
             });
         } else {
             Toast.makeText(mContext, "发送失败", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mContext.unregisterReceiver(mReceiver);
+    }
+
+    class ColorNotifyBroadcastReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            color = intent.getBooleanExtra("color", false);
+            if (color) {
+                mPhoneTv.setTextColor(0xff757575);
+                mCodeTv.setTextColor(0xff757575);
+                mPasswordTv.setTextColor(0xfff27f78);
+            }
         }
     }
 
