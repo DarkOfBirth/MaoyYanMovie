@@ -138,7 +138,9 @@ public class CityAdapter extends RecyclerView.Adapter<CommonVH> {
                                 arrayList.add(query.get(i).getContent());
                             }
                         historyCityAdapter.setStringArrayList(arrayList);
+
                         }
+
                     }
                 });
 

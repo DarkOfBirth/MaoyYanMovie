@@ -8,10 +8,12 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import lanou.maoyanmovie.base.BaseActivity;
+import lanou.maoyanmovie.bean.HistoryCityBean;
 import lanou.maoyanmovie.find.FindFragment;
 import lanou.maoyanmovie.mine.MineFragment;
 import lanou.maoyanmovie.movie.MovieFragment;
 import lanou.maoyanmovie.search.SearchFragment;
+import lanou.maoyanmovie.tools.DBTools;
 
 public class MainActivity extends BaseActivity {
 
@@ -116,4 +118,9 @@ public class MainActivity extends BaseActivity {
         transaction.commit();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        DBTools.getInstance().deleteAllInfo(HistoryCityBean.class);
+    }
 }

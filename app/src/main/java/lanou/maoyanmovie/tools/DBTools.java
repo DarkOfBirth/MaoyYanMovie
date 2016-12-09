@@ -60,7 +60,7 @@ public class DBTools {
     }
 
     // 删除
-    public <T> void deleteAllMusicInfo(Class<T> tClass) {
+    public <T> void deleteAllInfo(Class<T> tClass) {
         mLiteOrm.deleteAll(tClass);
     }
 
