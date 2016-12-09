@@ -15,13 +15,13 @@ import lanou.maoyanmovie.bean.MovieFindCenterBean;
 import lanou.maoyanmovie.bean.MovieFindTypeOtherBean;
 import lanou.maoyanmovie.httptools.HttpUtil;
 import lanou.maoyanmovie.httptools.ResponseCallBack;
-import lanou.maoyanmovie.tools.CommonViewHolder;
+import lanou.maoyanmovie.tools.CommonVH;
 
 /**
  * Created by wangYe on 16/12/1.
  */
 
-public class MovieFindAdapter extends RecyclerView.Adapter<CommonViewHolder> {
+public class MovieFindAdapter extends RecyclerView.Adapter<CommonVH> {
     private MovieFindTypeOtherBean mMovieFindTypeOtherBean;
     private MovieFindCenterBean mMovieFindCenterBean;
     private RecyclerView mRv;
@@ -40,12 +40,12 @@ public class MovieFindAdapter extends RecyclerView.Adapter<CommonViewHolder> {
             R.layout.movie_find_three, R.layout.movie_find_four};
 
     @Override
-    public CommonViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return CommonViewHolder.getViewHolder(parent, mItemLayouts[viewType]);
+    public CommonVH onCreateViewHolder(ViewGroup parent, int viewType) {
+        return CommonVH.getViewHolder(parent, mItemLayouts[viewType]);
     }
 
     @Override
-    public void onBindViewHolder(final CommonViewHolder holder, int position) {
+    public void onBindViewHolder(final CommonVH holder, int position) {
         int pos = getItemViewType(position);
         switch (pos) {
             case 0:
