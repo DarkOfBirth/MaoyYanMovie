@@ -3,12 +3,16 @@ package lanou.maoyanmovie.tools;
 import android.app.DialogFragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +22,8 @@ import android.view.animation.Interpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import lanou.maoyanmovie.R;
 
 /**
  * Created by Chen fengYao on 2015/8/5.
@@ -29,6 +35,7 @@ public class MainLoadingDialogFragment extends DialogFragment implements View.On
     View view;
     private ImageView mImg;
     private RotateAnimation ra;
+    private MyNoOrderBroadCast mCast;
 
 
     @Nullable
@@ -48,29 +55,18 @@ public class MainLoadingDialogFragment extends DialogFragment implements View.On
         loadFailedTv = (TextView) view.findViewById(R.id.tv_load_failed);
         startAnim();
 
+        //注册接收器
+        mCast = new MyNoOrderBroadCast();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("Hello");
+        getActivity().registerReceiver(mCast, filter);
 
-        final CountDownTimer countDownTimer = new CountDownTimer(5000, 1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-
-            }
-
-            @Override
-            public void onFinish() {
-
-                FragmentManager manager = getFragmentManager();
-                FragmentTransaction transaction = manager.beginTransaction();
-                transaction.remove(MainLoadingDialogFragment.this);
-                transaction.commit();
-
-            }
-
-        };
-        countDownTimer.start();
+        Log.d("zzz", "第一次走这个方法");
         return view;
     }
 
 
+    //开启动画
     public void startAnim() {
         ra = new RotateAnimation(0, 360, Animation.RELATIVE_TO_SELF, 0.5f,
                 Animation.RELATIVE_TO_SELF, 0.5f);
@@ -100,6 +96,28 @@ public class MainLoadingDialogFragment extends DialogFragment implements View.On
     @Override
     public void onClick(View v) {
 
+    }
+
+    class MyNoOrderBroadCast extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            //参数intent, 就是无序广播携带值得intent
+            String text = intent.getStringExtra("text");
+            Log.d("zzz", "接到了广播");
+            if (text != null){
+                FragmentManager manager = getFragmentManager();
+                FragmentTransaction transaction = manager.beginTransaction();
+                transaction.remove(MainLoadingDialogFragment.this);
+                transaction.commit();
+            }
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        getActivity().unregisterReceiver(mCast);
     }
 }
 
