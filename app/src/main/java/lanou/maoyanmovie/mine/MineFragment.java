@@ -22,7 +22,7 @@ import lanou.maoyanmovie.MainActivity;
 import lanou.maoyanmovie.R;
 import lanou.maoyanmovie.base.BaseFragment;
 import lanou.maoyanmovie.bean.MyUser;
-import lanou.maoyanmovie.collect.CollectFragment;
+import lanou.maoyanmovie.mine.collect.CollectFragment;
 import lanou.maoyanmovie.mine.login.LoginFragment;
 import lanou.maoyanmovie.mine.login.LoginModel;
 import lanou.maoyanmovie.mine.login.LoginPresenter;

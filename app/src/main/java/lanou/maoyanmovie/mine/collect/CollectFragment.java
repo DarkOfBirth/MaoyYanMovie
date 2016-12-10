@@ -1,4 +1,4 @@
-package lanou.maoyanmovie.collect;
+package lanou.maoyanmovie.mine.collect;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;

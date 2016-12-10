@@ -17,7 +17,7 @@ import java.util.List;
 import lanou.maoyanmovie.R;
 import lanou.maoyanmovie.base.BaseFragment;
 import lanou.maoyanmovie.bean.CollectBean;
-import lanou.maoyanmovie.collect.CollectDBTool;
+import lanou.maoyanmovie.mine.collect.CollectDBTool;
 import lanou.maoyanmovie.tools.MovieValues;
 
 /**

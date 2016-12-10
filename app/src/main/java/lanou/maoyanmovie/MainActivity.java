@@ -118,8 +118,8 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    protected void onStop() {
+        super.onStop();
         DBTools.getInstance().deleteAllInfo(HistoryCityBean.class);
     }
 }

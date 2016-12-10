@@ -1,4 +1,4 @@
-package lanou.maoyanmovie.collect;
+package lanou.maoyanmovie.mine.collect;
 
 import android.os.Handler;
 import android.os.Looper;
